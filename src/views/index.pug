@@ -1,7 +1,10 @@
-extends layouts/default
+extends layouts/pages
 block variables
 	- var title = "gulp-pug-starter"
 
 block content
 	.container
 		include ../blocks/modules/main/main
+		ul
+			li
+				a(href='ui-kit.html')  UI-KIT

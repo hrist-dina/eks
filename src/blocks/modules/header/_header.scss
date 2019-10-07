@@ -1,0 +1,30 @@
+.header {
+
+  &__top {
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+  }
+}
+
+.submenu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+
+  & li {
+    margin-right: 40px;
+    padding: 14px 0 16px;
+    box-sizing: border-box;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    & a {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+    }
+  }
+}

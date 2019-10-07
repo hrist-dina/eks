@@ -7,6 +7,13 @@ html(lang="en")
 	head
 		include ../includes/head
 	body
-		main
-			block content
-			include ../includes/scripts
+		.wrapper
+			main.main-gradient
+				block header
+					include ../../blocks/modules/header/header
+				block content
+
+			block footer
+				include ../../blocks/modules/footer/footer
+
+				include ../includes/scripts

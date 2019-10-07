@@ -7,10 +7,19 @@ html, body {
 	height: 100%;
 
 }
+
+.wrapper {
+	width: 100%;
+	height: 100%;
+}
 main {
 	width: 100%;
 	height: 100%;
-	//background: radial-gradient(100% 97% at 0% 3%, #898C9B 0%, #4D5061 100%) no-repeat;
+
+	&.main-gradient {
+		background: radial-gradient(166.32% 292.71% at 0% 0%, #555668 0%, #2B2B37 100%) no-repeat center;
+		background-size: contain;
+	}
 }
 
 h1, h2, h3, h4, h5, h6, ul {

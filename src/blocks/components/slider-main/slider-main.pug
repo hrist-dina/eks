@@ -1,0 +1,23 @@
+-
+    var sliderMain = [
+        {
+            img: 'img/slider-main/slide1.jpg',
+            title: 'Качественная светотехника'
+        },
+        {
+            img: 'img/slider-main/slide1.jpg',
+            title: 'Качественная светотехника 222'
+        },
+        {
+            img: 'img/slider-main/slide1.jpg',
+            title: 'Качественная светотехника 333'
+        }
+    ]
+
+.slider-main
+    .slider-main__list
+        for item in sliderMain
+            .slider-main__item(style=`background-image: url(${item.img})`)
+                .slider-main__info
+                    .slider-main__title=item.title
+                    a(href='#').btn.btn-yellow Посмотреть

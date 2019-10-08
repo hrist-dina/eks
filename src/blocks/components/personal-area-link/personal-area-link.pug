@@ -1,0 +1,6 @@
+mixin personal-area-link(isAuth=false)
+    a(href='#').personal-area-link
+        .personal-area-link__title
+            span=isAuth ? 'Константинопольский Константин' : 'Личный кабинет'
+        .personal-area-link__desc=isAuth ? 'выход' : 'вход'
+

@@ -10,7 +10,7 @@ html, body {
 
 .wrapper {
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
 }
 main {
 	width: 100%;
@@ -19,6 +19,7 @@ main {
 	&.main-gradient {
 		background: radial-gradient(166.32% 292.71% at 0% 0%, #555668 0%, #2B2B37 100%) no-repeat center;
 		background-size: contain;
+		padding-bottom: 50px;
 	}
 }
 
@@ -36,8 +37,21 @@ h1, h2, h3, h4, h5, h6, ul {
 	// @include xl(max-width, 1110px);
 }
 
-.img-responsive {
-	max-width: 500px;
-	width: 100%;
-	height: auto;
+.content-sidebar {
+	@include row-flex();
+
+	& .content__box {
+		@include col();
+		@include size(3);
+	}
+
+	& .sidebar__box {
+		@include col();
+		@include size(1);
+	}
+}
+
+.section {
+	margin-top: 50px;
+	margin-bottom: 100px;
 }

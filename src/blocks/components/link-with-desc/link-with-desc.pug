@@ -1,0 +1,33 @@
+-
+    var linkWithDesc = [
+        {
+            type: 'phone',
+            link: 'tel:88005511803',
+            title: '8 800 55 11 803',
+            desc: 'бесплатно'
+        },
+        {
+            type: 'mail',
+            link: 'mailto:info@diodtrade.ru',
+            title: 'info@diodtrade.ru',
+            desc: 'написать письмо'
+        },
+        {
+            type: 'download',
+            link: '#',
+            title: 'Скачать прайс',
+            desc: '.pdf'
+        },
+    ]
+
+
+mixin link-with-desc(item)
+    .link-with-desc(class=item.type ? item.type : '')
+        a.link(href=item.link)=item.title
+        span.desc=item.desc
+
+
+mixin link-with-desc-list
+    .link-with-desc__list
+        for item in linkWithDesc
+            +link-with-desc(item)

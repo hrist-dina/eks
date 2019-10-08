@@ -1,0 +1,74 @@
+@mixin link-type {
+  padding-left: 28px;
+  & .link {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      bottom: 0;
+      top: 0;
+      right: auto;
+      margin: auto;
+      @content
+    }
+  }
+}
+
+.link-with-desc {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 20px;
+  color: #fff;
+  margin-right: 150px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.phone {
+    @include link-type {
+      @extend .icon-phone;
+    }
+  }
+
+  &.mail {
+    @include link-type {
+      @extend .icon-mail;
+    }
+  }
+
+  &.download {
+    @include link-type {
+      @extend .icon-download;
+    }
+  }
+
+  & .link {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 20px;
+    color: #fff;
+  }
+
+  & .desc {
+    display: block;
+    margin-top: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &__list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+  }
+}

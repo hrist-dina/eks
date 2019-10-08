@@ -1,13 +1,26 @@
+include ../../components/link-with-desc/link-with-desc
+include ../../components/personal-area-link/personal-area-link
+
 header.header
     .header__top
         .container
             .header__top-inner
-                ul.submenu
-                    li
-                        a(href='#') О компании
-                    li
-                        a(href='#') Сотрудничество
-                    li
-                        a(href='#') Где купить
-                    li
-                        a(href='#') Контакты
+                .header__top-left
+                    include ../../components/submenu/submenu
+                .header__top-right
+                    include ../../components/search/search
+                    a(href='#').header__basket
+                        .icon-cart
+                        span Корзина
+    .header__middle
+        .container
+            .header__middle-inner
+                include ../../components/logo/logo
+                +link-with-desc-list
+                +personal-area-link(isAuth)
+    .header__bottom
+        .container
+            .header__bottom-inner
+                include ../../components/menu/menu
+
+

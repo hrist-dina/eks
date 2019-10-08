@@ -1,0 +1,30 @@
+.search {
+  width: 368px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 14px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & input {
+    width: #{calc(100% - 18px)};
+    border: none;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    background: transparent;
+    padding-right: 20px;
+    box-sizing: border-box;
+    @include outline-none();
+
+    @include placeholder {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 20px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}

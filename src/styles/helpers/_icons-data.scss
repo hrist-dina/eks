@@ -1,0 +1,31 @@
+@function icon-logo() {
+  @return "data:image/svg+xml,%3Csvg width='142' height='63' viewBox='0 0 142 63' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M92.037 0.421249V10.6237L76.8661 26.4941V0.421249H92.037Z' fill='white'/%3E%3Cpath d='M0 62.7694H45.5128V46.3322H15.1709V41.231H45.5128V24.2269H15.1709V19.1257H45.5128V2.68845H0V62.7694Z' fill='white'/%3E%3Cpath d='M48.0413 62.7694H62.7066V45.7654H77.8775V62.7694H93.0484V45.7036L79.1417 28.8259L62.7066 28.7613V2.68845H48.0413V62.7694Z' fill='white'/%3E%3Cpath d='M95.3241 41.5144L125.919 41.8142V46.3322H95.0712V62.7694H141.09V24.7937H110.242V19.1257H141.09V2.68845H95.0581L95.3241 41.5144Z' fill='white'/%3E%3Cpath d='M92.037 0.396759V10.5992L76.8661 26.4696V0.396759H92.037Z' fill='%23FECC00'/%3E%3C/svg%3E%0A"
+}
+
+@function icon-search($fill:'fff') {
+  @return "data:image/svg+xml,%3Csvg viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.9322 14.2991C11.5733 15.3647 9.86082 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8C16 9.86082 15.3647 11.5733 14.2991 12.9322L18 16.6331L16.6331 18L12.9322 14.2991ZM14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
+}
+
+@function icon-cart($fill:'fff') {
+  @return "data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.99996 6.414L0.756958 3.172L2.17196 1.757L5.41396 5C10.5721 5 21.9999 5 21.9999 5C21.9999 5 19.9384 10.8757 18.9999 14C14.6666 14 10.3333 14 5.99996 14V16H17V18L3.99994 18L3.99996 6.414ZM5.99996 7V12H17.512L19.312 7H5.99996ZM5.49996 22C5.10213 22 4.7206 21.842 4.4393 21.5607C4.15799 21.2794 3.99996 20.8978 3.99996 20.5C3.99996 20.1022 4.15799 19.7206 4.4393 19.4393C4.7206 19.158 5.10213 19 5.49996 19C5.89778 19 6.27931 19.158 6.56062 19.4393C6.84192 19.7206 6.99996 20.1022 6.99996 20.5C6.99996 20.8978 6.84192 21.2794 6.56062 21.5607C6.27931 21.842 5.89778 22 5.49996 22ZM17.5 22C17.1021 22 16.7206 21.842 16.4393 21.5607C16.158 21.2794 16 20.8978 16 20.5C16 20.1022 16.158 19.7206 16.4393 19.4393C16.7206 19.158 17.1021 19 17.5 19C17.8978 19 18.2793 19.158 18.5606 19.4393C18.8419 19.7206 19 20.1022 19 20.5C19 20.8978 18.8419 21.2794 18.5606 21.5607C18.2793 21.842 17.8978 22 17.5 22Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
+}
+
+@function icon-phone($fill:'FECC00') {
+  @return "data:image/svg+xml,%3Csvg width='14' height='22' viewBox='0 0 14 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2H14V22H0V0H2V2ZM2 9H12V4H2V9ZM2 11V20H12V11H2Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
+}
+
+@function icon-mail($fill:'FECC00') {
+  @return "data:image/svg+xml,%3Csvg width='22' height='20' viewBox='0 0 22 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 20C15.3335 19.9808 8.66656 19.9976 2 20C2 19.3333 2 18.6667 2 18H20V4.3L12 11.5L2 2.5C2 1.66666 2 0.833325 2 -1.08182e-05C8.66667 4.35313e-05 15.3333 7.93796e-05 22 -1.52588e-05C22 6.66665 21.9833 13.3333 22 20ZM4.434 2L12 8.81L19.566 2H4.434ZM0 13H8V15H0V13ZM0 8H5V10H0V8Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
+}
+
+@function icon-download($fill:'FECC00') {
+  @return "data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 6H13V0H7V6H3L10 13L17 6Z' fill='%23#{$fill}'/%3E%3Cpath d='M0 20H20V14H18V18H2V14H0V20Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
+}
+
+@function icon-personal-area-link() {
+  @return "data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0H20V20H0V12.7H2V18H18V2H2V7.3H0V0Z' fill='%23000'/%3E%3Cpath d='M9 6V9H0V11H9V14L14 10L9 6Z' fill='%23000'/%3E%3C/svg%3E%0A"
+}
+
+@function icon-go-over($fill:'fff') {
+  @return "data:image/svg+xml,%3Csvg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.04998 7.36001L2.39398 13.018L0.97998 11.603L6.63698 5.94701L1.68698 0.997009H13V12.31L8.04998 7.36001Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
+}

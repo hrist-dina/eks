@@ -1,0 +1,28 @@
+include data
+
+mixin card(item)
+    .card
+        .card__inner
+            if item.isNew
+                .card__new Новинка
+            a(href='#').card__title=item.title
+            a(href='#').card__img
+                img(src=item.img, alt=item.title title=item.title)
+            .card__bottom
+                if isAuth
+                    .card__price
+                        if item.priceOld
+                            .card__price-old=ruble(item.priceOld)
+                        span=ruble(item.price)
+                    a(href='#').btn-yellow В корзину
+                else
+                    .card__unauthorized
+                        | Для того чтобы узнать цену,
+                        |
+                        a(href="#")
+                            | авторизуйтесь
+
+mixin card-list(cardList)
+    .card__list
+        for item in cardList
+            +card(item)

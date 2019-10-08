@@ -1,0 +1,29 @@
+.slider-main {
+  display: block;
+
+  &__list {
+
+  }
+
+  &__item {
+    display: block;
+    height: 550px;
+    padding: 40px 48px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__list > &__item:nth-child(n + 2) {
+    display: none;
+  }
+
+  &__title {
+    font-size: 40px;
+    line-height: 48px;
+    color: #fff;
+    max-width: 300px;
+    margin-bottom: 32px;
+  }
+}

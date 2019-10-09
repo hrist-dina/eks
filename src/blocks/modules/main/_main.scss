@@ -1,7 +1,7 @@
 .welcome {
 	text-align: center;
 	@include col();
-	@include size-xs(12);
+	@include size-xs(4);
 
 	code {
 		margin: 0 5px;

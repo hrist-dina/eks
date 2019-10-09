@@ -22,7 +22,7 @@ mixin card(item)
                         a(href="#")
                             | авторизуйтесь
 
-mixin card-list(cardList)
-    .card__list
+mixin card-list(cardList, isCatalog=false)
+    div(class=isCatalog ? 'card__list-catalog' : 'card__list')
         for item in cardList
             +card(item)

@@ -1,0 +1,15 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Каталог";
+	include ../data/catalog
+
+block content
+	include ../blocks/components/card/card
+
+	section.section
+		.container
+			.content-sidebar
+				.sidebar__box
+					| sidebar
+				.content__box
+					+card-list(catalogCardList, true)

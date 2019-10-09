@@ -357,14 +357,12 @@ export const favs = () =>
 
 export const development = gulp.series(
   cleanFiles,
-  smartGrid,
   gulp.parallel(views, styles, scripts, svgsprites, images, fonts, favs),
   gulp.parallel(server)
 );
 
 export const prod = gulp.series(
   cleanFiles,
-  smartGrid,
   serverConfig,
   views,
   styles,

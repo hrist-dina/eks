@@ -1,6 +1,7 @@
 .card {
   $card-offset: 16px;
   $card-columns: 5;
+  $card-catalog-columns: 4;
 
   position: relative;
   max-width: 347px;
@@ -9,11 +10,21 @@
 
   &__list {
     @include u-row-flex($card-offset);
+
+    &-catalog {
+      @include u-row-flex($card-offset);
+    }
   }
 
   &__list > & {
     @include u-col($card-offset);
     @include u-size(1, $card-columns, $card-offset);
+  }
+
+  &__list-catalog > & {
+    @include u-col($card-offset);
+    @include u-size(1, $card-catalog-columns, $card-offset);
+    margin-bottom: 16px;
   }
 
   &__inner {

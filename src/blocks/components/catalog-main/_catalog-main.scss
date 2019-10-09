@@ -1,0 +1,94 @@
+.catalog-main {
+  $catalog-main-offset: 0;
+  $catalog-main-columns: 4;
+  @include u-row-flex($catalog-main-offset);
+
+  &__group {
+    @include u-row-flex($catalog-main-offset);
+    @include u-col($catalog-main-offset);
+    @include u-size(2, $catalog-main-columns, $catalog-main-offset);
+    height: 600px;
+
+    &.group-vertical {
+      @include u-size(1, $catalog-main-columns, $catalog-main-offset);
+      height: 900px;
+      flex-direction: column;
+      margin-bottom: -300px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: block;
+    @include u-col($catalog-main-offset);
+    @include u-size(1, $catalog-main-columns, $catalog-main-offset);
+    padding: 24px 32px;
+    box-sizing: border-box;
+    height: 300px;
+    text-decoration: none;
+    background: radial-gradient(100% 97% at 0% 3%, #898c9b 0%, #4d5061 100%)
+      no-repeat;
+
+    &.horizontal {
+      @include u-size(2, $catalog-main-columns, $catalog-main-offset);
+    }
+
+    &.vertical {
+      height: 600px;
+    }
+
+    &.banner {
+      background: #fecc00;
+    }
+  }
+
+  &__group &__item {
+    @include u-size(1, 2, $catalog-main-offset);
+    &.horizontal {
+      @include u-size(2, 2, $catalog-main-offset);
+    }
+  }
+
+  &__group.group-vertical &__item {
+    @include u-size(1, 1, $catalog-main-offset);
+  }
+
+  &__pic {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+    overflow: hidden;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-shadow: -100px -30px 100px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    & img {
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: #fff;
+
+    .banner & {
+      color: #2f2f30;
+    }
+  }
+}

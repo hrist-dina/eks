@@ -1,0 +1,68 @@
+-
+    var catalogMain = [
+        {
+            type: 'vertical',
+            title: 'Декоративные светильники GX53',
+            img: 'img/catalog-main/item1.png'
+        },
+        {
+            type: 'group-horizontal',
+            group: [
+                {
+                    title: 'Лампы',
+                    img: 'img/catalog-main/item2.png'
+                },
+                {
+                    title: 'Пульты / Блоки',
+                    img: 'img/catalog-main/item3.png'
+                },
+                {
+                    type: 'horizontal',
+                    title: 'Лампы',
+                    img: 'img/catalog-main/item4.png'
+                },
+            ]
+        },
+        {
+            type: 'group-vertical',
+            group: [
+                {
+                    type: 'banner',
+                    title: 'Баннер',
+                },
+                {
+                    type: 'vertical',
+                    title: 'Декоративные светильники MR16',
+                    img: 'img/catalog-main/item7.png'
+                },
+            ]
+        },
+        {
+            type: 'horizontal',
+            title: 'Комплектующие',
+            img: 'img/catalog-main/item5.png'
+        },
+        {
+            title: 'LED панели',
+            img: 'img/catalog-main/item6.png'
+        },
+    ]
+
+mixin catalog-main-item(item)
+    a.catalog-main__item(href='#' class=item.type ? item.type : '')
+        .catalog-main__title=item.title
+        if item.img
+            .catalog-main__pic
+                img(src=item.img alt=item.title)
+
+section.section
+    .container
+        h2.h1 Каталог
+        .catalog-main
+            for item in catalogMain
+                if item.group
+                    .catalog-main__group(class=item.type ? item.type : '')
+                        for itemGroup in item.group
+                            +catalog-main-item(itemGroup)
+                else
+                    +catalog-main-item(item)

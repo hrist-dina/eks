@@ -1,0 +1,60 @@
+.basket-total {
+    max-width: 890px;
+    margin-top: 16px;
+    background: radial-gradient(100% 211.49% at 0% 3%, #898C9B 0%, #4D5061 100%);
+
+    &__data {
+        display: inline-block;
+        border-right: 1px solid #898C9B;
+        padding: 11px 24px 12px 24px;
+
+        &:last-child {
+            border-right: 1px solid #898C9B;
+        }
+
+        & p {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 120%;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+    }
+
+    & span {
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 120%;
+        color: #FFFFFF;
+    }
+
+    &__left {
+        
+
+    }
+
+    &__right {
+        text-align: right;
+
+        &-sum {
+
+            & p {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 120%;
+                color: rgba(255, 255, 255, 0.7);
+            }
+    
+
+        }
+
+    }
+}
+
+.text-attention {
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: rgba(255, 255, 255, 0.8);
+}

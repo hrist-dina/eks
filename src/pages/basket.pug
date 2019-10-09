@@ -1,0 +1,8 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Корзина";
+	- var isAuth = false;
+
+block content
+	include ../blocks/components/basket-stock/basket-stock
+	include ../blocks/components/basket-total/basket-total

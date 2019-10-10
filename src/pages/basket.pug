@@ -1,8 +1,20 @@
 extends ../views/layouts/default
 block variables
 	- var title = "Корзина";
-	- var isAuth = false;
+	include ../data/basket
 
 block content
-	include ../blocks/components/basket-stock/basket-stock
-	include ../blocks/components/basket-total/basket-total
+	include ../blocks/components/basket/basket
+	section.section-title
+		.container
+			h1.h1=title
+	section.section
+		.container
+			.content-half
+				.content-half__box
+					+basket(basketMoscow)
+				.content-half__box
+					+basket(basketBarnaul)
+
+			include ../blocks/components/basket-total/basket-total
+

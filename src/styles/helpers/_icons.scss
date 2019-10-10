@@ -86,3 +86,9 @@
     width: 0;
   }
 }
+
+.icon-remove {
+  width: 24px;
+  height: 24px;
+  background: url(icon-remove()) no-repeat center;
+}

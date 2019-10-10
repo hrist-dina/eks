@@ -1,0 +1,45 @@
+include ../quantity/quantity
+
+mixin basket-row(row)
+    .basket__row
+        .basket__col-img
+            a(href="#")
+                img(src=row.img, alt=row.name)
+        .basket__col-name
+            a(href="#")=row.name
+        .basket__col-price
+            p Цена
+            span=ruble(row.price)
+        .basket__col-quantity
+            +quantity(row.quantity)
+        .basket__col-sum
+            p Сумма
+            span=ruble(row.sum)
+        a(href="javascript:void(0)").basket__col-remove.icon-remove
+
+
+mixin basket(basket)
+    section.basket
+        .basket__body
+            .basket__head
+                p Склад:
+                span.basket__city=basket.city
+            .basket__list
+                for row in basket.rows
+                    +basket-row(row)
+        .basket__result
+            .basket__result-left
+                .basket__result-data
+                    p Вес
+                    span 1,25 кг.
+                .basket__result-data
+                    p Объем
+                    span 0,5 м²
+            .basket__result-right
+                .basket__result-sum
+                    p Сумма
+                    span 999 208 ₽
+
+        .basket__text-attention
+            | * Итоговый объем и вес заказа 
+            | может отличаться от заявленного

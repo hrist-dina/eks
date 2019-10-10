@@ -64,6 +64,15 @@ h1, h2, h3, h4, h5, h6, ul {
 	}
 }
 
+.content-half {
+	@include row-flex();
+
+	&__box {
+		@include col();
+		@include size(2);
+	}
+}
+
 .section {
 	margin-top: 50px;
 	margin-bottom: 100px;

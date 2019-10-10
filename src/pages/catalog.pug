@@ -3,13 +3,19 @@ block variables
 	- var title = "Каталог";
 	include ../data/catalog
 
-block content
-	include ../blocks/components/card/card
 
+block content
+	include ../blocks/components/select/select
+	include ../blocks/components/card/card
+	section.section-title
+		.container
+			h1.h1=title
 	section.section
 		.container
 			.content-sidebar
 				.sidebar__box
-					| sidebar
+					include ../blocks/components/menu-accordion/menu-accordion
 				.content__box
+					.sort__box
+						+select(optionsSort, 'sort')
 					+card-list(catalogCardList, true)

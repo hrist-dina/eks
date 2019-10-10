@@ -52,6 +52,9 @@
     "yargs": "^12.0.5"
   },
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "jquery": "^3.4.1",
+    "select2": "^4.0.10",
     "smart-grid": "^2.1.2"
   }
 }

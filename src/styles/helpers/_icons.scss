@@ -65,3 +65,24 @@
   height: 24px;
   background: url(icon-instagram()) no-repeat center;
 }
+
+.icon-triangle {
+  position: relative;
+  width: 24px;
+  height: 24px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-color: #fff transparent transparent  transparent;
+    border-width: 6px 5px 0 5px;
+    border-style: solid;
+    height: 0;
+    width: 0;
+  }
+}

@@ -53,6 +53,7 @@ h1, h2, h3, h4, h5, h6, ul {
 	@include row-flex();
 
 	& .content__box {
+		position: relative;
 		@include col();
 		@include size(3);
 	}
@@ -66,4 +67,22 @@ h1, h2, h3, h4, h5, h6, ul {
 .section {
 	margin-top: 50px;
 	margin-bottom: 100px;
+
+	&-title {
+		margin-top: 48px;
+		margin-bottom: 60px;
+
+		& .h1 {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.sort__box {
+	max-width: 435px;
+	width: 100%;
+	box-sizing: border-box;
+	position: absolute;
+	top: -116px;
+	right: 0;
 }

@@ -1,0 +1,42 @@
+.breadcrumbs {
+  list-style-type: none;
+  @include md-block {
+    padding-top: 14px;
+    margin-bottom: 14px;
+  }
+
+  &-section {
+    margin-top: 26px;
+    margin-bottom: 48px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__item,
+  &__item &__link {
+    display: inline-block;
+    position: relative;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__item:not(:last-child):after {
+    content: "•";
+    padding: 0 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    opacity: 0.7;
+  }
+
+  &__item:last-child span,
+  &__item:last-child &__link,
+  &__item:nth-last-child(-n + 2):after {
+    color: #fff;
+  }
+}

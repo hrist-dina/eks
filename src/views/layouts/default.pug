@@ -12,6 +12,9 @@ html(lang="en")
 			main.main-gradient
 				block header
 					include ../../blocks/modules/header/header
+					if !isMain
+						include ../../blocks/components/breadcrumbs/breadcrumbs
+						+breadcrumbs(breadcrumbs)
 				block content
 
 			block footer

@@ -394,7 +394,7 @@ $fields: 10px;
 }
 
 @mixin u-size($n, $columns, $offset){
-    @if $offset {
+    @if $offset != 0 {
         width: #{calc(100% / #{$columns} * #{$n} - #{$offset})};
     } @else {
         width: #{calc(100% / #{$columns} * #{$n})};

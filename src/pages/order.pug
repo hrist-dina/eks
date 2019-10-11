@@ -1,0 +1,21 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Оформление заказа";
+	include ../data/order
+
+block content
+	include ../blocks/components/basket/basket
+	include ../blocks/components/basket-total/basket-total
+	section.section-title
+		.container
+			h1.h1=title
+	section.section.basket__section
+		.container
+			.content-half
+				.content-half__box
+					+basket(basketMoscow, true)
+				.content-half__box
+					+basket(basketBarnaul, true)
+
+	+basket-total-section(true)
+

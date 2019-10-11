@@ -1,6 +1,10 @@
+include ../field/field
 
 mixin basket-total(isOrder)
     .basket-total
+        if isOrder
+            .basket-total__comment
+                +textarea('Комментарий', 'comment')
         .basket-total__body
             .basket-total__data
                 p Вес
@@ -25,16 +29,33 @@ mixin basket-total(isOrder)
             if isOrder
                 button(type='submit').btn.btn-yellow Оформить заказ
             else
-                a(href='#').btn.btn-yellow Перейти к офоромлению заказа
+                a(href='order.html').btn.btn-yellow Перейти к офоромлению заказа
 
 
 
 mixin basket-total-section(isOrder=false)
     section.section.basket-total__section
         .container
-            .basket-total__wrap
-                if isOrder
-                    .basket-total__wrap-right
-                else
+            if isOrder
+                form(metod='post' action='')
+                    .basket-total__wrap
+                        .basket-total__wrap-left
+                            .basket-total__form
+                                h3.h3.basket-total__form-title Личные данные
+                                .basket-total__form-field
+                                    +field('Транспортная компания', 'company', 'ООО Рога и копыта')
+                                .basket-total__form-field
+                                    +field('Город', 'city')
+                                .basket-total__form-field
+                                    +field('Название организации / Ф.И.О.', 'name')
+                                .basket-total__form-field
+                                    +field('ИНН / Паспортные данные', 'inn-passport')
+                                .basket-total__form-field
+                                    +field('Адрес', 'address')
+
+                        .basket-total__wrap-right
+                            +basket-total(isOrder)
+            else
+                .basket-total__wrap
                     .basket-total__wrap-center
                         +basket-total(isOrder)

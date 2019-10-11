@@ -1,13 +1,34 @@
 .basket-total {
+  width: 100%;
   &__section {
     padding-top: 56px;
     box-sizing: border-box;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
   }
 
+  &__comment {
+    margin-bottom: 16px;
+  }
+
   &__wrap {
+    @include row-flex();
+
+    &-left {
+      @include col();
+      @include size(1);
+      @include shift-right(1);
+    }
+
+    &-right {
+      @include col();
+      @include size(2);
+      align-self: flex-end;
+    }
+
     &-center {
       @include row-flex();
+      @include col();
+      @include size(4);
       justify-content: center;
     }
   }
@@ -59,11 +80,10 @@
   }
 
   &__message {
-    max-width: 554px;
-    width: 100%;
     padding: 43px 24px;
     height: 100%;
     box-sizing: border-box;
+    margin-right: auto;
 
     & p {
       font-weight: 500;
@@ -111,6 +131,18 @@
 
     & > b {
       color: #fff;
+    }
+  }
+
+  &__form {
+    &-title {
+      margin-bottom: 24px;
+    }
+    &-field {
+      margin-bottom: 16px;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

@@ -1,0 +1,10 @@
+mixin field(title, name, value, placeholder)
+    label.field
+        p=title
+        input(type='text' name=name value=value placeholder=placeholder)
+
+mixin textarea(title, name, placeholder)
+    label.field
+        p=title
+        textarea(name=name)=value
+

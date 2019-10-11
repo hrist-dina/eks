@@ -18,7 +18,7 @@ mixin basket-row(row)
         a(href="javascript:void(0)").basket__col-remove.icon-remove
 
 
-mixin basket(basket)
+mixin basket(basket, isOrder=false)
     section.basket
         .basket__body
             .basket__head
@@ -27,19 +27,20 @@ mixin basket(basket)
             .basket__list
                 for row in basket.rows
                     +basket-row(row)
-        .basket__result
-            .basket__result-left
-                .basket__result-data
-                    p Вес
-                    span 1,25 кг.
-                .basket__result-data
-                    p Объем
-                    span 0,5 м²
-            .basket__result-right
-                .basket__result-sum
-                    p Сумма
-                    span 999 208 ₽
+        if !isOrder
+            .basket__result
+                .basket__result-left
+                    .basket__result-data
+                        p Вес
+                        span 1,25 кг.
+                    .basket__result-data
+                        p Объем
+                        span 0,5 м²
+                .basket__result-right
+                    .basket__result-sum
+                        p Сумма
+                        span 999 208 ₽
 
-        .basket__text-attention
-            | * Итоговый объем и вес заказа 
-            | может отличаться от заявленного
+            .basket__text-attention
+                | * Итоговый объем и вес заказа
+                | может отличаться от заявленного

@@ -5,10 +5,11 @@ block variables
 
 block content
 	include ../blocks/components/basket/basket
+	include ../blocks/components/basket-total/basket-total
 	section.section-title
 		.container
 			h1.h1=title
-	section.section
+	section.section.basket__section
 		.container
 			.content-half
 				.content-half__box
@@ -16,5 +17,5 @@ block content
 				.content-half__box
 					+basket(basketBarnaul)
 
-			include ../blocks/components/basket-total/basket-total
+	+basket-total-section()
 

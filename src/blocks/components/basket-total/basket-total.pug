@@ -1,0 +1,40 @@
+
+mixin basket-total(isOrder)
+    .basket-total
+        .basket-total__body
+            .basket-total__data
+                p Вес
+                span 1,25 кг.
+            .basket-total__data
+                p Объем
+                span 0,5 м²
+            .basket-total__message
+                p * Итоговый объем и вес заказа может отличаться от заявленного
+            .basket-total__result
+                p Сумма
+                span 999 208 ₽
+        .basket-total__bottom
+            .basket-total__bonus
+                a(href='#') Добавить товары
+                |
+                | на сумму
+                |
+                b 100 500 ₽
+                |
+                | для получения бонусов
+            if isOrder
+                button(type='submit').btn.btn-yellow Оформить заказ
+            else
+                a(href='#').btn.btn-yellow Перейти к офоромлению заказа
+
+
+
+mixin basket-total-section(isOrder=false)
+    section.section.basket-total__section
+        .container
+            .basket-total__wrap
+                if isOrder
+                    .basket-total__wrap-right
+                else
+                    .basket-total__wrap-center
+                        +basket-total(isOrder)

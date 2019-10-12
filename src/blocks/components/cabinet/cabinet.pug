@@ -1,13 +1,31 @@
 include ../field/field
 
+mixin cabinet-section
+    include ../personal-card/personal-card
+
+    section.section-title
+        .container
+            h1.h1=title
+    section.section
+        .container
+            .content-sidebar
+                .sidebar__box
+                    include ../menu-sidebar/menu-sidebar
+                    +personal-card(personalCard)
+                .content__box
+                    block
+
+
 mixin cabinet-box(cabinetBox)
     .cabinet-box
         a(href='#').cabinet-logout Выйти
         .cabinet-head
             if cabinetBox.back
                 a(href='cabinet-history.html').cabinet-head__back=cabinetBox.back
-            else if cabinetBox.bonus
-                .cabinet-head__bonus=cabinetBox.bonus
+            else if cabinetBox.bonus || cabinetBox.bonus === 0
+                .cabinet-head__bonus Бонусов:
+                    |
+                    b=cabinetBox.bonus
             else if cabinetBox.title
                 h3.h3.cabinet-head__title=cabinetBox.title
         if block
@@ -92,5 +110,69 @@ mixin cabinet-history-detail
                             p Сумма
                             span 999 208 ₽
                     - i++;
+mixin cabinet-bonus
+    -
+        var options = [
+            {
+                title: 'На 1 месяц сотрудничества',
+                list: [
+                    {
+                        value: '50 000 рублей',
+                        bonus: '2000 бонусов'
+                    },
+                    {
+                        value: '100 000 рублей',
+                        bonus: '4000 бонусов'
+                    },
+                    {
+                        value: '200 000 рублей',
+                        bonus: '6000 бонусов'
+                    },
+                ]
+            },
+            {
+                title: 'На последующие месяцы сотрудничества',
+                list: [
+                    {
+                        value: '50 000 рублей',
+                        bonus: '2000 бонусов'
+                    },
+                    {
+                        value: '100 000 рублей',
+                        bonus: '4000 бонусов'
+                    },
+                    {
+                        value: '200 000 рублей',
+                        bonus: '6000 бонусов'
+                    },
+                ]
+            }
+        ]
+
+
+    .cabinet-bonus
+        .cabinet-bonus__content
+            h4.h4.cabinet-bonus__title Как начисляются бонусы?
+            .cabinet-bonus__text
+                p При покупке товара (после смены статуса «оплачено или «отгружено») на бонусный счет контрагента начисляются бонусы по следующим схемам:
+            for option in options
+                +cabinet-bonus-options(option)
+
+
+
+mixin cabinet-bonus-options(option)
+    .cabinet-bonus__opstion-block
+        .cabinet-bonus__opstion-title=option.title
+        .cabinet-bonus__opstion-list
+            for item in option.list
+                .cabinet-bonus__opstion
+                    .cabinet-bonus__opstion-value=item.value
+                    .cabinet-bonus__opstion-line
+                    .cabinet-bonus__opstion-bonus=item.bonus
+
+
+
+
+
 
 

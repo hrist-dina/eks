@@ -5,19 +5,8 @@ block variables
 
 block content
 	include ../blocks/components/cabinet/cabinet
-	include ../blocks/components/personal-card/personal-card
-
-	section.section-title
-		.container
-			h1.h1=title
-	section.section
-		.container
-			.content-sidebar
-				.sidebar__box
-					include ../blocks/components/menu-sidebar/menu-sidebar
-					+personal-card(personalCard)
-				.content__box
-					+cabinet-box(cabinetBox)
-						+cabinet-history-detail
+	+cabinet-section
+		+cabinet-box(cabinetBox)
+			+cabinet-history-detail
 
 

@@ -1,13 +1,13 @@
 extends ../views/layouts/default
 block variables
 	- var title = "Личный кабинет";
-	include ../data/cabinet-personal-data
+	include ../data/cabinet-bonus
 
 
 block content
 	include ../blocks/components/cabinet/cabinet
 	+cabinet-section
 		+cabinet-box(cabinetBox)
-			+cabinet-form
+			+cabinet-bonus
 
 

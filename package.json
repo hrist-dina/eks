@@ -55,6 +55,7 @@
     "@fancyapps/fancybox": "^3.5.7",
     "jquery": "^3.4.1",
     "select2": "^4.0.10",
+    "slick-carousel": "^1.8.1",
     "smart-grid": "^2.1.2"
   }
 }

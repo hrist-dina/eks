@@ -29,9 +29,30 @@ main {
 	height: 100%;
 
 	&.main-gradient {
-		background: radial-gradient(166.32% 292.71% at 0% 0%, #555668 0%, #2B2B37 100%) no-repeat center;
-		background-size: contain;
+		position: relative;
 		padding-bottom: 50px;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url(bg-main-gradient()) transparent;
+			opacity: .03;
+			z-index: -1;
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: radial-gradient(166.32% 292.71% at 0% 0%, #555668 0%, #2B2B37 100%) no-repeat center;
+			z-index: -2;
+		}
 	}
 }
 

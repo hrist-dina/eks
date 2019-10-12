@@ -1,0 +1,104 @@
+include ../quantity/quantity
+
+mixin catalog-detail-option(key, value, isScale=false)
+    .catalog-detail__options-row
+        .catalog-detail__options-key=key
+        if isScale
+            .catalog-detail__options-scale
+                .catalog-detail__options-aim(style='left: 58%')
+        else
+            .catalog-detail__options-line
+        .catalog-detail__options-value=value
+
+
+section.section.catalog-detail__section
+    .container
+        .catalog-detail
+            .__left
+                .__image-list.js-catalog-detail-image
+                    - var i = 0;
+                    while i < 3
+                        a(href='img/catalog-detail/product.png' data-fancybox="catalog-detail").__image-item
+                            .__image(style='background-image: url(img/catalog-detail/product.png)')
+                        - i++;
+                .__image-mini-list.js-catalog-detail-image-mini
+                    - var i = 0;
+                    while i < 3
+                        .__image-mini(style='background-image: url(img/catalog-detail/product.png)')
+                        - i++;
+                    a(href='https://www.youtube.com/watch?v=2k9Twd8QDfo' data-fancybox style='background-image: url(img/catalog-detail/video.png)').__image-mini.catalog-detail__image-video
+            .__right
+                .__head
+                    h1.__title=title
+                    .__head-info
+                        .__article
+                            .__article-key Артикул:
+                            .__article-value 3RM
+                        .__new Новинка
+                        a(href='#').__download
+                            .icon-download
+                            span Скачать презентацию
+                .__body
+                    .__options
+                        .__options-box
+                            +catalog-detail-option('Тип светильника', 'Встраеваемый / С подсветкой')
+                            +catalog-detail-option('Тип лампы', 'MR16')
+                            +catalog-detail-option('Комплектация', 'Без лампы / Цоколь в комплекте')
+                            +catalog-detail-option('Режимы', '1. Лампа / 2. Подсветка / 3. Лампа + подсветка')
+                            +catalog-detail-option('Материал корпуса', 'Материал корпуса')
+                            +catalog-detail-option('Цвет корпуса', 'Цвет корпуса')
+                        .__options-box
+                            .__options-title Подсветка
+                            +catalog-detail-option('Мощность', '5W')
+                            +catalog-detail-option('Световой поток', '400Lm')
+                            +catalog-detail-option('Температура свечения', '6000K нейтральный белый', true)
+                            +catalog-detail-option('Рабочее напряжение', '5W')
+                        .__options-box
+                            .__options-title Размеры
+                            +catalog-detail-option('Мощность', '5W')
+                            +catalog-detail-option('Световой поток', '400Lm')
+                            +catalog-detail-option('Температура свечения', '6000K')
+
+                    .__commerce
+                        .__commerce-head
+                            .__commerce-discount
+                                span 5 999 ₽
+                                .__commerce-mark
+                                    | скидка 25%
+                            .__commerce-price
+                                b 5 999
+                                |
+                                | ₽
+                        .__commerce-body
+                            .__commerce-stock
+                                .__commerce-name Склад в Барнауле
+                                .__commerce-availability
+                                    span 957
+                                    |
+                                    | шт. в наличии
+                                .__commerce-quantyty
+                                    +quantity(125)
+                                .__commerce-button
+                                    a(href='#').btn.btn-yellow В корзину
+                            .__commerce-stock
+                                .__commerce-name Склад в Москве
+                                .__commerce-availability
+                                    span 23
+                                    |
+                                    | шт. в наличии
+                                .__commerce-quantyty
+                                    +quantity(125)
+                                .__commerce-button
+                                    a(href='#').btn.btn-yellow В корзину
+
+section.section
+    .container
+        .content-sidebar
+            .content__box.catalog-detail__feature
+                include ../feature/feature
+                .catalog-detail__text
+                    p Светильник Mantra Saona Superficie 6635 имеет широкую область применения и может быть использован в качестве основного осветительного прибора для освещения прихожих, детских, гостиных. Мощность модели - 30 вТ, плафон имеет форму квадрата. Наши консультанты подробно расскажут про испанский накладной светильник белого цвета по цене 4545 рублей. Звоните! Доставка осуществляется по Москве и другим городам России.
+
+
+
+

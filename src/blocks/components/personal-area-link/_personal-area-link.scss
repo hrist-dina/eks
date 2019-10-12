@@ -7,6 +7,7 @@
 
   &__title {
     position: relative;
+    text-decoration: none;
 
     & > span {
       display: block;
@@ -17,14 +18,15 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      text-decoration: none;
     }
 
     &:before {
       content: '';
       position: absolute;
       left: -28px;
-      top: 0;
-      bottom: 0;
+      top: -2px;
+      bottom: auto;
       right: auto;
       margin: auto;
       @extend .icon-personal-area-link;
@@ -41,5 +43,6 @@
     font-size: 15px;
     line-height: 20px;
     color: #BE9900;
+    text-decoration: none;
   }
 }

@@ -22,8 +22,8 @@
   @return "data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 6H13V0H7V6H3L10 13L17 6Z' fill='%23#{$fill}'/%3E%3Cpath d='M0 20H20V14H18V18H2V14H0V20Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
 }
 
-@function icon-personal-area-link() {
-  @return "data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0H20V20H0V12.7H2V18H18V2H2V7.3H0V0Z' fill='%23000'/%3E%3Cpath d='M9 6V9H0V11H9V14L14 10L9 6Z' fill='%23000'/%3E%3C/svg%3E%0A"
+@function icon-personal-area-link($fill: '000') {
+  @return "data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0H20V20H0V12.7H2V18H18V2H2V7.3H0V0Z' fill='%23#{$fill}'/%3E%3Cpath d='M9 6V9H0V11H9V14L14 10L9 6Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
 }
 
 @function icon-go-over($fill:'fff') {

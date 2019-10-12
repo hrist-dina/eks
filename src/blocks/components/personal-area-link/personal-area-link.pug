@@ -1,6 +1,6 @@
 mixin personal-area-link(isAuth=false)
     a(href='#').personal-area-link
-        .personal-area-link__title
+        .personal-area-link__title(class=isAuth ? 'is-auth' : '')
             span=isAuth ? 'Константинопольский Константин' : 'Личный кабинет'
         .personal-area-link__desc=isAuth ? 'выход' : 'вход'
 

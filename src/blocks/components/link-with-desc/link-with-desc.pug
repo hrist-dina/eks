@@ -27,6 +27,10 @@ mixin link-with-desc(item)
         span.desc=item.desc
 
 
+mixin link-with-icon(item)
+    .link-with-icon(class=item.type ? item.type : '')
+        a.link(href=item.link)=item.title
+
 mixin link-with-desc-list
     .link-with-desc__list
         for item in linkWithDesc

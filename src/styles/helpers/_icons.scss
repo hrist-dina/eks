@@ -42,6 +42,13 @@
   background: url(icon-personal-area-link()) no-repeat center;
 }
 
+.icon-logout {
+  width: 24px;
+  height: 24px;
+  @include rotate();
+  background: url(icon-personal-area-link('FECC00')) no-repeat center;
+}
+
 .icon-go-over {
   width: 24px;
   height: 24px;

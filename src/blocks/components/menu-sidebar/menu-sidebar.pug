@@ -1,0 +1,24 @@
+-
+    var menuSidebar = [
+        {
+            title: 'Личные данные',
+            link: 'cabinet-personal-data.html'
+        },
+        {
+            title: 'История заказов',
+            link: 'cabinet-personal-data.html'
+        },
+        {
+            title: 'Бонусы',
+            link: 'cabinet-personal-data.html'
+        },
+        {
+            title: 'Каталог бонусных подарков',
+            link: 'cabinet-personal-data.html'
+        }
+    ]
+
+ul.menu-sidebar
+   for item in menuSidebar
+       li(class=item.title === cabinetBox.title ? 'active' : '')
+           a(href=item.link)=item.title

@@ -37,3 +37,24 @@
     outline: none;
   }
 }
+
+@mixin bg-gradient() {
+  background: radial-gradient(
+    100% 211.49% at 0% 3%,
+    #898c9b 0%,
+    #4d5061 100%
+  );
+  @include border-gradient();
+}
+
+@mixin border-gradient() {
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-image: radial-gradient(
+    100% 211.49% at 0% 3%,
+    #898c9b 58.33%,
+    #4d5061 100%
+  )
+  1;
+}

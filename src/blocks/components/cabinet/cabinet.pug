@@ -1,0 +1,33 @@
+include ../field/field
+
+mixin cabinet-box(cabinetBox)
+    .cabinet-box
+        a(href='#').cabinet-logout Выйти
+        .cabinet-head
+            if cabinetBox.title
+                h3.h3.cabinet-head__title=cabinetBox.title
+            else if cabinetBox.back
+                .cabinet-head__back=cabinetBox.back
+            else if cabinetBox.bonus
+                .cabinet-head__bonus=cabinetBox.bonus
+        if block
+            .cabinet-body
+                block
+
+mixin cabinet-form
+    form(action='/' method='POST').cabinet-form
+        .cabinet-form__field
+            +field('Название организации / Ф.И.О.', 'name', 'ООО Рога и копыта')
+        .cabinet-form__field
+            +field('ИНН / Паспортные данные', 'inn-passport')
+        .cabinet-form__field
+            +field('Город', 'city')
+        .cabinet-form__field
+            +field('Адрес', 'address')
+        .cabinet-form__field
+            +field('Электронная почта', 'email')
+        .cabinet-form__field
+            +field('Номер телефона', 'phone')
+        .cabinet-form__button
+            button.btn.btn-yellow Сохранить
+            

@@ -29,6 +29,10 @@
       margin: auto;
       @extend .icon-personal-area-link;
     }
+
+    &.is-auth:before {
+      @include rotate();
+    }
   }
 
   &__desc {

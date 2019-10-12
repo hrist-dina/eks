@@ -1,0 +1,47 @@
+.menu-sidebar {
+  list-style: none;
+  margin-bottom: 24px;
+
+  & li {
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-image: radial-gradient(
+        100% 211.49% at 0% 3%,
+        #898c9b 58.33%,
+        #4d5061 100%
+      )
+      1;
+    margin-bottom: -1px;
+
+    &.active a {
+      color: #fff;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.5) 100%
+      );
+    }
+
+    & a {
+      width: 100%;
+      display: inline-block;
+      text-decoration: none;
+      box-sizing: border-box;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 27px;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 17px 20px 16px;
+      @include transition(0.3s, linear, all);
+
+      &:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.5) 100%
+        );
+      }
+    }
+  }
+}

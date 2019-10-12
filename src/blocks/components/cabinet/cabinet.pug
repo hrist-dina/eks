@@ -4,12 +4,12 @@ mixin cabinet-box(cabinetBox)
     .cabinet-box
         a(href='#').cabinet-logout Выйти
         .cabinet-head
-            if cabinetBox.title
-                h3.h3.cabinet-head__title=cabinetBox.title
-            else if cabinetBox.back
-                .cabinet-head__back=cabinetBox.back
+            if cabinetBox.back
+                a(href='cabinet-history.html').cabinet-head__back=cabinetBox.back
             else if cabinetBox.bonus
                 .cabinet-head__bonus=cabinetBox.bonus
+            else if cabinetBox.title
+                h3.h3.cabinet-head__title=cabinetBox.title
         if block
             .cabinet-body
                 block
@@ -52,3 +52,45 @@ mixin cabinet-history
                     a(href='cabinet-history-detail.html').btn.btn-yellow Состав заказа
 
             - i++;
+
+mixin cabinet-history-detail
+    .cabinet-history-detail
+        .cabinet-history-detail__head
+            .cabinet-history-detail__data
+                p Номер заказа
+                span №82901720817
+            .cabinet-history-detail__data
+                p Бонусные баллы за этот заказ
+                span 452
+            .cabinet-history-detail__data
+                p Статус заказа
+                span На рассмотрении
+            .cabinet-history-detail__button
+                a(href='#').btn.btn-yellow Повторить
+        .cabinet-history-detail__body
+            h4.h4.cabinet-history-detail__title Товары
+            .cabinet-history-detail__list
+                - var i = 0;
+                while i < 4
+                    .cabinet-history-detail__row
+                        a(href='#').cabinet-history-detail__col-img
+                            img(src='img/cabinet-history-detail/product.png' alt='3COB, 6W, 6500K / 4500K / 3000K, 520ЛМ, D100*75*37, 40шт В')
+                        a(href='#').cabinet-history-detail__col-title 3COB, 6W, 6500K / 4500K / 3000K, 520ЛМ, D100*75*37, 40шт В
+                        .cabinet-history-detail__col-data
+                            p Артикул
+                            span 3RM
+                        .cabinet-history-detail__col-data
+                            p Цена за штуку
+                            span 1208 ₽
+                        .cabinet-history-detail__col-data
+                            p Склад
+                            span Москва
+                        .cabinet-history-detail__col-data
+                            p Количество
+                            span 1
+                        .cabinet-history-detail__col-sum
+                            p Сумма
+                            span 999 208 ₽
+                    - i++;
+
+

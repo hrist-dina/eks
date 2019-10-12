@@ -5,7 +5,7 @@
 
   position: relative;
   max-width: 347px;
-  background: radial-gradient(100% 97% at 0% 3%, #898C9B 0%, #4D5061 100%);
+  background: radial-gradient(100% 97% at 0% 3%, #898c9b 0%, #4d5061 100%);
   box-shadow: 10px 30px 50px rgba(0, 0, 0, 0.25);
 
   &__list {
@@ -44,10 +44,10 @@
     line-height: 100%;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #8BC34A;
+    color: #8bc34a;
   }
 
-  &__title  {
+  &__title {
     display: block;
     margin-top: 8px;
     text-align: center;
@@ -78,7 +78,11 @@
   }
 
   &__price {
-    margin-bottom: 2px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #fff;
     span {
       font-style: normal;
       font-weight: bold;
@@ -94,7 +98,7 @@
       color: rgba(255, 255, 255, 0.5);
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 67px;
         height: 1px;
@@ -104,16 +108,12 @@
         right: 0;
         left: 0;
         margin: auto;
-        -webkit-transform: rotate(-18.17deg);
-        -moz-transform: rotate(-18.17deg);
-        -ms-transform: rotate(-18.17deg);
-        -o-transform: rotate(-18.17deg);
-        transform: rotate(-18.17deg);
+        @include rotate(-18.17deg);
       }
     }
   }
 
-  &__unauthorized  {
+  &__unauthorized {
     color: rgba(255, 255, 255, 0.5);
     font-style: normal;
     font-weight: normal;
@@ -121,13 +121,13 @@
     line-height: 150%;
 
     & a {
-      color: #FECC00;
-      border-bottom: 1px solid #FECC00;
+      color: #fecc00;
+      border-bottom: 1px solid #fecc00;
       text-decoration: none;
       @include transition();
 
       &:hover {
-       border-bottom: transparent;
+        border-bottom: transparent;
       }
     }
   }

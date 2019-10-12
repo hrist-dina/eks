@@ -1,6 +1,6 @@
 include data
 
-mixin card(item)
+mixin card(item, isPresent=false)
     .card
         .card__inner
             if item.isNew
@@ -9,12 +9,15 @@ mixin card(item)
             a(href='#').card__img
                 img(src=item.img, alt=item.title title=item.title)
             .card__bottom
-                if isAuth
+                if isAuth && !isPresent
                     .card__price
                         if item.priceOld
                             .card__price-old=ruble(item.priceOld)
                         span=ruble(item.price)
                     a(href='#').btn-yellow В корзину
+                else if isPresent
+                    .card__price !{bonus(item.price)}
+                    a(href='#').btn-yellow Получить
                 else
                     .card__unauthorized
                         | Для того чтобы узнать цену,
@@ -22,7 +25,7 @@ mixin card(item)
                         a(href="#")
                             | авторизуйтесь
 
-mixin card-list(cardList, isCatalog=false)
+mixin card-list(cardList, isCatalog=false, isPresent=false)
     div(class=isCatalog ? 'card__list-catalog' : 'card__list')
         for item in cardList
-            +card(item)
+            +card(item, isPresent)

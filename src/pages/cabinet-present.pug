@@ -1,0 +1,14 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Личный кабинет";
+	include ../data/cabinet-present
+
+
+block content
+	include ../blocks/components/cabinet/cabinet
+	include ../blocks/components/card/card
+	+cabinet-section
+		+cabinet-box(cabinetBox)
+		+card-list(catalogCardList, true, true)
+
+

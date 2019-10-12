@@ -1,2 +1,3 @@
 - const ruble = (value) => `${formatThousand(value)} ₽`;
+- const bonus = (value) => `<span>${formatThousand(value)}</span> Б`;
 - const formatThousand = (number) => String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');

@@ -62,31 +62,13 @@
   }
 
   &__inner {
+    padding-bottom: 6px;
+    box-sizing: border-box;
+  }
+
+  &__row {
     border-top: 1px solid #898c9b;
-    padding: 16px 44px 16px 24px;
+    padding: 16px 24px;
+    box-sizing: border-box;
   }
-
-  &__content {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    color: #ffffff;
-  }
-
-  //  &__phone {
-  // position: relative;
-  // &::before {
-  // content: "";
-  // position: absolute;
-  // left: 0;
-  // top: 0;
-  // bottom: 0;
-  // right: auto;
-  // margin: auto;
-  // width: 24px;
-  // height: 24px;
-  // background-image: url("/src/img/about/phone-about.svg");
-  // background-repeat: no-repeat;
-  // }
-  // }
 }

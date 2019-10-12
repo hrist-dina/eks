@@ -10,20 +10,17 @@ mixin personal-card(persona={})
                 .personal-card__position=persona.position ? persona.position : "Должность"
         .personal-card__inner
             .personal-card__row
-                span.personal-card__content
-                    +link-with-icon({
-                      type: 'phone',
-                      link: 'tel:+79214950000',
-                      title: '+7 (921) 495 00-00'
-                    })
-        .personal-card__inner
+                +link-with-icon({
+                  type: 'phone',
+                  link: 'tel:+79214950000',
+                  title: '+7 (921) 495 00-00'
+                })
             .personal-card__row
-                span.personal-card__content
-                    +link-with-icon({
-                      type: 'mail',
-                      link: 'mailto:examplemail@gmail.com',
-                      title: 'examplemail@gmail.com'
-                    })
+                +link-with-icon({
+                  type: 'mail',
+                  link: 'mailto:examplemail@gmail.com',
+                  title: 'examplemail@gmail.com'
+                })
 
 
 mixin personal-card-section

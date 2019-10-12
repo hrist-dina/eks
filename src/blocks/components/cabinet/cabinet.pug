@@ -30,4 +30,25 @@ mixin cabinet-form
             +field('Номер телефона', 'phone')
         .cabinet-form__button
             button.btn.btn-yellow Сохранить
-            
+
+mixin cabinet-history
+    .cabinet-history
+        - var i = 0;
+        while i < 5
+            .cabinet-history__row
+                .cabinet-history__col
+                    .cabinet-history__col-title Номер заказа
+                    .cabinet-history__col-value №82901720817
+                .cabinet-history__col
+                    .cabinet-history__col-title Дата оформления
+                    .cabinet-history__col-value 28.09.2018
+                .cabinet-history__col
+                    .cabinet-history__col-title Статус заказа
+                    .cabinet-history__col-value На рассмотрении
+                .cabinet-history__col
+                    .cabinet-history__col-title Повтор
+                    a(href='#').cabinet-history__col-repeat Повторить заказ
+                .cabinet-history__col
+                    a(href='cabinet-history-detail.html').btn.btn-yellow Состав заказа
+
+            - i++;

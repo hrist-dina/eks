@@ -15,9 +15,15 @@
     ]
 
 .slider-main
-    .slider-main__list
+    .slider-main__list.js-slider-main
         for item in sliderMain
             .slider-main__item(style=`background-image: url(${item.img})`)
                 .slider-main__info
                     .slider-main__title=item.title
                     a(href='#').btn.btn-yellow Посмотреть
+    .slider-main__controls
+        .slider-button.prev.js-slider-main-prev
+        .slider-main__counter
+            .slider-main__counter-min.js-slider-main-min
+            .slider-main__counter-max.js-slider-main-max
+        .slider-button.next.js-slider-main-next

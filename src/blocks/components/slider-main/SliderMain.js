@@ -1,26 +1,35 @@
+import $ from "jquery";
 import SliderBase from "../../../js/classes/SliderBase";
 
 class SliderMain extends SliderBase {
   bindOptions(...options) {
     super.bindOptions(...options, {
-      nextArrow: '<div class="slider-button next"></div>',
-      prevArrow: '<div class="slider-button prev"></div>',
+      nextArrow: `${this.selector}-next`,
+      prevArrow: `${this.selector}-prev`,
       autoplay: true,
-      autoplaySpeed: 5000,
+      dots: false,
+      autoplaySpeed: 7000,
       speed: 1000
     });
   }
 
   init() {
+    this.counterMin = $(`${this.selector}-min`);
+    this.counterMax = $(`${this.selector}-max`);
+    this.initCounter();
     super.init();
-    this.initWrapDots();
   }
 
-  initWrapDots() {
-    let dots = this.slider.find(".slick-dots");
-    if (dots) {
-      dots.wrap('<div class="slick-dots-wrap">');
-    }
+  initCounter() {
+    const self = this;
+    this.slider.on("init reInit afterChange", function(
+      event,
+      slick,
+      currentSlide
+    ) {
+      self.counterMin.text((currentSlide ? currentSlide : 0) + 1);
+      self.counterMax.text(slick.slideCount);
+    });
   }
 }
 

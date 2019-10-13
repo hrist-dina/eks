@@ -4,6 +4,7 @@ import slick from "slick-carousel";
 
 class SliderBase {
   constructor(selector = ".js-slider", options = {}) {
+    this.selector = selector;
     this.slider = $(selector);
     this.options = $.extend(options, this.options);
 

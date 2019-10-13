@@ -1,0 +1,34 @@
+-
+    var sliderVideo = [
+        {
+            video: 'https://www.youtube.com/embed/rV55ij6Xuyo',
+            title: 'Сравниваем Декоративные Светильники! Обзор'
+        },
+        {
+            video: 'https://www.youtube.com/embed/rV55ij6Xuyo',
+            title: 'Мини-обзор Основания H6 LIGHT под лампу GX 53 DIODTRADE'
+        },
+        {
+            video: 'https://www.youtube.com/embed/rV55ij6Xuyo',
+            title: 'Сравниваем Декоративные Светильники! Обзор'
+        }
+    ]
+
+section.section.slider-video__section
+    .container
+        .slider-video
+            a(href='https://www.youtube.com/channel/UC4qirjNQ9OfcEnKujCCV60A' target='_blank' title='Канал на YouTube - DIODTRADE Светотехника').__logo
+                .__logo-youtube
+                .__logo-youtube-text
+                .__logo-esk
+            .__block
+                .__list.js-slider-video
+                    for item in sliderVideo
+                        .__item
+                            .__item-video
+                                iframe.embed-player.slide-media(width='890', height='523', src=`${item.video}?enablejsapi=1&controls=0&fs=0&iv_load_policy=3&rel=0&showinfo=0&loop=1&start=1`, frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+
+                            .__title=item.title
+                .__controls
+                    .slider-video-button.prev.js-slider-video-prev
+                    .slider-video-button.next.js-slider-video-next

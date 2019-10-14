@@ -1,6 +1,10 @@
 extends ../views/layouts/default
 block variables
 	- var title = "Контакты";
-	- var isAuth = false;
+	//- - var isAuth = false;
+	include ../data/contacts
 
 block content
+	include ../blocks/components/contacts/contacts
+
+

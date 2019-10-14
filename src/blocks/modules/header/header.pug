@@ -1,10 +1,12 @@
 include ../../components/link-with-desc/link-with-desc
 include ../../components/personal-area-link/personal-area-link
 
-header.header
+header.header.js-mobile-menu
     .header__top
         .container
             .header__top-inner
+                .header__mobile-menu.icon-mobile-burger.js-mobile-menu-open
+                    .icon-mobile-burger__inner
                 .header__top-left
                     include ../../components/submenu/submenu
                 .header__top-right
@@ -15,9 +17,12 @@ header.header
     .header__middle
         .container
             .header__middle-inner
-                include ../../components/logo/logo
-                +link-with-desc-list
-                +personal-area-link(isAuth)
+                .header__middle-logo
+                    include ../../components/logo/logo
+                .header__middle-links
+                    +link-with-desc-list
+                .header__middle-cabinet
+                    +personal-area-link(isAuth)
     .header__bottom
         .container
             .header__bottom-inner

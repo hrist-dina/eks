@@ -19,11 +19,28 @@
 .link-with-icon {
   display: inline-block;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 20px;
-  color: #fff;
-  margin-right: 150px;
+
+  & ~ & {
+    margin-top: 20px;
+  }
+
+
+  @include md-block {
+    margin-bottom: 0;
+
+    margin-right: 30px;
+    & ~ & {
+      margin-top: 0;
+    }
+  }
+
+  @include lg-block {
+    margin-right: 100px;
+  }
+
+  @include xl-block {
+    margin-right: 150px;
+  }
   &:last-child {
     margin-right: 0;
   }
@@ -50,9 +67,12 @@
     display: block;
     text-decoration: none;
     font-weight: bold;
-    font-size: 24px;
-    line-height: 20px;
     color: #fff;
+    font-size: 18px;
+    line-height: 83%;
+    @include xl-block {
+      font-size: 24px;
+    }
   }
 
   & .desc {
@@ -60,17 +80,25 @@
     margin-top: 8px;
     text-decoration: none;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 133%;
     color: rgba(255, 255, 255, 0.5);
+    @include xl-block {
+      font-size: 15px;
+    }
   }
 
   &__list {
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 20px;
+    flex-direction: column;
+
+    @include md-block {
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      margin: 0 20px;
+    }
   }
 }
 .link-with-icon {

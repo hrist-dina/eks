@@ -99,3 +99,56 @@
   height: 24px;
   background: url(icon-remove()) no-repeat center;
 }
+
+.icon-mobile-burger {
+  $color: #fff;
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+
+  &__inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 18px;
+    height: 2px;
+    background: $color;
+    @include transition();
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background: $color;
+    }
+
+    &:before {
+      top: 6px;
+    }
+
+    &:after {
+      bottom: 6px;
+    }
+
+   .icon-mobile-burger.active & {
+      @include rotate(-45deg);
+
+      &:before {
+        top: 0;
+        @include rotate(90deg);
+      }
+      &:after {
+        content: none;
+      }
+    }
+
+  }
+  @include transition();
+  cursor: pointer;
+}

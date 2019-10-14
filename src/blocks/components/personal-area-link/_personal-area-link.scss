@@ -1,9 +1,13 @@
 .personal-area-link {
   text-decoration: none;
   background: #FECC00;
-  padding: 20px 20px 15px 48px;
+  padding: 15px 15px 10px 43px;
   box-sizing: border-box;
-  max-width: 288px;
+  max-width: 220px;
+  @include xl-block {
+    max-width: 288px;
+    padding: 20px 20px 15px 48px;
+  }
 
   &__title {
     position: relative;
@@ -12,13 +16,17 @@
     & > span {
       display: block;
       font-weight: bold;
-      font-size: 24px;
-      line-height: 20px;
+      font-size: 18px;
+      line-height: 83%;
       color: #2F2F30;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       text-decoration: none;
+
+      @include xl-block {
+        font-size: 24px;
+      }
     }
 
     &:before {
@@ -40,9 +48,13 @@
   &__desc {
     margin-top: 8px;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 133%;
     color: #BE9900;
     text-decoration: none;
+
+    @include xl-block {
+      font-size: 15px;
+    }
   }
 }

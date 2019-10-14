@@ -1,3 +1,11 @@
 .logo {
   display: inline-block;
+  width: 100px;
+  height: 44px;
+  background-size: cover;
+
+  @include lg-block {
+    width: 142px;
+    height: 63px;
+  }
 }

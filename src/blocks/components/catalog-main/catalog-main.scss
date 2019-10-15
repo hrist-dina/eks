@@ -1,0 +1,165 @@
+.catalog-main {
+  $catalog-main-offset: 0;
+  $catalog-main-columns: 4;
+  @include u-row-flex($catalog-main-offset);
+
+  &__group {
+    width: 100%;
+    @include md-block {
+      @include u-row-flex($catalog-main-offset);
+      @include u-col($catalog-main-offset);
+      @include u-size(2, $catalog-main-columns, $catalog-main-offset);
+      height: 400px;
+    }
+
+    @include lg-block {
+      height: 600px;
+    }
+
+    &.group-vertical {
+      @include md-block {
+        @include u-size(1, $catalog-main-columns, $catalog-main-offset);
+        height: 600px;
+        flex-direction: column;
+        margin-bottom: -200px;
+      }
+
+      @include lg-block {
+        height: 900px;
+        margin-bottom: -300px;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: block;
+    @include u-col($catalog-main-offset);
+    @include u-size(4, $catalog-main-columns, $catalog-main-offset);
+    padding: 16px;
+    box-sizing: border-box;
+    height: 101px;
+    text-decoration: none;
+    background: radial-gradient(100% 97% at 0% 3%, #898c9b 0%, #4d5061 100%)
+      no-repeat;
+    margin-bottom: 8px;
+
+    @include md-block {
+      padding: 24px 32px;
+      @include u-size(1, $catalog-main-columns, $catalog-main-offset);
+      height: 200px;
+      margin-bottom: 0;
+    }
+
+    @include lg-block {
+      height: 300px;
+    }
+
+    &.horizontal {
+      @include md-block {
+        @include u-size(2, $catalog-main-columns, $catalog-main-offset);
+      }
+    }
+
+    &.vertical {
+      @include md-block {
+        height: 400px;
+      }
+      @include lg-block {
+        height: 600px;
+      }
+    }
+
+    &.banner {
+      display: none;
+      background: #fecc00;
+      @include md-block {
+        display: block;
+      }
+    }
+  }
+
+  @include md-block {
+    &__group &__item {
+      @include u-size(1, 2, $catalog-main-offset);
+      &.horizontal {
+        @include u-size(2, 2, $catalog-main-offset);
+      }
+    }
+
+    &__group.group-vertical &__item {
+      @include u-size(1, 1, $catalog-main-offset);
+    }
+  }
+
+  &__pic {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 90%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+    overflow: hidden;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-shadow: -100px -30px 100px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    @include xs-block {
+      width: 30%;
+    }
+
+    @include md-block {
+      justify-content: center;
+      width: 90%;
+      height: 80%;
+    }
+
+    @include lg-block {
+      width: 100%;
+      height: 100%;
+    }
+
+    & img {
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 23px;
+    color: #fff;
+    width: 60%;
+    max-height: 70px;
+    overflow: hidden;
+
+    @include xs-block {
+      width: 60%;
+      max-height: 100%;
+    }
+
+    @include md-block {
+      width: 100%;
+    }
+
+    @include lg-block {
+      font-size: 25px;
+      line-height: 30px;
+    }
+
+    .banner & {
+      color: #2f2f30;
+    }
+  }
+}

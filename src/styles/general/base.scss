@@ -29,18 +29,19 @@ main {
   height: 100%;
 
   &.main-gradient {
-    padding-bottom: 50px;
     @include bg-main-theme-gradient();
+    padding-bottom: 32px;
+    @include md-block {
+      padding-bottom: 50px;
+    }
   }
 }
 
 .container {
-  @include container();
   max-width: 1800px;
-  // @include sm(max-width, 510px);
-  // @include md(max-width, 690px);
-  // @include lg(max-width, 930px);
-  // @include xl(max-width, 1110px);
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .content-sidebar {
@@ -49,12 +50,18 @@ main {
   & .content__box {
     position: relative;
     @include col();
-    @include size(3);
+    @include size-md(3);
+    @include size(4);
+    margin-bottom: 16px;
+    @include md-block {
+      margin-bottom: 0;
+    }
   }
 
   & .sidebar__box {
     @include col();
-    @include size(1);
+    @include size-md(1);
+    @include size(4);
   }
 }
 
@@ -68,8 +75,13 @@ main {
 }
 
 .section {
-  margin-top: 50px;
-  margin-bottom: 100px;
+  margin-top: 24px;
+  margin-bottom: 48px;
+
+  @include md-block {
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
 
   &-title {
     margin-top: 48px;
@@ -102,5 +114,35 @@ main {
   }
 
   &.next {
+  }
+}
+
+.o-hidden {
+  overflow: hidden;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  overflow: inherit;
+  @include to(1840px) {
+    padding: 100px 16px;
+    margin: -100px -16px;
+    overflow: hidden;
+  }
+
+  & .swiper-wrapper {
+  }
+
+  & .swiper-slide {
+    margin-right: 16px;
+
+    @include to($break_xs) {
+      max-width: 95%;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }

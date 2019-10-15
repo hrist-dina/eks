@@ -1,62 +1,110 @@
 .slider-video {
-  @include u-row-flex(10px);
-  margin-right: 0;
+  $slider-video-break: 1240px;
+
+  @include u-row-flex(32px);
+
+  @include from($slider-video-break) {
+    @include u-row-flex(10px);
+    margin-right: 0;
+  }
 
   & .slick-list {
-    margin: -50px 0 -50px -25px;
-    padding: 50px 0 50px 25px;
     box-sizing: border-box;
+    padding: 50px 0;
+    margin: -50px -16px;
+
+    @include from($slider-video-break) {
+      padding: 50px 0 50px 25px;
+      margin: -50px 0 -50px -25px;
+    }
   }
 
   &__section {
     & .container {
-      padding-right: 0;
-      max-width: 100%;
-      padding-left: 2.5%;
+      @include from($slider-video-break) {
+        padding-right: 0;
+        max-width: 100%;
+        padding-left: 16px;
+      }
+
+      @include xl-block {
+        padding-left: 2.5%;
+      }
     }
   }
 
   &__logo {
     position: relative;
     z-index: 1;
-    @include col();
-    @include size(1);
+    @include u-col(32px);
+    @include u-size(4, $columns, 16px);
     background: #ff0000;
-    height: 523px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+
+    @include from($slider-video-break) {
+      @include col();
+      @include size(1);
+      height: 523px;
+      flex-direction: column;
+      margin-bottom: 0;
+    }
 
     &-youtube {
-      width: 133px;
-      height: 93px;
+      width: 51px;
+      height: 36px;
       background: url(icon-youtube-big()) no-repeat center;
       background-size: cover;
-      margin-bottom: 20px;
+      margin-right: 4px;
+      @include from($slider-video-break) {
+        width: 133px;
+        height: 93px;
+        margin-bottom: 20px;
+        margin-right: 0;
+      }
 
       &-text {
-        width: 128px;
-        height: 40px;
+        width: 98px;
+        height: 30px;
         background: url(icon-youtube-text()) no-repeat center;
         background-size: cover;
-        margin-bottom: 20px;
+        margin-right: 16px;
+
+        @include from($slider-video-break) {
+          width: 128px;
+          height: 40px;
+          margin-bottom: 20px;
+          margin-right: 0;
+        }
       }
     }
 
     &-esk {
-      width: 70px;
-      height: 30px;
+      width: 66px;
+      height: 29px;
       background: url(icon-logo()) no-repeat center;
       background-size: cover;
+      @include from($slider-video-break) {
+        width: 70px;
+        height: 30px;
+      }
     }
   }
 
   &__block {
-    @include col();
-    @include u-size(3, $columns, 10px);
-    margin-left: auto;
-    margin-right: 0;
+    @include u-col(32px);
+    @include u-size(4, $columns, 32px);
+
+    @include from($slider-video-break) {
+      @include u-size(3, $columns, 10px);
+      margin-left: auto;
+      margin-right: 0;
+    }
   }
 
   &__list {
@@ -68,21 +116,38 @@
   }
 
   &__item {
-    max-width: 890px;
     width: 100%;
-    margin-right: 20px;
     display: block;
     box-sizing: border-box;
     opacity: 0.3;
+    margin: 0 16px;
+
+    @include from($slider-video-break) {
+      margin-right: 20px;
+      margin-left: 0;
+      max-width: 890px;
+      width: 100%;
+    }
 
     &.slick-active {
       opacity: 1;
     }
     &-video {
       width: 100%;
-      height: 523px;
+      height: 0;
       background: #2f2f30;
       box-shadow: 10px 30px 50px rgba(0, 0, 0, 0.25);
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+
+      & iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
@@ -99,7 +164,8 @@
   }
 
   & .slick-dots {
-    @include u-size(2, 3, $offset);
+    max-width: 890px;
+    width: 100%;
     position: relative;
     margin-top: 35px;
     list-style-type: none;
@@ -145,7 +211,8 @@
 
   &__controls {
     position: relative;
-    @include u-size(2, 3, $offset);
+    max-width: 890px;
+    width: 100%;
   }
 
   &-button {
@@ -158,6 +225,7 @@
     background: url(icon-arrow-long()) no-repeat center;
     background-size: cover;
     cursor: pointer;
+    @include outline-none();
 
     &.slick-disabled {
       opacity: 0.3;

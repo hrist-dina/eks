@@ -5,6 +5,7 @@ import { CatalogDetail } from "%components%/catalog-detail/CatalogDetail";
 import { FancyBox } from "../classes/FancyBox";
 import { SliderMain } from "%components%/slider-main/SliderMain";
 import { SliderVideo } from "%components%/slider-video/SliderVideo";
+import { SwiperRecommended } from "%components%/recommendation/SwiperRecommended";
 
 $(document).ready(function() {
   new SliderMain(".js-slider-main");
@@ -13,4 +14,5 @@ $(document).ready(function() {
   new Select();
   new CatalogDetail();
   new FancyBox();
+  new SwiperRecommended(".js-swiper-recommendation");
 });

@@ -17,6 +17,7 @@ export class Header {
     $(this.open).on("click", function() {
       $(self.menu).toggleClass("active");
       $(this).toggleClass("active");
+      $("html").toggleClass("o-hidden");
     });
   }
 }

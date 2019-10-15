@@ -1,7 +1,7 @@
 include data
 
-mixin card(item, isPresent=false)
-    .card
+mixin card(item, isPresent=false, isSwiper=false)
+    .card(class=isSwiper ? 'swiper-slide' : '')
         .card__inner
             if item.isNew
                 .card__new Новинка
@@ -29,3 +29,9 @@ mixin card-list(cardList, isCatalog=false, isPresent=false)
     div(class=isCatalog ? 'card__list-catalog' : 'card__list')
         for item in cardList
             +card(item, isPresent)
+
+mixin card-list-swiper(cardList, swiper=false)
+    .swiper-container(class=swiper ? swiper : '')
+        .swiper-wrapper
+            for item in cardList
+                +card(item, false, true)

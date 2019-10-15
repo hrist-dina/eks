@@ -24,10 +24,18 @@
   &__inner {
     width: 100%;
     box-sizing: border-box;
-    padding: 0 24px 8px 20px;
+    padding: 8px 24px 8px 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    @include xl-block {
+      padding: 0 24px 8px 20px;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
   }
 
   &__title {
@@ -38,8 +46,11 @@
     font-size: 24px;
     line-height: 29px;
     color: #fff;
-    max-width: 260px;
     position: relative;
+
+    @include md-block {
+      max-width: 260px;
+    }
 
     &:before {
       content: '';
@@ -56,12 +67,16 @@
   }
 
   &__go-over {
+    display: none;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: #fff;
     padding-right: 24px;
     position: relative;
+    @include md-block {
+      display: block;
+    }
 
     &:after {
       content: '';

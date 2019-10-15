@@ -10,8 +10,16 @@ class SliderVideo extends SliderBase {
       autoplay: false,
       dots: true,
       speed: 1000,
-      variableWidth: true,
-      infinite: false
+      infinite: false,
+      mobileFirst: true,
+      responsive: [
+        {
+          breakpoint: 1240,
+          settings: {
+            variableWidth: true
+          }
+        }
+      ]
     });
   }
 

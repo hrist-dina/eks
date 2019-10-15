@@ -1,11 +1,19 @@
 .header {
   &.active {
-    @include bg-main-theme-gradient();
-    position: absolute;
-    width: 100%;
-    min-height: 100%;
-    z-index: 99;
-    overflow-y: scroll;
+    @include to($break_md - 1px) {
+      background: radial-gradient(
+          166.32% 292.71% at 0% 0%,
+          #555668 0%,
+          #2b2b37 100%
+        )
+        no-repeat center;
+      position: fixed;
+      width: 100%;
+      min-height: 100%;
+      max-height: 100%;
+      z-index: 100;
+      overflow-y: scroll;
+    }
   }
 
   &__mobile-menu {
@@ -13,6 +21,7 @@
     left: 16px;
     top: 16px;
     z-index: 100;
+    @include outline-none();
     @include md-block {
       display: none;
     }
@@ -24,7 +33,7 @@
     &-inner {
       display: flex;
       justify-content: space-between;
-      padding: 56px 8px 16px;
+      padding: 56px 0 16px;
 
       @include md-block {
         align-items: center;
@@ -97,10 +106,6 @@
   &__middle {
     .header.active & {
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-
-      @include to($break_md - 1px) {
-        padding: 8px;
-      }
     }
 
     @include md-block {
@@ -116,7 +121,7 @@
 
       .header.active & {
         @include to($break_md - 1px) {
-          padding: 16px 0;
+          padding: 32px 0;
           flex-direction: column;
           align-items: flex-start;
         }
@@ -194,7 +199,7 @@
       .header.active & {
         display: block;
         border-bottom: 0;
-        padding: 8px;
+        padding: 16px 0;
       }
     }
 

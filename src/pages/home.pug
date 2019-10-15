@@ -6,18 +6,18 @@ block variables
 block content
 	include ../blocks/components/card/card
 
-	//section.section
-	//	.container
-	//		.content-sidebar
-	//			.content__box
-	//				include ../blocks/components/slider-main/slider-main
-	//			.sidebar__box
-	//				include ../blocks/components/sidebar-links/sidebar-links
-	//section.section
-	//	.container
-	//		+card-list(cardList)
-	//include ../blocks/components/catalog-main/catalog-main
-	//section.section
-	//	.container
-	//		include ../blocks/components/feature/feature
-	//include ../blocks/components/slider-video/slider-video
+	section.section
+		.container
+			.content-sidebar
+				.content__box
+					include ../blocks/components/slider-main/slider-main
+				.sidebar__box
+					include ../blocks/components/sidebar-links/sidebar-links
+	section.section
+		.container
+			+card-list-swiper(cardList, 'js-swiper-recommendation')
+	include ../blocks/components/catalog-main/catalog-main
+	section.section
+		.container
+			include ../blocks/components/feature/feature
+	include ../blocks/components/slider-video/slider-video

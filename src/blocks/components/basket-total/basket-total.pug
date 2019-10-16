@@ -23,13 +23,13 @@ mixin basket-total(isOrder)
                 |
                 | на сумму
                 |
-                b 100 500 ₽
+                b 100&nbsp;500&nbsp;₽
                 |
                 | для получения бонусов
             if isOrder
-                button(type='submit').btn.btn-yellow Оформить заказ
+                button(type='submit').basket-total__order.btn.btn-yellow Оформить заказ
             else
-                a(href='order.html').btn.btn-yellow Перейти к офоромлению заказа
+                a(href='order.html').basket-total__order.btn.btn-yellow Перейти к офоромлению заказа
 
 
 

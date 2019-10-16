@@ -16,4 +16,9 @@ block content
 					include ../blocks/components/sidebar-links/sidebar-links
 	section.section
 		.container
-			+card-list(cardList)
+			+card-list-swiper(cardList, 'js-swiper-recommendation')
+	include ../blocks/components/catalog-main/catalog-main
+	section.section
+		.container
+			include ../blocks/components/feature/feature
+	include ../blocks/components/slider-video/slider-video

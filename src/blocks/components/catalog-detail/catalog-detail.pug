@@ -15,6 +15,17 @@ section.section.catalog-detail__section
     .container
         .catalog-detail
             .__left
+                // Дубль заголовка для мобильной версии (без h1)
+                .__head.catalog-detail__head_mobile
+                    .__title=title
+                    .__head-info
+                        .__article
+                            .__article-key Артикул:
+                            .__article-value 3RM
+                        .__new Новинка
+                        a(href='#').__download
+                            .icon-download
+                            span Скачать презентацию
                 .__image-list.js-catalog-detail-image
                     - var i = 0;
                     while i < 3

@@ -1,9 +1,15 @@
 .basket-total {
   width: 100%;
   &__section {
-    padding-top: 56px;
+    margin-top: 16px;
+    padding-top: 36px;
     box-sizing: border-box;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+    @include md-block {
+      margin-top: 24px;
+      padding-top: 56px;
+    }
   }
 
   &__comment {
@@ -11,31 +17,42 @@
   }
 
   &__wrap {
-    @include row-flex();
+    @include u-row-flex(32px);
 
     &-left {
       @include col();
-      @include size(1);
-      @include shift-right(1);
+      @include size-xl(1);
+      @include shift-xl-right(1);
+      @include size-lg(2);
+      @include size-md(1.5);
+      @include size(4);
     }
 
     &-right {
       @include col();
-      @include size(2);
+      @include size-lg(2);
+      @include size-md(2.5);
+      @include size(4);
       align-self: flex-end;
+      margin-top: 16px;
+      @include md-block {
+        margin-top: 0;
+      }
     }
 
     &-center {
       @include row-flex();
-      @include col();
-      @include size(4);
+      @include u-col(12px);
+      @include u-size(4, 4, 12px);
       justify-content: center;
     }
   }
 
   &__wrap-center & {
     @include col();
-    @include size(2);
+    @include size-xl(2);
+    @include size-lg(3);
+    @include size(4);
   }
 
   &__body {
@@ -48,22 +65,59 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 120px;
     box-sizing: border-box;
+    flex-wrap: wrap;
+    @include sm-block {
+      flex-wrap: nowrap;
+      height: 120px;
+    }
   }
 
   &__bottom {
     margin-top: 16px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    @include sm-block {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   &__data {
-    padding: 42px 24px;
-    height: 100%;
+    padding: 24px;
     box-sizing: border-box;
-    border-right: 1px solid #898c9b;
+    display: flex;
+    flex-direction: column;
+    order: 0;
+    flex: 1 1 50%;
+
+    &:nth-child(odd) {
+      border-right: 1px solid #898c9b;
+      border-bottom: 1px solid #898c9b;
+    }
+    &:nth-child(even) {
+      border-bottom: 1px solid #898c9b;
+    }
+    @include xs-block {
+      &:nth-child(odd) {
+        border-right: 1px solid #898c9b;
+      }
+      &:nth-child(even) {
+        border-bottom: none;
+      }
+    }
+
+    @include sm-block {
+      height: 100%;
+      padding: 42px 24px;
+      width: auto;
+      border-right: 1px solid #898c9b;
+      flex: none;
+      border-bottom: none;
+    }
 
     & p {
       font-size: 14px;
@@ -80,10 +134,23 @@
   }
 
   &__message {
-    padding: 43px 24px;
-    height: 100%;
+    padding: 24px;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
     margin-right: auto;
+    width: 100%;
+
+    @include xs-block {
+      width: 50%;
+      padding: 0 24px;
+    }
+
+    @include sm-block {
+      width: auto;
+      height: 100%;
+      padding: 43px 24px;
+    }
 
     & p {
       font-weight: 500;
@@ -95,10 +162,19 @@
   }
 
   &__result {
-    height: 100%;
     box-sizing: border-box;
-    padding: 42px 24px;
+    padding: 24px;
     background: #e91e63;
+    width: 100%;
+
+    @include xs-block {
+      width: 50%;
+    }
+    @include sm-block {
+      height: 100%;
+      width: auto;
+      padding: 42px 24px;
+    }
 
     & p {
       font-weight: 500;
@@ -120,6 +196,11 @@
     font-size: 14px;
     line-height: 17px;
     color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 16px;
+
+    @include sm-block {
+      margin-bottom: 0;
+    }
 
     & > a {
       font-weight: 500;
@@ -131,6 +212,14 @@
 
     & > b {
       color: #fff;
+    }
+  }
+
+  &__order {
+    width: 100%;
+    text-align: center;
+    @include xs-block {
+      width: auto;
     }
   }
 

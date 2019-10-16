@@ -1,36 +1,77 @@
 .catalog-detail {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  @include md-block {
+    flex-direction: row;
+  }
 
   &__section {
     margin-bottom: 56px;
   }
 
   &__title {
-    font-size: 36px;
-    line-height: 44px;
     color: #fff;
+    font-size: 22px;
+    line-height: 27px;
+    @include md-block {
+      font-size: 36px;
+      line-height: 44px;
+    }
   }
 
   &__left {
-    max-width: 546px;
     width: 100%;
-    margin-right: 32px;
+
+    @include md-block {
+      max-width: 454px;
+      margin-right: 24px;
+    }
+
+    @include xl-block {
+      max-width: 546px;
+      margin-right: 32px;
+    }
   }
 
   &__right {
-    max-width: 1222px;
     width: 100%;
+    @include md-block {
+      max-width: 1322px;
+    }
+
+    @include xl-block {
+      max-width: 1222px;
+    }
   }
 
   &__head {
+    display: none;
+    @include md-block {
+      display: block;
+    }
+
+    &_mobile {
+      display: block;
+      @include md-block {
+        display: none;
+      }
+    }
+
     &-info {
-      margin-top: 16px;
-      padding-bottom: 16px;
+      margin-top: 8px;
+      padding-bottom: 10px;
       box-sizing: border-box;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
+
+      @include md-block {
+        margin-top: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
     }
   }
 
@@ -72,6 +113,13 @@
     line-height: 24px;
     text-decoration-line: underline;
     color: #fecc00;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    @include md-block {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
 
     &:hover {
       text-decoration: none;
@@ -87,12 +135,26 @@
     display: flex;
     margin-top: 24px;
     align-items: flex-start;
+    flex-direction: column;
+
+    @include lg-block {
+      flex-direction: row;
+    }
   }
 
   &__options {
-    max-width: 755px;
     width: 100%;
-    margin-right: 32px;
+    order: 1;
+    @include lg-block {
+      max-width: 763px;
+      margin-right: 24px;
+      order: 0;
+    }
+
+    @include xl-block {
+      max-width: 755px;
+      margin-right: 32px;
+    }
 
     &-title {
       font-weight: 600;
@@ -103,7 +165,11 @@
     }
 
     &-box {
-      margin-bottom: 16px;
+      margin-bottom: 24px;
+
+      @include xs-block {
+        margin-bottom: 16px;
+      }
       &:last-child {
         margin-bottom: 0;
       }
@@ -112,18 +178,44 @@
       display: flex;
       margin-bottom: 10px;
       justify-content: space-between;
+      flex-direction: column;
+
+      @include xs-block {
+        align-items: flex-end;
+        flex-direction: row;
+      }
 
       &:last-child {
         margin-bottom: 0;
       }
     }
+
     &-key {
       font-weight: 500;
       font-size: 15px;
       line-height: 21px;
       color: rgba(255, 255, 255, 0.5);
-      padding-right: 8px;
       box-sizing: border-box;
+      max-width: 100%;
+
+      @include xs-block {
+        padding-right: 8px;
+        max-width: 47%;
+      }
+    }
+
+    &-value {
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 20px;
+      color: #fff;
+      max-width: 100%;
+
+      @include xs-block {
+        padding-left: 8px;
+        text-align: right;
+        max-width: 47%;
+      }
     }
 
     &-line {
@@ -131,50 +223,71 @@
       box-sizing: border-box;
       flex: 1;
       margin-bottom: 5px;
+      display: none;
+      @include xs-block {
+        display: block;
+      }
     }
 
     &-scale {
-      position: relative;
-      height: 16px;
-      background: linear-gradient(
-        90deg,
-        #e92b1c 0%,
-        #f7ac0f 21.14%,
-        #eef232 42.28%,
-        #ffffff 61.65%,
-        #4cbedb 81.52%,
-        #1466af 100%
-      );
       flex: 1;
+      box-sizing: border-box;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+      margin-bottom: 5px;
+      display: none;
+      @include xs-block {
+        display: block;
+      }
+
+      @include xl-block {
+        border-bottom: none;
+        position: relative;
+        height: 16px;
+        margin-bottom: 0;
+        background: linear-gradient(
+          90deg,
+          #e92b1c 0%,
+          #f7ac0f 21.14%,
+          #eef232 42.28%,
+          #ffffff 61.65%,
+          #4cbedb 81.52%,
+          #1466af 100%
+        );
+      }
     }
 
     &-aim {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      bottom: 0;
-      width: 16px;
-      height: 31px;
-      border: 2px solid #fecc00;
-      box-sizing: border-box;
-      border-radius: 8px;
-    }
-
-    &-value {
-      padding-left: 8px;
-      font-weight: 600;
-      font-size: 17px;
-      line-height: 20px;
-      text-align: right;
-      color: #fff;
+      display: none;
+      @include xl-block {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: 0;
+        width: 16px;
+        height: 31px;
+        border: 2px solid #fecc00;
+        box-sizing: border-box;
+        border-radius: 8px;
+        display: block;
+      }
     }
   }
 
   &__commerce {
-    max-width: 435px;
+    order: 0;
     width: 100%;
+    margin-bottom: 24px;
     @include bg-gradient();
+
+    @include lg-block {
+      margin-bottom: 0;
+      max-width: 427px;
+    }
+
+    @include xl-block {
+      max-width: 435px;
+    }
 
     &-head {
       padding: 16px 24px 4px;
@@ -186,6 +299,11 @@
       display: flex;
       justify-content: space-between;
       padding: 16px 24px 24px;
+      flex-direction: column;
+
+      @include xs-block {
+        flex-direction: row;
+      }
     }
 
     &-mark {
@@ -231,7 +349,17 @@
     }
 
     &-stock {
-      width: #{calc(50% - 7px)};
+      width: 100%;
+      margin-bottom: 16px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @include xs-block {
+        margin-bottom: 0;
+        width: #{calc(50% - 7px)};
+      }
     }
 
     &-name {
@@ -267,18 +395,28 @@
     }
   }
 
-  &__feature {
+  .content-sidebar &__feature {
+    @include to($break_xl - 1px) {
+      @include size(4);
+    }
     & .feature__item {
-      height: 130px;
+      @include md-block {
+        height: 130px;
+      }
     }
   }
 
   &__text {
-    margin-top: 56px;
+    margin-top: 40px;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
     color: #fff;
+
+    @include md-block {
+      margin-top: 56px;
+    }
+
     & p {
       margin-bottom: 16px;
       &:last-child {
@@ -296,10 +434,18 @@
     &-item {
       display: inline-block;
       text-decoration: none;
-      max-width: 546px;
+      box-sizing: border-box;
       width: 100%;
-      height: 546px;
+      height: 320px;
       @include border-gradient();
+
+      @include md-block {
+        height: 454px;
+      }
+
+      @include xl-block {
+        height: 546px;
+      }
     }
 
     &-item & {
@@ -326,10 +472,15 @@
         left: 0;
         right: 0;
         margin: auto;
-        width: 51px;
-        height: 51px;
+        width: 30px;
+        height: 30px;
         background: #ff0000;
         border-radius: 50%;
+
+        @include sm-block {
+          width: 51px;
+          height: 51px;
+        }
       }
 
       &:after {
@@ -337,21 +488,28 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 3px;
+        left: 1px;
         right: 0;
         margin: auto;
         width: 0;
         height: 0;
-        border-top: 10.5px solid transparent;
-        border-left: 11px solid #fff;
-        border-bottom: 10.5px solid transparent;
+        border-top: 6.5px solid transparent;
+        border-left: 6px solid #fff;
+        border-bottom: 6.5px solid transparent;
+
+        @include sm-block {
+          left: 3px;
+          border-top: 10.5px solid transparent;
+          border-left: 11px solid #fff;
+          border-bottom: 10.5px solid transparent;
+        }
       }
     }
 
     &-mini {
-      max-width: 130px;
+      max-width: 76px;
       width: 100%;
-      height: 130px;
+      height: 76px;
       border: 2px solid #fecc00;
       box-sizing: border-box;
       margin: 0 4px;
@@ -360,6 +518,12 @@
       background-size: cover;
       background-repeat: no-repeat;
       cursor: pointer;
+
+      @include sm-block {
+        max-width: 130px;
+        width: 100%;
+        height: 130px;
+      }
 
       &-list {
         display: flex;

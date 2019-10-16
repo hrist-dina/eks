@@ -30,7 +30,15 @@ export class CatalogDetail {
       dots: false,
       variableWidth: true,
       focusOnSelect: true,
-      rows: 0
+      rows: 0,
+      responsive: [
+        {
+          breakpoint: 1600,
+          settings: {
+            slidesToShow: 3
+          }
+        }
+      ]
     });
   }
 }

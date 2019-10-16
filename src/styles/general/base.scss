@@ -70,7 +70,13 @@ main {
 
   &__box {
     @include col();
-    @include size(2);
+    @include size-lg(2);
+    @include size(4);
+    margin-bottom: 16px;
+
+    @include lg-block {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -84,8 +90,13 @@ main {
   }
 
   &-title {
-    margin-top: 48px;
-    margin-bottom: 60px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+
+    @include md-block {
+      margin-top: 48px;
+      margin-bottom: 60px;
+    }
 
     & .h1 {
       margin-bottom: 0;
@@ -94,12 +105,18 @@ main {
 }
 
 .sort__box {
-  max-width: 435px;
   width: 100%;
   box-sizing: border-box;
-  position: absolute;
-  top: -116px;
-  right: 0;
+  margin-bottom: 16px;
+  margin-left: auto;
+
+  @include md-block {
+    max-width: 435px;
+    margin-bottom: 0;
+    position: absolute;
+    top: -116px;
+    right: 0;
+  }
 }
 
 .slider-button {
@@ -136,6 +153,7 @@ main {
 
   & .swiper-slide {
     margin-right: 16px;
+    max-width: 347px;
 
     @include to($break_xs) {
       max-width: 95%;

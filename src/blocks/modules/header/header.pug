@@ -11,9 +11,15 @@ header.header.js-mobile-menu
                     include ../../components/submenu/submenu
                 .header__top-right
                     include ../../components/search/search
-                    a(href='#').header__basket
-                        .icon-cart
-                        span Корзина
+                    .header__basket-wrap
+                        .header__basket-commercial
+                            .header__basket-quantity
+                                span.header__basket-count 12
+                                span.header__basket-units шт.
+                            .header__basket-total 100 540 ₽
+                        a(href='#').header__basket
+                            .icon-cart
+                            span Корзина
     .header__middle
         .container
             .header__middle-inner

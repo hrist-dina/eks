@@ -1,0 +1,89 @@
+.map {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  box-shadow: 0 0 3px rgba(34, 46, 98, 0.132);
+
+  @include lg-block {
+    height: 100%;
+  }
+
+  &__inner {
+    background: #c4c4c4;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  &-zoom {
+    width: 32px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @include lg-block {
+      width: 42px;
+      height: 100px;
+    }
+
+    & .plus,
+    & .minus {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: #fecc00;
+      box-shadow: 3px 10px 15px rgba(0, 0, 0, 0.25);
+      @include transition();
+
+      &:hover {
+        box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.25);
+        background: #cda500;
+      }
+
+      @include lg-block {
+        width: 42px;
+        height: 42px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 10px;
+        height: 2px;
+        background: #000;
+      }
+    }
+
+    & .plus {
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 2px;
+        height: 10px;
+        background: #000;
+      }
+    }
+  }
+}
+
+//[class*="ymaps-2"][class*="-ground-pane"] {
+//  -webkit-filter: grayscale(100%) url("../img/map/filter-mask.svg#colorChange");
+//  filter: grayscale(100%) url("../img/map/filter-mask.svg#colorChange");
+//}

@@ -43,9 +43,13 @@
 
     &-left {
       display: none;
-      width: 58%;
+      width: 42%;
+
       @include md-block {
         display: inline-block;
+      }
+      @include lg-block {
+        width: 52%;
       }
     }
 
@@ -54,39 +58,41 @@
       display: flex;
       flex-direction: column;
       @include md-block {
-        width: 42%;
+        width: 58%;
         align-items: center;
         justify-content: space-between;
         flex-direction: row;
+      }
+
+      @include lg-block {
+        width: 48%;
       }
     }
   }
 
   & .search {
-    @include md-block {
+    @include lg-block {
       max-width: 368px;
+    }
+    @include md-block {
+      max-width: 280px;
     }
   }
 
   &__basket {
     width: 24px;
     height: 24px;
-    position: absolute;
-    top: 16px;
-    right: 16px;
+    position: relative;
+    top: 12px;
     display: flex;
     align-items: center;
     text-decoration: none;
 
     @include md-block {
       width: auto;
-      position: relative;
-      right: inherit;
-      top: inherit;
-      height: 48px;
       padding: 12px 20px;
+      height: 48px;
       box-sizing: border-box;
-      margin-left: 15px;
       font-weight: 500;
       font-size: 15px;
       line-height: 20px;
@@ -99,6 +105,64 @@
       @include md-block {
         display: inline-block;
         margin-left: 4px;
+      }
+    }
+
+    &-wrap {
+      position: absolute;
+      top: 0;
+      right: 16px;
+      display: flex;
+      height: 40px;
+      margin-left: 15px;
+      box-sizing: border-box;
+
+      @include md-block {
+        position: relative;
+        right: inherit;
+        top: inherit;
+        height: 48px;
+      }
+    }
+
+    &-commercial {
+      background: #fecc00;
+      padding: 16px 8px 2px;
+      margin-right: 10px;
+      @include md-block {
+        margin-right: 0;
+        padding: 4px 20px 6px;
+      }
+    }
+
+    &-quantity {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 20px;
+      color: #2f2f30;
+    }
+
+    &-count {
+      font-size: 15px;
+    }
+
+    &-units {
+      display: none;
+      font-size: 10px;
+      @include xs-block {
+        display: inline-block;
+      }
+    }
+
+    &-total {
+      display: none;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+      color: #2f2f30;
+
+      @include md-block {
+        display: block;
       }
     }
   }

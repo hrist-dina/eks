@@ -153,3 +153,9 @@
   @include transition();
   cursor: pointer;
 }
+
+.icon-location {
+  width: 24px;
+  height: 24px;
+  background: url(icon-location()) no-repeat center;
+}

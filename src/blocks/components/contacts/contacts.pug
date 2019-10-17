@@ -1,12 +1,32 @@
-section.contacts
+include ../link-with-desc/link-with-desc
+include ../map/map
+
+section.section
     .container
         .contacts__info
             .contacts__info-inner
-                .contacts__phone
-                    a(href="+88005511803")
-                    | 8 800 55 11 803
-                    span.contacts__text бесплатно
-                .contacts__mail
-                    a(href="mailto:info@diodtrade.ru")
-                    | info@diodtrade.ru
-                    span.contacts__text написать письмо
+                +link-with-desc({
+                  type: 'phone',
+                  link: 'tel:88005511803',
+                  title: '8 800 55 11 803',
+                  desc: 'бесплатно'
+                })
+            .contacts__info-inner
+                +link-with-desc({
+                  type: 'mail',
+                  link: 'mailto:info@diodtrade.ru',
+                  title: 'info@diodtrade.ru ',
+                  desc: 'написать письмо'
+                })
+        .contacts__address
+            .content-half
+                .content-half__box
+                    .contacts__address-title Региональный склад в Барнауле
+                    .contacts__address-location ул. Попова , 242
+                    .contacts__address-map
+                        +map('barnaul')
+                .content-half__box
+                    .contacts__address-title Региональный склад в Москве
+                    .contacts__address-location Коровинское шоссе 35 стр.2
+                    .contacts__address-map
+                        +map('moscow')

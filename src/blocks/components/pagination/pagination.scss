@@ -1,0 +1,83 @@
+.pagination {
+  margin-top: 16px;
+  @include xs-block {
+    margin-top: 32px;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    margin-right: 6px;
+
+    @include xs-block {
+      margin-right: 8px;
+    }
+
+    &:hover {
+      background-color: #fecc00;
+      color: #2f2f30;
+    }
+  }
+
+  &__item.active {
+    background: #f1f1f1;
+    color: #2f2f30;
+  }
+
+  &__item,
+  &__prev,
+  &__next,
+  &__points {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    @include transition(0.2s);
+
+    @include xs-block {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__prev,
+  &__next {
+    &:hover {
+      background-color: #fecc00;
+      background-image: url(icon-arrow-triangle("2f2f30"));
+    }
+  }
+
+  &__prev {
+    background: url(icon-arrow-triangle("fecc00")) no-repeat center;
+    @include rotate(90deg);
+    margin-right: 6px;
+
+    @include xs-block {
+      margin-right: 8px;
+    }
+  }
+
+  &__next {
+    background: url(icon-arrow-triangle("fecc00")) no-repeat center;
+    @include rotate(-90deg);
+  }
+
+  &__points {
+    margin-right: 6px;
+    @include xl-block {
+      margin-right: 8px;
+    }
+  }
+}

@@ -90,6 +90,8 @@
 
     @include md-block {
       width: auto;
+      right: inherit;
+      top: inherit;
       padding: 12px 20px;
       height: 48px;
       box-sizing: border-box;

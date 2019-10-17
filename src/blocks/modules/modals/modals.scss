@@ -1,0 +1,129 @@
+.modal {
+  position: fixed;
+  width: 100%;
+  margin: auto;
+
+  &-list {
+    display: none;
+  }
+  &__head {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 28px;
+
+    @include xs-block {
+      margin-bottom: 46px;
+    }
+  }
+
+  & .field {
+    margin-top: 16px;
+
+    &:first-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__inner {
+    @include bg-main-theme-gradient();
+    padding: 30px 25px 30px;
+    @include xs-block {
+      padding: 56px 60px 125px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    background: transparent;
+    opacity: 1;
+    cursor: pointer;
+    z-index: 100;
+    @include transition();
+
+    @include xs-block {
+      width: 46px;
+      height: 46px;
+      right: 40px;
+      top: 45px;
+    }
+
+    &:hover {
+      opacity: 0.9;
+      &:before,
+      &:after {
+        opacity: 0.7;
+      }
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      height: 18px;
+      width: 2px;
+      background-color: #fff;
+    }
+    &:before {
+      @include rotate(45deg);
+    }
+    &:after {
+      @include rotate(-45deg);
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+    line-height: 1;
+    color: #fff;
+    margin-right: 24px;
+
+    @include xs-block {
+      margin-right: 32px;
+      font-size: 32px;
+    }
+  }
+
+  &__text {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 25px;
+    color: #fff;
+  }
+
+  &__button {
+    &-auth {
+      margin-top: 24px;
+      width: 100%;
+    }
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration-line: underline;
+    color: #fecc00;
+
+    &-forgot {
+      display: inline-block;
+      margin-top: 32px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    &-wrap {
+      text-align: center;
+    }
+  }
+
+  &__auth {
+    max-width: 530px;
+  }
+}

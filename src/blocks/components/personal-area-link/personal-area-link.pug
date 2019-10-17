@@ -5,7 +5,7 @@ mixin personal-area-link(isAuth=false)
                 span Константинопольский Константин
             a(href='#').__desc выход
     else
-        a(href='#').personal-area-link
+        a(href='javascript:void()' data-modal-type='auth').personal-area-link.js-modal-open
             .__title
                 span Личный кабинет
             .__desc вход

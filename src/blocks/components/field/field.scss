@@ -11,7 +11,9 @@
       line-height: 20px;
     }
   }
-  & input[type="text"] {
+  & input[type="text"],
+  & input[type="password"],
+  & input[type="email"] {
     width: 100%;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.3);

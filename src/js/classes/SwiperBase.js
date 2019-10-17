@@ -31,7 +31,6 @@ export class SwiperBase {
           let screenWidth = $(window).width();
           if (screenWidth <= this.screenWidht && mySwiper === undefined) {
             mySwiper = new Swiper(this.selector, this.options);
-            console.log(mySwiper);
           } else if (screenWidth > this.screenWidht && mySwiper !== undefined) {
             mySwiper.destroy();
             mySwiper = undefined;

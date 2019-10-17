@@ -8,7 +8,7 @@ mixin cabinet-section
             h1.h1=title
     section.section
         .container
-            .content-sidebar
+            .content-sidebar.cabinet__wrap
                 .sidebar__box
                     include ../menu-sidebar/menu-sidebar
                     +personal-card(personalCard)
@@ -18,7 +18,6 @@ mixin cabinet-section
 
 mixin cabinet-box(cabinetBox)
     .cabinet-box
-        a(href='#').cabinet-logout Выйти
         .cabinet-head
             if cabinetBox.back
                 a(href='cabinet-history.html').cabinet-head__back=cabinetBox.back
@@ -28,6 +27,7 @@ mixin cabinet-box(cabinetBox)
                     b=cabinetBox.bonus
             else if cabinetBox.title
                 h3.h3.cabinet-head__title=cabinetBox.title
+            a(href='#').cabinet-logout Выйти
         if block
             .cabinet-body
                 block

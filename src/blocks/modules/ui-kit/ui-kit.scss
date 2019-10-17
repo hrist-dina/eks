@@ -51,34 +51,3 @@
   &:active {
   }
 }
-
-.h1 {
-  display: inline-block;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 35px;
-  color: #fff;
-  border-bottom: 4px solid #fecc00;
-  margin-bottom: 24px;
-
-  @include md-block {
-    font-size: 48px;
-    line-height: 59px;
-    margin-bottom: 56px;
-  }
-}
-
-.h3 {
-  font-size: 32px;
-  line-height: 39px;
-  color: #fff;
-}
-
-.h4 {
-  display: inline-block;
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 32px;
-  color: #fff;
-}

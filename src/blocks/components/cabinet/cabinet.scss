@@ -1,15 +1,32 @@
 .cabinet {
   &-logout {
-    position: absolute;
-    left: 0;
-    top: -88px;
+    position: relative;
     display: inline-block;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 20px;
     text-decoration-line: underline;
     color: #fecc00;
     padding-left: 28px;
+
+    @include xs-block {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    @include md-block {
+      position: absolute;
+      left: auto;
+      right: 0;
+      top: -88px;
+    }
+
+    @include xl-block {
+      position: absolute;
+      left: 0;
+      top: -88px;
+    }
+
     &:before {
       content: "";
       position: absolute;
@@ -22,26 +39,76 @@
     }
   }
 
+  &__wrap {
+    @include md-block {
+      flex-wrap: nowrap;
+    }
+
+    & .sidebar__box {
+      @include md-block {
+        max-width: 325px;
+        width: 100%;
+      }
+      @include xl-block {
+        max-width: 435px;
+      }
+    }
+  }
+
   &-box {
     box-shadow: 10px 30px 50px rgba(0, 0, 0, 0.25);
     @include bg-gradient();
     margin-bottom: 24px;
+    margin-top: 24px;
+
+    @include md-block {
+      margin-top: 0;
+    }
   }
 
   &-head {
-    padding: 24px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include lg-block {
+      padding: 24px;
+    }
+
+    &__title {
+      font-size: 28px;
+      line-height: 30px;
+      padding-right: 8px;
+
+      @include sm-block {
+        font-size: 32px;
+        line-height: 39px;
+      }
+    }
 
     &__back {
       display: inline-block;
-      font-size: 32px;
-      line-height: 35px;
+      font-size: 18px;
+      line-height: 20px;
       text-decoration: none;
       color: #fecc00;
       border-bottom: 2px solid #fecc00;
       @include transition(0.2s);
-      padding-left: 4px;
-      margin-left: 27px;
+      margin-left: 22px;
       position: relative;
+
+      @include xs-block {
+        margin-left: 27px;
+        padding-left: 4px;
+        font-size: 28px;
+        line-height: 30px;
+      }
+
+      @include sm-block {
+        font-size: 32px;
+        line-height: 35px;
+      }
 
       &:before {
         content: "";
@@ -62,19 +129,33 @@
     }
 
     &__bonus {
-      font-size: 32px;
-      line-height: 39px;
-      color: #ffffff;
+      font-size: 25px;
+      line-height: 28px;
+      color: #fff;
+
+      @include sm-block {
+        font-size: 32px;
+        line-height: 39px;
+      }
+
       & b {
-        margin-left: 8px;
         color: #fecc00;
+        display: block;
+        @include xs-block {
+          margin-left: 8px;
+          display: inline-block;
+        }
       }
     }
   }
 
   &-body {
-    padding: 24px;
+    padding: 16px;
     border-top: 1px solid #898c9b;
+
+    @include lg-block {
+      padding: 24px;
+    }
   }
 
   &-form {
@@ -92,19 +173,36 @@
     &__row {
       padding: 16px 0;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
       border-bottom: 1px solid #898c9b;
+
+      @include sm-block {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
       &:last-child {
         border-bottom: none;
       }
     }
 
     &__col {
-      padding-right: 16px;
+      width: 100%;
       box-sizing: border-box;
+      margin-bottom: 16px;
+
+      @include sm-block {
+        width: auto;
+        padding-right: 16px;
+        margin-bottom: 0;
+      }
+
       &:last-child {
         padding-right: 0;
+        margin-bottom: 0;
       }
 
       &-title {
@@ -133,6 +231,10 @@
           text-decoration: none;
         }
       }
+
+      & .btn {
+        text-align: center;
+      }
     }
 
     &-detail {
@@ -143,10 +245,25 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        flex-wrap: wrap;
+
+        @include md-block {
+          flex-wrap: nowrap;
+        }
       }
 
       &__data {
         padding-right: 5.833vw /* 112/19.2 */;
+        margin-bottom: 16px;
+        width: 100%;
+
+        @include xs-block {
+          width: auto;
+        }
+
+        @include md-block {
+          margin-bottom: 0;
+        }
 
         & p {
           font-weight: 500;
@@ -165,7 +282,9 @@
       }
 
       &__button {
-        margin-left: auto;
+        @include md-block {
+          margin-left: auto;
+        }
 
         & .btn {
           width: 183px;
@@ -191,6 +310,17 @@
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid #898c9b;
+        flex-wrap: wrap;
+        padding-bottom: 0;
+
+        @include sm-block {
+          padding-bottom: 16px;
+        }
+
+        @include lg-block {
+          flex-wrap: nowrap;
+        }
+
         &:last-child {
           border-bottom: 0;
         }
@@ -203,6 +333,7 @@
           max-width: 80px;
           max-height: 80px;
           width: 100%;
+          height: 100%;
           background: radial-gradient(
             100% 211.49% at 0% 3%,
             #898c9b 58.33%,
@@ -210,10 +341,18 @@
           );
           box-sizing: border-box;
           margin-right: 8px;
+          order: 0;
+          margin-bottom: 16px;
+
+          @include lg-block {
+            order: inherit;
+            margin-bottom: 0;
+          }
 
           & img {
             max-width: 100%;
             max-height: 100%;
+            width: 100%;
             box-sizing: border-box;
           }
         }
@@ -224,17 +363,53 @@
           font-weight: 500;
           font-size: 15px;
           line-height: 22px;
-          color: #ffffff;
-          max-width: 499px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          margin-right: 2.604vw /* 50/19.2 */;
+          color: #fff;
+          width: 100%;
+          margin-right: 12px;
+          order: 1;
+          flex: 1 1 auto;
+          margin-bottom: 16px;
+
+          @include sm-block {
+            order: 0;
+            max-width: #{calc(100% - 100px)};
+          }
+
+          @include lg-block {
+            max-width: 499px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            order: inherit;
+            flex: inherit;
+            margin-right: 2.604vw /* 50/19.2 */;
+            margin-bottom: 0;
+          }
         }
 
         &-data {
-          margin-right: 2.604vw /* 50/19.2 */;
           max-width: 106px;
+          width: 100%;
+          margin-right: 12px;
+          order: 2;
+          margin-bottom: 16px;
+
+          &:last-child {
+            order: 3;
+          }
+
+          @include sm-block {
+            margin-bottom: 0;
+            order: 1;
+            &:last-child {
+              order: 1;
+            }
+          }
+          @include lg-block {
+            order: inherit;
+            flex: inherit;
+            margin-right: 2.604vw /* 50/19.2 */;
+          }
 
           & p {
             font-weight: 500;
@@ -257,6 +432,19 @@
           padding: 5px 12px 7px;
           box-sizing: border-box;
           margin-left: auto;
+          min-width: 106px;
+          order: 0;
+          margin-bottom: 16px;
+
+          @include sm-block {
+            margin-bottom: 0;
+            order: 1;
+          }
+
+          @include lg-block {
+            order: inherit;
+            flex: inherit;
+          }
 
           & p {
             font-weight: 500;
@@ -301,10 +489,17 @@
 
     &__opstion {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
       margin-bottom: 10px;
-      max-width: 315px;
+
+      @include xs-block {
+        max-width: 315px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
 
       &:last-child {
         margin-bottom: 0;
@@ -323,13 +518,16 @@
       }
 
       &-line {
-        max-width: 100%;
-        width: 14%;
+        display: block;
+        flex: 1;
         border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
         box-sizing: border-box;
-        margin-top: 5px;
         font-size: 15px;
         line-height: 21px;
+        align-self: flex-end;
+        @include xs-block {
+          margin-bottom: 5px;
+        }
       }
 
       &-value {
@@ -337,7 +535,9 @@
         font-size: 15px;
         line-height: 21px;
         color: rgba(255, 255, 255, 0.5);
-        padding-right: 8px;
+        @include xs-block {
+          padding-right: 8px;
+        }
       }
 
       &-bonus {
@@ -346,7 +546,9 @@
         line-height: 20px;
         text-align: right;
         color: #fff;
-        padding-left: 8px;
+        @include xs-block {
+          padding-left: 8px;
+        }
       }
     }
   }

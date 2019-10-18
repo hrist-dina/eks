@@ -8,6 +8,7 @@ import { SliderVideo } from "%components%/slider-video/SliderVideo";
 import { SwiperRecommended } from "%components%/recommendation/SwiperRecommended";
 import { Map } from "%components%/map/Map";
 import { ModalBase } from "../classes/ModalBase";
+import { Quantity } from "../../blocks/components/quantity/Quantity";
 
 $(document).ready(function() {
   new SliderMain(".js-slider-main");
@@ -18,6 +19,7 @@ $(document).ready(function() {
   new FancyBox();
   new SwiperRecommended(".js-swiper-recommendation");
   new ModalBase();
+  new Quantity();
   new Map("map-barnaul", {
     location: [53.32387907112886, 83.64198349999995],
     center: [53.32387907112886, 83.64198349999995],

@@ -1,0 +1,10 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Где купить нашу продукцию";
+	- var isAuth = true;
+
+block content
+	section.section-title
+		.container
+			h1.h1=title
+	include ../blocks/components/where-buy/where-buy

@@ -1,0 +1,469 @@
+-
+    var regions = [
+        {
+            text: 'Выбор региона'
+        },
+        {
+            value: 'all',
+            text: 'Все'
+        },
+        {
+            value: 1,
+            text: 'Алтайский край'
+        },
+        {
+            value: 2,
+            text: 'Кировская область'
+        },
+        {
+            value: 3,
+            text: 'Московская область'
+        },
+        {
+            value: 4,
+            text: 'Тестовая область'
+        },
+        {
+            value: 5,
+            text: 'Тестовая область 5'
+        }
+    ]
+
+    var cities = [
+        {
+            text: 'Выбор города'
+        },
+        {
+            value: 'all',
+            text: 'Все'
+        },
+        {
+            value: 1,
+            text: 'Барнаул'
+        },
+        {
+            value: 2,
+            text: 'Киров'
+        },
+        {
+            value: 3,
+            text: 'Москва'
+        },
+        {
+            value: 4,
+            text: 'Тест'
+        },
+        {
+            value: 5,
+            text: 'Тест 5'
+        }
+    ]
+
+    var whereBuy = [
+        {
+            regionId: 1,
+            cityId: 1,
+            locationX: 53.32387907112886,
+            locationY: 83.64198349999995,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Алтайский край, Барнаул',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 2,
+            cityId: 2,
+            locationX: 53.555,
+            locationY: 54.555,
+            img: 'img/where-buy/image.png',
+            title: 'Розничная компания "АЛМИ"',
+            regionCity: 'Кировская область, Киров',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 3,
+            cityId: 3,
+            locationX: 55.883661068828225,
+            locationY: 37.51370899999999,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Московская область, Москва',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 4,
+            cityId: 4,
+            locationX: 56.555,
+            locationY: 54.555,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },    {
+            regionId: 1,
+            cityId: 1,
+            locationX: 53.4387907112886,
+            locationY: 83.8198349999995,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Алтайский край, Барнаул',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 2,
+            cityId: 2,
+            locationX: 53.65,
+            locationY: 54.45,
+            img: 'img/where-buy/image.png',
+            title: 'Розничная компания "АЛМИ"',
+            regionCity: 'Кировская область, Киров',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 3,
+            cityId: 3,
+            locationX: 55.9661068828225,
+            locationY: 37.51370899999999,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Московская область, Москва',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 4,
+            cityId: 4,
+            locationX: 56.555,
+            locationY: 54.555,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 1,
+            cityId: 1,
+            locationX: 53.32387907112886,
+            locationY: 83.64198349999995,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Алтайский край, Барнаул',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 2,
+            cityId: 2,
+            locationX: 53.755,
+            locationY: 54.755,
+            img: 'img/where-buy/image.png',
+            title: 'Розничная компания "АЛМИ"',
+            regionCity: 'Кировская область, Киров',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 3,
+            cityId: 3,
+            locationX: 55.93661068828225,
+            locationY: 37.7370899999999,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Московская область, Москва',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 4,
+            cityId: 4,
+            locationX: 56.85,
+            locationY: 54.95,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 1,
+            cityId: 1,
+            locationX: 53.72387907112886,
+            locationY: 83.24198349999995,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Алтайский край, Барнаул',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 2,
+            cityId: 2,
+            locationX: 53.355,
+            locationY: 54.355,
+            img: 'img/where-buy/image.png',
+            title: 'Розничная компания "АЛМИ"',
+            regionCity: 'Кировская область, Киров',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 3,
+            cityId: 3,
+            locationX: 55.83661068828225,
+            locationY: 37.7370899999999,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Московская область, Москва',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 4,
+            cityId: 4,
+            locationX: 56.25,
+            locationY: 54.25,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 1,
+            cityId: 1,
+            locationX: 53.107112886,
+            locationY: 83.149999995,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Алтайский край, Барнаул',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 2,
+            cityId: 2,
+            locationX: 53.25,
+            locationY: 54.2,
+            img: 'img/where-buy/image.png',
+            title: 'Розничная компания "АЛМИ"',
+            regionCity: 'Кировская область, Киров',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 3,
+            cityId: 3,
+            locationX: 55.31068828225,
+            locationY: 37.399999,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Московская область, Москва',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 4,
+            cityId: 4,
+            locationX: 52.45,
+            locationY: 52.45,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },    {
+            regionId: 1,
+            cityId: 1,
+            locationX: 53.2187907112886,
+            locationY: 83.2198349999995,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Алтайский край, Барнаул',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 2,
+            cityId: 2,
+            locationX: 53.22,
+            locationY: 54.22,
+            img: 'img/where-buy/image.png',
+            title: 'Розничная компания "АЛМИ"',
+            regionCity: 'Кировская область, Киров',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 3,
+            cityId: 3,
+            locationX: 55.331068828225,
+            locationY: 37.3370899999999,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Московская область, Москва',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 4,
+            cityId: 4,
+            locationX: 56.445,
+            locationY: 54.445,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 1,
+            cityId: 1,
+            locationX: 53.123387907112886,
+            locationY: 83.12398349999995,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Алтайский край, Барнаул',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 2,
+            cityId: 2,
+            locationX: 53.124,
+            locationY: 54.124,
+            img: 'img/where-buy/image.png',
+            title: 'Розничная компания "АЛМИ"',
+            regionCity: 'Кировская область, Киров',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 3,
+            cityId: 3,
+            locationX: 55.1251068828225,
+            locationY: 37.125899999999,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Московская область, Москва',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 4,
+            cityId: 4,
+            locationX: 56.126,
+            locationY: 54.126,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 1,
+            cityId: 1,
+            locationX: 53.99907112886,
+            locationY: 83.99998349999995,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Алтайский край, Барнаул',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 2,
+            cityId: 2,
+            locationX: 53.8885,
+            locationY: 54.8885,
+            img: 'img/where-buy/image.png',
+            title: 'Розничная компания "АЛМИ"',
+            regionCity: 'Кировская область, Киров',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 3,
+            cityId: 3,
+            locationX: 55.77761068828225,
+            locationY: 37.77770899999999,
+            img: 'img/where-buy/image.png',
+            title: 'Оптово-розничная компания "АЛМИ"',
+            regionCity: 'Московская область, Москва',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 4,
+            cityId: 4,
+            locationX: 56.666,
+            locationY: 54.666,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 5,
+            cityId: 5,
+            locationX: 56.5555,
+            locationY: 54.6555566,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания 5 "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+        {
+            regionId: 5,
+            cityId: 5,
+            locationX: 56.665556,
+            locationY: 54.6555566,
+            img: 'img/where-buy/image.png',
+            title: 'Тетовая-розничная компания 5 "ТЕСТ"',
+            regionCity: 'Тестовая область, Тест',
+            address: 'Октябрьский проспект, 155',
+            phoneLink: 'tel:+78332214040',
+            phone: '+7 (8332) 214-040'
+        },
+    ]

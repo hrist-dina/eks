@@ -8,7 +8,9 @@ import { SliderVideo } from "%components%/slider-video/SliderVideo";
 import { SwiperRecommended } from "%components%/recommendation/SwiperRecommended";
 import { Map } from "%components%/map/Map";
 import { ModalBase } from "../classes/ModalBase";
-import { Quantity } from "../../blocks/components/quantity/Quantity";
+import { Quantity } from "%components%/quantity/Quantity";
+import { WhereBuy } from "%components%/where-buy/WhereBuy";
+import { BaronScroll } from "../classes/BaronScroll";
 
 $(document).ready(function() {
   new SliderMain(".js-slider-main");
@@ -33,4 +35,8 @@ $(document).ready(function() {
     zoom: 17,
     hint: "Коровинское шоссе 35 стр.2"
   });
+  new BaronScroll({
+    root: ".js-scroll"
+  });
+  new WhereBuy();
 });

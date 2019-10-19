@@ -1,0 +1,35 @@
+include ../select/select
+include ../field/field
+include ../map/map
+include data
+
+mixin where-buy-item(item)
+    .where-buy__item.js-where-buy-item(data-region=item.regionId data-city=item.cityId data-location-x=item.locationX data-location-y=item.locationY, data-hint=item.address)
+        .where-buy__item-img
+            img(src=item.img alt=item.title title=item.title)
+        .where-buy__item-content
+            .where-buy__item-title.js-where-buy-item-title=item.title
+            .where-buy__item-region-city=item.regionCity
+            .where-buy__item-address=item.address
+            a(href=item.phoneLink).where-buy__item-phone=item.phone
+
+
+section.section
+    .container
+        .where-buy.js-where-buy
+            .__filter
+                .__filter-select.js-where-buy-filter(data-filter='region')
+                    +select(regions, 'region')
+                .__filter-select.js-where-buy-filter(data-filter='city')
+                    +select(cities, 'city')
+                .__filter-search.js-where-buy-search
+                    +field('', 'search', '', 'Поиск по названию')
+            .__content
+                .__map
+                   +map('where-buy')
+                .__list
+                    .__list-inner.js-scroll
+                        for item in whereBuy
+                            +where-buy-item(item)
+
+

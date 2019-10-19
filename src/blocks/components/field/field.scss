@@ -1,6 +1,7 @@
 .field {
   width: 100%;
   display: block;
+
   & p {
     font-weight: 500;
     font-size: 12px;
@@ -71,6 +72,25 @@
 
     &:focus {
       border-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  &-search {
+    position: relative;
+
+    & input[type="text"] {
+      padding-right: 40px;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 16px;
+      left: auto;
+      margin: auto;
+      @extend .icon-search;
     }
   }
 }

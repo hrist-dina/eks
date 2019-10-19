@@ -1,8 +1,9 @@
 mixin field(title, name, value, placeholder, type='text')
-    label.field
-        p=title
+    label.field(class=name === 'search'? 'field-search' : '')
+        if title
+            p=title
         input(type=type name=name value=value placeholder=placeholder)
-// - data-validator-require="true", data-validator-type="email"
+//- data-validator-require="true", data-validator-type="email"
 mixin textarea(title, name, placeholder)
     label.field
         p=title

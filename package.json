@@ -53,11 +53,12 @@
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
+    "baron": "^3.0.3",
+    "izimodal-1.6.0": "^1.6.1",
     "jquery": "^3.4.1",
     "select2": "^4.0.10",
     "slick-carousel": "^1.8.1",
     "smart-grid": "^2.1.2",
-    "swiper": "^5.0.4",
-    "izimodal-1.6.0": "^1.6.1"
+    "swiper": "^5.0.4"
   }
 }

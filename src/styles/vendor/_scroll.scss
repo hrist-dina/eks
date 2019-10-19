@@ -1,0 +1,69 @@
+.scroller {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &__content {
+    position: relative;
+    margin-right: 16px;
+    overflow: hidden;
+    box-shadow: 10px 30px 50px rgba(0, 0, 0, 0.25);
+
+    @include xs-block {
+      margin-right: 32px;
+    }
+  }
+
+  &__bar-wrapper {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    -webkit-transition: all 0.2s linear 0s;
+    -moz-transition: all 0.2s linear 0s;
+    -o-transition: all 0.2s linear 0s;
+    transition: all 0.2s linear 0s;
+
+    @include xs-block {
+      width: 16px;
+    }
+  }
+
+  &__bar {
+    position: absolute;
+    z-index: 1;
+    width: 8px;
+    background: #FECC00;
+    -webkit-transition: opacity 0.2s linear 0s;
+    -moz-transition: opacity 0.2s linear 0s;
+    -o-transition: opacity 0.2s linear 0s;
+    transition: opacity 0.2s linear 0s;
+    pointer-events: auto;
+
+    @include xs-block {
+      width: 16px;
+    }
+  }
+}
+
+.baron {
+  position: relative;
+
+  &:hover .scroller__bar-wrapper {
+    opacity: 1;
+  }
+
+  &:hover .scroller__bar {
+    opacity: 1;
+  }
+}

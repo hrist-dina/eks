@@ -1,7 +1,17 @@
 extends ../views/layouts/default
 block variables
 	- var title = "Где купить нашу продукцию";
-	- var isAuth = true;
+	-
+		var breadcrumbs = [
+			{
+				name: 'Главная',
+				link: '#'
+			},
+			{
+				name: title,
+				link: ''
+			},
+		];
 
 block content
 	section.section-title

@@ -41,6 +41,9 @@ export class BaronScroll {
   }
 
   initScroll() {
+    if (!$(this.options.root).length) {
+      return;
+    }
     baron({
       root: this.options.root,
       scroller: `.${this.scroller}`,

@@ -7,7 +7,15 @@
 
   &__list & {
     @include col();
-    @include size(1);
+    @include size-lg(1);
+    @include size-md(2);
+    @include size(4);
+
+    margin-bottom: 20px;
+
+    @include xl-block {
+      margin-bottom: 0;
+    }
   }
 
   &__head {

@@ -1,0 +1,27 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Заказ №115520 оформлен!";
+	-
+		var breadcrumbs = [
+			{
+				name: 'Главная',
+				link: '#'
+			},
+			{
+				name: title,
+				link: ''
+			},
+		];
+
+block content
+	section.section.section-center
+		.container
+			h1.h1=title
+			.content-center
+				.__box
+					.__text
+						p В ближайшее время с вами свяжется менеджер для уточнения деталей.
+						p Спасибо за то, что выбрали нас!
+					a(href='/').btn.btn-yellow На главную страницу
+
+

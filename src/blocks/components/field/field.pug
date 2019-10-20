@@ -1,9 +1,17 @@
-mixin field(title, name, value, placeholder, type='text')
+mixin field(title, name, value, placeholder, type='text', data = false)
+    -
+        var dataAttr = {};
+        if (data) {
+            for (var item in data) {
+                dataAttr[`data-${item}`]=data[item];
+            }
+        }
+
     label.field(class=name === 'search'? 'field-search' : '')
         if title
             p=title
-        input(type=type name=name value=value placeholder=placeholder)
-//- data-validator-require="true", data-validator-type="email"
+        input(type=type name=name value=value placeholder=placeholder class=name === 'phone' ? 'js-input-mask' : '')&attributes(dataAttr)
+
 mixin textarea(title, name, placeholder)
     label.field
         p=title

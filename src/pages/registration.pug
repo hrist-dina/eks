@@ -1,0 +1,41 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Регистрация";
+	-
+		var breadcrumbs = [
+			{
+				name: 'Главная',
+				link: '#'
+			},
+			{
+				name: title,
+				link: ''
+			},
+		];
+
+block content
+	include ../blocks/components/field/field
+	section.section-title
+		.container
+			h1.h1=title
+
+	section.section
+		.container
+			.content-half
+				.content-half__box
+					.form__wrap
+						form.form.js-form.validator(action='' method='POST')
+							.form__field
+								+field('Название организации / Ф.И.О.', 'name', 'ООО Рога и копыта', '', 'text', {'validator-require': 'true'})
+							.form__field
+								+field('Электронная почта', 'email', '', '', 'text', {'validator-require': 'true', 'validator-type': 'email'})
+							.form__field
+								+field('Пароль', 'password','', '', 'password', {'validator-require': 'true'})
+							.form__field
+								+field('Повторите пароль', 'password_confirmation', '', '', 'password', {'validator-require': 'true'})
+							.form__text
+								| Нажимая на кнопку “Зарегистрироваться”, вы соглашаетесь с
+								|
+								a(href='#').form__link политикой персональных данных
+							.form__bottom
+								button.btn.btn-yellow Зарегистрироваться

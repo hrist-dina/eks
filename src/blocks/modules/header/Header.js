@@ -9,7 +9,19 @@ export class Header {
   }
 
   init() {
+    this.initScroll();
     this.onClick();
+  }
+
+  initScroll() {
+    const self = this;
+    $(window).scroll(function() {
+      if ($(window).scrollTop() > 50 && $(window).width() < 1023) {
+        $(self.menu).addClass("is-scroll");
+      } else {
+        $(self.menu).removeClass("is-scroll");
+      }
+    });
   }
 
   onClick() {

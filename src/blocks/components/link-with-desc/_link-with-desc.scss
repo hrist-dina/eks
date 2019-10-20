@@ -46,6 +46,7 @@
   }
 
   &.phone {
+    margin-top: 3px;
     @include link-type {
       @extend .icon-phone;
     }

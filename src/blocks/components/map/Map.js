@@ -11,7 +11,9 @@ export class Map {
   }
 
   init() {
-    this.initMap();
+    if ($(`#${this.map}`).length) {
+      this.initMap();
+    }
   }
 
   isMobile() {

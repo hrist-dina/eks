@@ -32,6 +32,7 @@
       }
 
       @include md-block {
+        margin-bottom: 0;
         width: 50%;
         justify-content: center;
       }

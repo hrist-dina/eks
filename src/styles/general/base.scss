@@ -81,6 +81,39 @@ main {
   }
 }
 
+.content-center {
+  @include row-flex();
+  justify-content: center;
+  &__box {
+    padding: 16px 16px 50px;
+    @include col();
+    @include size-xl(2);
+    @include size-md(3);
+    @include size(4);
+    box-shadow: 10px 30px 50px rgba(0, 0, 0, 0.25);
+    @include bg-gradient();
+
+    @include sm-block {
+      padding: 30px 30px 100px;
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+
+    @include sm-block {
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 60px;
+    }
+  }
+}
+
 .section {
   margin-top: 24px;
   margin-bottom: 48px;
@@ -102,6 +135,10 @@ main {
     & .h1 {
       margin-bottom: 0;
     }
+  }
+
+  &-center {
+    text-align: center;
   }
 }
 
@@ -200,9 +237,68 @@ main {
 .form {
   max-width: 435px;
   &__wrap {
-    padding: 24px;
+    padding: 16px;
     width: 100%;
     @include bg-gradient();
     box-shadow: 10px 30px 50px rgba(0, 0, 0, 0.25);
+
+    @include sm-block {
+      padding: 24px;
+    }
+  }
+
+  &__field {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+
+    @include sm-block {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__button {
+    margin-right: 24px;
+
+    @include sm-block {
+      margin-right: 48px;
+    }
+  }
+
+  &__bottom {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    text-decoration-line: underline;
+    color: #fecc00;
+
+    @include sm-block {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }

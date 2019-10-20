@@ -453,6 +453,19 @@
       max-height: 100%;
     }
 
+    &-item &-video {
+      &:before {
+        width: 100px;
+        height: 100px;
+      }
+      &:after {
+        left: 5px;
+        border-top: 20.5px solid transparent;
+        border-left: 21px solid #fff;
+        border-bottom: 20.5px solid transparent;
+      }
+    }
+
     &-list &-item {
       display: none;
     }
@@ -461,7 +474,7 @@
       display: block;
     }
 
-    &-video {
+    @mixin video-icon {
       position: relative;
 
       &:before {
@@ -488,11 +501,11 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 1px;
         right: 0;
         margin: auto;
         width: 0;
         height: 0;
+        left: 1px;
         border-top: 6.5px solid transparent;
         border-left: 6px solid #fff;
         border-bottom: 6.5px solid transparent;
@@ -504,6 +517,10 @@
           border-bottom: 10.5px solid transparent;
         }
       }
+    }
+
+    &-video {
+      @include video-icon();
     }
 
     &-mini {

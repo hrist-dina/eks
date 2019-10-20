@@ -11,6 +11,8 @@ import { ModalBase } from "../classes/ModalBase";
 import { Quantity } from "%components%/quantity/Quantity";
 import { WhereBuy } from "%components%/where-buy/WhereBuy";
 import { BaronScroll } from "../classes/BaronScroll";
+import { InputMask } from "../classes/InputMask";
+import { Form } from "../classes/Form";
 
 $(document).ready(function() {
   new SliderMain(".js-slider-main");
@@ -22,13 +24,13 @@ $(document).ready(function() {
   new SwiperRecommended(".js-swiper-recommendation");
   new ModalBase();
   new Quantity();
+  new InputMask().phone();
   new Map("map-barnaul", {
     location: [53.32387907112886, 83.64198349999995],
     center: [53.32387907112886, 83.64198349999995],
     zoom: 16,
     hint: "ул. Попова , 242"
   });
-
   new Map("map-moscow", {
     location: [55.883661068828225, 37.51370899999999],
     center: [55.883661068828225, 37.51370899999999],
@@ -39,4 +41,5 @@ $(document).ready(function() {
     root: ".js-scroll"
   });
   new WhereBuy();
+  new Form();
 });

@@ -33,19 +33,19 @@ mixin cabinet-box(cabinetBox)
                 block
 
 mixin cabinet-form
-    form(action='/' method='POST').cabinet-form
+    form(action='/' method='POST').cabinet-form.js-form.validator
         .cabinet-form__field
-            +field('Название организации / Ф.И.О.', 'name', 'ООО Рога и копыта')
+            +field('Название организации / Ф.И.О.', 'name', 'ООО Рога и копыта', '', 'text', {'validator-require': 'true'})
         .cabinet-form__field
-            +field('ИНН / Паспортные данные', 'inn-passport')
+            +field('ИНН / Паспортные данные', 'inn-passport', '', '', 'text', {'validator-require': 'true'})
         .cabinet-form__field
-            +field('Город', 'city')
+            +field('Город', 'city', '', '', 'text', {'validator-require': 'true'})
         .cabinet-form__field
-            +field('Адрес', 'address')
+            +field('Адрес', 'address', '', '', 'text', {'validator-require': 'true'})
         .cabinet-form__field
-            +field('Электронная почта', 'email')
+            +field('Электронная почта', 'email', '', '', 'text', {'validator-require': 'true', 'validator-type': 'email'})
         .cabinet-form__field
-            +field('Номер телефона', 'phone')
+            +field('Номер телефона', 'phone', '', '', 'text', {'validator-require': 'true', 'validator-type': 'phone'})
         .cabinet-form__button
             button.btn.btn-yellow Сохранить
 

@@ -10,11 +10,20 @@
     height: 100%;
     border: 1px solid #fff;
     box-sizing: border-box;
-    border-left: 12px solid #FECC00;
+    border-left: 12px solid #fecc00;
     margin-bottom: 14px;
     display: flex;
     align-items: flex-end;
     text-decoration: none;
+    @include transition(0.2s, linear, background);
+
+    &:hover {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.5) 100%
+      );
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -53,7 +62,7 @@
     }
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       width: 12px;
       height: 100%;
@@ -79,7 +88,7 @@
     }
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       right: 0;
       top: 0;

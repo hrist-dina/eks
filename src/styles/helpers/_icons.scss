@@ -59,18 +59,36 @@
   width: 24px;
   height: 24px;
   background: url(icon-vk()) no-repeat center;
+  @include transition(0.2s, linear, all);
+
+  &:hover {
+    background-image: url(icon-vk('fecc00'));
+
+  }
 }
 
 .icon-youtube {
   width: 24px;
   height: 24px;
   background: url(icon-youtube()) no-repeat center;
+  @include transition(0.2s, linear, all);
+
+  &:hover {
+    background-image: url(icon-youtube('fecc00'));
+
+  }
 }
 
 .icon-instagram {
   width: 24px;
   height: 24px;
   background: url(icon-instagram()) no-repeat center;
+  @include transition(0.2s, linear, all);
+
+  &:hover {
+    background-image: url(icon-instagram('fecc00'));
+
+  }
 }
 
 .icon-triangle {

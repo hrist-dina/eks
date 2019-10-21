@@ -141,6 +141,11 @@
       line-height: 20px;
       color: #fff;
       background: rgba(255, 255, 255, 0.2);
+      @include transition(0.2s, linear, background);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
     }
 
     & > span {

@@ -1,0 +1,20 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Страница не найдена";
+	-
+		var breadcrumbs = [
+			{
+				name: 'Главная',
+				link: '#'
+			},
+			{
+				name: title,
+				link: ''
+			},
+		];
+
+block content
+	section.section.section-center
+		.container
+			include ../blocks/components/not-found/not-found
+

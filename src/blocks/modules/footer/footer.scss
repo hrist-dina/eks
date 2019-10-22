@@ -127,6 +127,11 @@
         @include lg-block {
           font-size: 16px;
         }
+        @include transition(0.2s, linear, all);
+
+        &:hover {
+          color: #cda500;
+        }
       }
     }
   }

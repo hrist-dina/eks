@@ -44,6 +44,14 @@
       no-repeat;
     margin-bottom: 8px;
 
+    &:hover {
+      background: radial-gradient(
+        100% 97% at 0% 20%,
+        #898c9b 20%,
+        #4d5061 100%
+      );
+    }
+
     @include md-block {
       padding: 24px 32px;
       @include u-size(1, $catalog-main-columns, $catalog-main-offset);

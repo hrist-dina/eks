@@ -22,7 +22,7 @@
       padding: 10px 0;
       height: 100%;
       box-sizing: border-box;
-      @include transition(.2s, linear, all);
+      @include transition(0.2s, linear, all);
 
       @include md-block {
         padding: 15px 12px;
@@ -39,9 +39,14 @@
       }
 
       &:hover {
-        background: #FECC00;
-        color: #2F2F30;
+        background: #fecc00;
+        color: #2f2f30;
       }
+    }
+
+    &.active a {
+      background: #fecc00;
+      color: #2f2f30;
     }
   }
 }

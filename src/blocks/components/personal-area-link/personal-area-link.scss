@@ -1,7 +1,7 @@
 .personal-area-link {
   display: block;
   text-decoration: none;
-  background: #FECC00;
+  background: #fecc00;
   padding: 15px 15px 10px 43px;
   box-sizing: border-box;
   max-width: 220px;
@@ -19,11 +19,17 @@
       font-weight: bold;
       font-size: 18px;
       line-height: 1;
-      color: #2F2F30;
+      color: #2f2f30;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       text-decoration: none;
+      @include transition(0.2s, linear, border);
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        border-color: #2f2f30;
+      }
 
       @include xl-block {
         font-size: 24px;
@@ -31,7 +37,7 @@
     }
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       left: -28px;
       top: -2px;
@@ -51,8 +57,13 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 133%;
-    color: #BE9900;
+    color: #be9900;
     text-decoration: none;
+    @include transition(0.2s, linear, color);
+
+    &:hover {
+      color: #1e1e1e;
+    }
 
     @include xl-block {
       font-size: 15px;

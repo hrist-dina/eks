@@ -10,9 +10,10 @@ import { Map } from "%components%/map/Map";
 import { ModalBase } from "../classes/ModalBase";
 import { Quantity } from "%components%/quantity/Quantity";
 import { WhereBuy } from "%components%/where-buy/WhereBuy";
-import { BaronScroll } from "../classes/BaronScroll";
 import { InputMask } from "../classes/InputMask";
 import { Form } from "../classes/Form";
+import { FormAuth } from "../classes/FormAuth";
+
 
 $(document).ready(function() {
   new SliderMain(".js-slider-main");
@@ -25,6 +26,7 @@ $(document).ready(function() {
   new ModalBase();
   new Quantity();
   new InputMask().phone();
+  new FormAuth(".js-form-auth");
   new Map("map-barnaul", {
     location: [53.32387907112886, 83.64198349999995],
     center: [53.32387907112886, 83.64198349999995],
@@ -36,9 +38,6 @@ $(document).ready(function() {
     center: [55.883661068828225, 37.51370899999999],
     zoom: 17,
     hint: "Коровинское шоссе 35 стр.2"
-  });
-  new BaronScroll({
-    root: ".js-scroll"
   });
   new WhereBuy();
   new Form();

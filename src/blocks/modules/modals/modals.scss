@@ -3,9 +3,14 @@
   width: 100%;
   margin: auto;
 
+  &__form-error {
+    color: #fecc00;
+  }
+
   &-list {
     display: none;
   }
+
   &__head {
     display: flex;
     align-items: flex-end;

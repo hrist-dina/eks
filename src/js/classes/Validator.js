@@ -2,7 +2,6 @@ import $ from "jquery";
 
 export default class Validator {
   constructor(selectorForm, needShowMessage = true) {
-    console.log(selectorForm);
     if (typeof selectorForm === "string") {
       this.form = $(document).find(selectorForm);
     } else if (typeof selectorForm === "object") {

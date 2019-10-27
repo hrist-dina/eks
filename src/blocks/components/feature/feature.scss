@@ -8,7 +8,9 @@
     @include size(4);
     position: relative;
     height: 76px;
-    border: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #fff;
     box-sizing: border-box;
 
     background: radial-gradient(
@@ -17,7 +19,7 @@
       #4d5061 100%
     );
     margin-bottom: 12px;
-    @include transition(0.2s, linear, all);
+    @include transition(0.2s, linear, box-shadow);
 
     @include sm-block {
       margin-bottom: 24px;
@@ -34,7 +36,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      @include transition(0.2s, linear, all);
+      @include transition(0.2s, linear, box-shadow);
     }
 
     &:hover {
@@ -47,24 +49,48 @@
   }
 
   &__illuminate {
-    position: absolute;
+    margin-left: 24px;
+    margin-right: auto;
     background: #fecc00;
     height: 8px;
-    top: -4px;
-    left: 27px;
     width: 191px;
-    @include transition(0.2s, linear, all);
+    @include transition(0.2s, linear, box-shadow);
 
+    &-wrap {
+      position: absolute;
+      left: -2px;
+      overflow: hidden;
+      height: 30px;
+      width: #{calc(100% + 4px)};
+      top: -15px;
+      display: flex;
+      align-items: center;
+    }
+
+    &:after,
     &:before {
       content: "";
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: transparent;
+      top: -8px;
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+    }
+
+    &:before {
+      margin-left: -100%;
+      left: -8px;
+    }
+    &:after {
+      width: 300%;
+      margin-right: -300%;
+      right: -199px;
     }
   }
 
-  &__item:hover &__illuminate {
+  &__item:hover &__illuminate-wrap &__illuminate {
     box-shadow: 0 0 10px #fecc00;
   }
 

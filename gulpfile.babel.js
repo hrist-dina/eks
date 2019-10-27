@@ -31,11 +31,12 @@ import yargs from "yargs";
 const webpackConfig = require("./webpack.config.js"),
   argv = yargs.argv,
   production = !!argv.production,
+  assetDir = production ? "../assets/" : "./dist/",
   smartgrid = require("smart-grid"),
   paths = {
     views: {
       src: ["./src/views/index.pug", "./src/pages/*.pug"],
-      dist: "../assets/",
+      dist: assetDir,
       watch: [
         "./src/blocks/**/*.pug",
         "./src/pages/**/*.pug",
@@ -44,18 +45,18 @@ const webpackConfig = require("./webpack.config.js"),
     },
     styles: {
       src: "./src/styles/main.scss",
-      dist: "../assets/styles/",
+      dist: assetDir + "styles/",
       watch: ["./src/blocks/**/*.scss", "./src/styles/**/*.scss"]
     },
     scripts: {
       src: "./src/js/index.js",
-      dist: "../assets/js/",
+      dist: assetDir + "js/",
       watch: ["./src/blocks/**/*.js", "./src/js/**/*.js"]
     },
     svg: {
       src: "./src/img/svg/*.svg",
       watch: "./src/img/svg/*.svg",
-      dist: "../assets/img/sprites/"
+      dist: assetDir + "img/sprites/"
     },
     images: {
       src: [
@@ -63,21 +64,21 @@ const webpackConfig = require("./webpack.config.js"),
         "!./src/img/svg/*.svg",
         "!./src/img/favicon.{jpg,jpeg,png,gif}"
       ],
-      dist: "../assets/img/",
+      dist: assetDir + "img/",
       watch: "./src/img/**/*.{jpg,jpeg,png,gif,svg}"
     },
     fonts: {
       src: "./src/fonts/**/*.{ttf,otf,woff,woff2}",
-      dist: "../assets/fonts/",
+      dist: assetDir + "fonts/",
       watch: "./src/fonts/**/*.{ttf,otf,woff,woff2}"
     },
     favicons: {
       src: "./src/img/favicon.{jpg,jpeg,png,gif}",
-      dist: "../assets/img/favicons/"
+      dist: assetDir + "img/favicons/"
     },
     server_config: {
       src: "./src/.htaccess",
-      dist: "../assets/"
+      dist: assetDir
     }
   };
 
@@ -86,7 +87,7 @@ webpackConfig.devtool = production ? false : "cheap-eval-source-map";
 
 export const server = () => {
   browsersync.init({
-    server: "../assets/",
+    server: assetDir,
     port: 4000,
     notify: true
   });
@@ -100,7 +101,7 @@ export const server = () => {
 
 export const cleanFiles = () =>
   gulp
-    .src("../assets/*", { read: false })
+    .src(assetDir + "*", { read: false })
     .pipe(clean())
     .pipe(
       debug({
@@ -357,7 +358,7 @@ export const favs = () =>
 
 export const development = gulp.series(
   cleanFiles,
-  gulp.parallel(styles, scripts, svgsprites, images, fonts, favs),
+  gulp.parallel(views, styles, scripts, svgsprites, images, fonts, favs),
   gulp.parallel(server)
 );
 

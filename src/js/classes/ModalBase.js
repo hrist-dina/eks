@@ -115,25 +115,36 @@ class ModalBase {
   }
 
   static clear(element) {
-    $(element)
-      .find("input")
-      .filter(":text, :password, :file")
-      .val("")
-      .end()
-      .filter(":checkbox, :radio")
-      .removeAttr("checked")
-      .end()
-      .end()
-      .find("textarea")
-      .val("")
-      .end()
-      .find("select")
-      .prop("selectedIndex", 0)
-      .find("option:selected")
-      .removeAttr("selected")
-      .end()
-      .find("button[type=submit]")
-      .prop("disabled", false);
+    if (
+      $(element)
+        .find("input")
+        .hasClass("js-quantity-input")
+    ) {
+      $(element)
+        .find("input")
+        .filter(":text, :password, :file")
+        .val(1);
+    } else {
+      $(element)
+        .find("input")
+        .filter(":text, :password, :file")
+        .val("")
+        .end()
+        .filter(":checkbox, :radio")
+        .removeAttr("checked")
+        .end()
+        .end()
+        .find("textarea")
+        .val("")
+        .end()
+        .find("select")
+        .prop("selectedIndex", 0)
+        .find("option:selected")
+        .removeAttr("selected")
+        .end()
+        .find("button[type=submit]")
+        .prop("disabled", false);
+    }
     ModalBase.hideMessage();
     return this;
   }

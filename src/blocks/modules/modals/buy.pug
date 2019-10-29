@@ -1,0 +1,44 @@
+include ../../components/field/field
+include ../../components/quantity/quantity
+
+.modal.modal__auth.js-modal(data-modal-type='buy')
+    .modal__inner
+        .close.modal__close.js-modal-close
+        .modal__head
+            .modal__title Выберите склад
+        .modal__content
+            .catalog-detail__commerce
+                .catalog-detail__commerce-head
+                    .catalog-detail__commerce-discount
+                        span 5 999 ₽
+                        //.catalog-detail__commerce-mark
+                        //    | скидка 25%
+                    .catalog-detail__commerce-price
+                        b 5 999
+                        |
+                        | ₽
+                .catalog-detail__commerce-body
+                    .catalog-detail__commerce-stock
+                        .catalog-detail__commerce-name Склад в Барнауле
+                        .catalog-detail__commerce-availability
+                            span 957
+                            |
+                            | шт. в наличии
+                        .catalog-detail__commerce-quantyty
+                            +quantity(125)
+                        .catalog-detail__commerce-button
+                            a(href='#').btn.btn-yellow В корзину
+                    .catalog-detail__commerce-stock
+                        .catalog-detail__commerce-name Склад в Москве
+                        .catalog-detail__commerce-availability
+                            span 23
+                            |
+                            | шт. в наличии
+                        .catalog-detail__commerce-quantyty
+                            +quantity(125)
+                        .catalog-detail__commerce-button
+                            a(href='#').btn.btn-yellow В корзину
+            a(href='basket.html').btn.btn-yellow.modal__button-full Перейти к оформлению
+            
+            .modal__link-wrap
+                a(href='javascript:void(0)').modal__link.js-modal-close Продолжить покупки

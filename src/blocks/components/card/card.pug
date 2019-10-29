@@ -14,7 +14,7 @@ mixin card(item, isPresent=false, isSwiper=false)
                         if item.priceOld
                             .card__price-old=ruble(item.priceOld)
                         span=ruble(item.price)
-                    a(href='#').btn-yellow В корзину
+                    a(href='#' data-modal-type="buy").btn-yellow.js-modal-open В корзину
                 else if isPresent
                     .card__price !{bonus(item.price)}
                     a(href='#').btn-yellow Получить

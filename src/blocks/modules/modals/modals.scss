@@ -3,6 +3,14 @@
   width: 100%;
   margin: auto;
 
+  &__button-full {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
   &__form-error {
     color: #fecc00;
   }
@@ -33,7 +41,7 @@
     @include bg-main-theme-gradient();
     padding: 30px 25px 30px;
     @include xs-block {
-      padding: 56px 60px 125px;
+      padding: 56px 60px 90px;
     }
   }
 

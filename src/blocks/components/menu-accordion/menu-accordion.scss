@@ -138,11 +138,37 @@
 
   &__item > & &__item {
     &.active {
-      border-left: 4px solid #fecc00;
       box-sizing: border-box;
 
+      &:not(.has-child) {
+        & a {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+
       & > a {
-        background: rgba(255, 255, 255, 0.1);
+        position: relative;
+
+        &:after {
+          content: "";
+          position: absolute;
+          width: 4px;
+          height: 100%;
+          background: #fecc00;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: auto;
+          margin: auto;
+        }
+      }
+
+      &.has-child {
+        & > a {
+          &:after {
+            left: -10px;
+          }
+        }
       }
     }
 

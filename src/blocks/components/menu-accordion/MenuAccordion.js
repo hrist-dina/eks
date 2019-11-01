@@ -15,7 +15,9 @@ export class MenuAccordion {
   click() {
     $(this.list)
       .find("li.has-child")
-      .on("click", function() {
+      .on("click", function(e) {
+        if (e.target !== this) return;
+
         $(this)
           .children("ul")
           .slideToggle(300);

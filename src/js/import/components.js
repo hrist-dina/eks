@@ -13,6 +13,7 @@ import { WhereBuy } from "%components%/where-buy/WhereBuy";
 import { InputMask } from "../classes/InputMask";
 import { Form } from "../classes/Form";
 import { FormAuth } from "../classes/FormAuth";
+import { Sort } from "../classes/Sort";
 
 
 $(document).ready(function() {
@@ -41,4 +42,5 @@ $(document).ready(function() {
   });
   new WhereBuy();
   new Form();
+  new Sort();
 });

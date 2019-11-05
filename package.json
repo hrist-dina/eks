@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "gulp",
+    "bitrix": "gulp bitrix --production",
     "build": "gulp prod --production"
   },
   "devDependencies": {

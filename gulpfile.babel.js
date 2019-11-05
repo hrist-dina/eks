@@ -99,10 +99,20 @@ export const server = () => {
   gulp.watch(paths.images.watch, images);
 };
 
+export const watch = () => {
+    gulp.watch(paths.views.watch, views);
+    gulp.watch(paths.styles.watch, styles);
+    gulp.watch(paths.scripts.watch, scripts);
+    gulp.watch(paths.svg.watch, svgsprites);
+    gulp.watch(paths.images.watch, images);
+};
+
 export const cleanFiles = () =>
   gulp
     .src(assetDir + "*", { read: false })
-    .pipe(clean())
+    .pipe(clean({
+        force: true
+    }))
     .pipe(
       debug({
         title: "Cleaning..."
@@ -360,6 +370,12 @@ export const development = gulp.series(
   cleanFiles,
   gulp.parallel(views, styles, scripts, svgsprites, images, fonts, favs),
   gulp.parallel(server)
+);
+
+export const bitrix = gulp.series(
+    cleanFiles,
+    gulp.parallel(views, styles, scripts, svgsprites, images, fonts, favs),
+    gulp.parallel(watch)
 );
 
 export const prod = gulp.series(

@@ -17,10 +17,7 @@ export class BuyBlock extends BaseComponent {
             const quantity = this.$quantityInput.val();
             const modal = BaseModal.openModal('result');
 
-            console.log(quantity);
-            console.log(this.$quantityInput.attr('max'));
-
-            if (quantity > 0 && quantity <= this.$quantityInput.attr('max')) {
+            if (quantity > 0 && quantity <= parseInt(this.$quantityInput.attr('max'))) {
                 $.ajax({
                     url: '/ajax/basket/add/',
                     method: "post",

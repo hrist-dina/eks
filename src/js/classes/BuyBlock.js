@@ -9,6 +9,9 @@ export class BuyBlock extends BaseComponent {
         this.productId = this.$element.data('product-id');
         this.storeId = this.$element.data('store-id');
         this.onSubmit();
+        console.log(this.$element);
+        console.log(this.productId);
+        console.log(this.storeId);
     }
 
     onSubmit() {
@@ -31,6 +34,7 @@ export class BuyBlock extends BaseComponent {
                     success: function (response) {
                         if (response.success === 1) {
                             BaseModal.renderMessage(modal, "Товар добавлен");
+                            $(window).trigger('catalog.storeBlockUpdate', [response.data.STOCK_HTML]);
                         } else {
                             BaseModal.renderMessage(modal, response.error);
                         }

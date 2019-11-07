@@ -14,7 +14,7 @@ import {InputMask} from "../classes/InputMask";
 import {Form} from "../classes/Form";
 import {FormAuth} from "../classes/FormAuth";
 import {Sort} from "../classes/Sort";
-import {BuyBlock} from "../classes/BuyBlock";
+import {StoreBlock} from "../classes/StoreBlock";
 
 
 $(document).ready(function () {
@@ -44,7 +44,7 @@ $(document).ready(function () {
     new WhereBuy();
     new Form();
     new Sort();
-    $('.js-buy-block').each((i, el) => {
-        new BuyBlock(el);
+    $('.js-stores-wrap').each((i, el) => {
+        new StoreBlock(el);
     });
 });

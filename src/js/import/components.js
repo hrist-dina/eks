@@ -15,6 +15,7 @@ import {Form} from "../classes/Form";
 import {FormAuth} from "../classes/FormAuth";
 import {Sort} from "../classes/Sort";
 import {StoreBlock} from "../classes/StoreBlock";
+import {BuyModal} from "../classes/BuyModal";
 
 
 $(document).ready(function () {
@@ -46,5 +47,8 @@ $(document).ready(function () {
     new Sort();
     $('.js-stores-wrap').each((i, el) => {
         new StoreBlock(el);
+    });
+    $('.js-modal-add2basket').each((i, el) => {
+        new BuyModal(el);
     });
 });

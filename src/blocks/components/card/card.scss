@@ -99,6 +99,11 @@
     font-size: 24px;
     line-height: 29px;
     color: #fff;
+    min-height: 66px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
     span {
       font-style: normal;
       font-weight: bold;

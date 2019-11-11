@@ -1,0 +1,17 @@
+extends ../views/layouts/default
+block variables
+	- var title = "Прелоадер";
+	-
+		var breadcrumbs = [
+			{
+				name: 'Главная',
+				link: '#'
+			},
+			{
+				name: title,
+				link: ''
+			},
+		];
+
+block content
+	include ../blocks/components/preloader/preloader

@@ -16,6 +16,7 @@ import {FormAuth} from "../classes/FormAuth";
 import {Sort} from "../classes/Sort";
 import {StoreBlock} from "../classes/StoreBlock";
 import {BuyModal} from "../classes/BuyModal";
+import {Basket} from "../classes/Basket";
 
 
 $(document).ready(function () {
@@ -50,5 +51,8 @@ $(document).ready(function () {
     });
     $('.js-modal-add2basket').each((i, el) => {
         new BuyModal(el);
+    });
+    $('.js-basket').each((i, el) => {
+        new Basket(el);
     });
 });

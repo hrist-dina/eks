@@ -27,11 +27,11 @@ export class BuyBlock extends BaseComponent {
                     },
                     dataType: 'json',
 
-                    success: function (response) {
+                    success: (response) => {
                         if (response.success === 1) {
-                            $(window).trigger('catalog.storeBlockUpdate', [response.data.STOCK_HTML]);
                             $button.text('В корзине');
                             $button.addClass('btn-yellow_buyed');
+                            BX.onCustomEvent('OnBasketChange');
                         }
                     }
                 });

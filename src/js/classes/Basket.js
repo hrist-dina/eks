@@ -3,6 +3,7 @@ import $ from "jquery/dist/jquery";
 
 export class Basket extends BaseComponent {
     init() {
+        this.type = this.$element.data('type');
         this.initEvents();
     }
 
@@ -16,12 +17,13 @@ export class Basket extends BaseComponent {
                 method: "post",
                 data: {
                     'BASKET_ID': $currentItem.data('product-id'),
+                    'TYPE': this.type
                 },
                 dataType: 'json',
 
                 success: (response) => {
                     if (response.success === 1) {
-                        this.$element.html($(response.data.BASKET_HTML).html());
+                        this.render(response.data.BASKET_HTML);
                         this.initEvents();
                         $(document).trigger("preloader.close");
                     }
@@ -40,13 +42,13 @@ export class Basket extends BaseComponent {
                     method: "post",
                     data: {
                         'BASKET_ID': $currentItem.data('product-id'),
-                        'QUANTITY': quantity
+                        'QUANTITY': quantity,
+                        'TYPE': this.type
                     },
                     dataType: 'json',
-
                     success: (response) => {
                         if (response.success === 1) {
-                            $('.js-basket').html($(response.data.BASKET_HTML).html());
+                            this.render(response.data.BASKET_HTML);
                             this.initEvents();
                             $(document).trigger("preloader.close");
                         }
@@ -54,5 +56,20 @@ export class Basket extends BaseComponent {
                 });
             }
         });
+    }
+
+    render(html) {
+        const $html = $(html);
+
+        if (this.type === 'order') {
+            this.renderOrder($html);
+        } else {
+            this.$element.html($html.html());
+        }
+    }
+
+    renderOrder($requestHtml) {
+        this.$element.find('.js-basket-main').html($requestHtml.find('.js-basket-main').html());
+        this.$element.find('.js-basket-additional').html($requestHtml.find('.js-basket-additional').html());
     }
 }

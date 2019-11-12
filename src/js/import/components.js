@@ -18,6 +18,8 @@ import {StoreBlock} from "../classes/StoreBlock";
 import {BuyModal} from "../classes/BuyModal";
 import {Basket} from "../classes/Basket";
 import {Preloader} from "../classes/Preloader";
+import {OrderForm} from "../classes/OrderForm";
+
 
 
 $(document).ready(function () {
@@ -58,5 +60,8 @@ $(document).ready(function () {
     });
     $('.js-wrapper').each((i, el) => {
         new Preloader(el);
+    });
+    $('.js-form-order').each((i, el) => {
+        new OrderForm(el);
     });
 });

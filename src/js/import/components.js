@@ -19,8 +19,7 @@ import {BuyModal} from "../classes/BuyModal";
 import {Basket} from "../classes/Basket";
 import {Preloader} from "../classes/Preloader";
 import {OrderForm} from "../classes/OrderForm";
-
-
+import {OrderProcessed} from "../classes/OrderProcessed";
 
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
@@ -60,6 +59,9 @@ $(document).ready(function () {
     });
     $('.js-wrapper').each((i, el) => {
         new Preloader(el);
+    });
+    $('.js-order-processed').each((i, el) => {
+        new OrderProcessed(el);
     });
     $('.js-form-order').each((i, el) => {
         new OrderForm(el);

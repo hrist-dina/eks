@@ -5,6 +5,13 @@ export class Basket extends BaseComponent {
     init() {
         this.type = this.$element.data('type');
         this.initEvents();
+
+        $(document).on("orderProcessed.open", () => {
+            $('.js-title').slideUp();
+            this.$element.slideUp(500, () => {
+                this.$element.remove();
+            });
+        });
     }
 
     initEvents() {

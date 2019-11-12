@@ -11,12 +11,10 @@ export class OrderForm extends Form {
     onSubmit() {
         this.$form.on("submit", (e) => {
             e.preventDefault();
-            let validator = new Validator($(this));
-            if (validator.init()) {
+            let validator = new Validator(this.$form);
 
-            } else {
-                let $formErrors = this.$form.find('.js-form-auth-errors');
-
+            if (!validator.init()) {
+                $(document).trigger("preloader.open");
                 $.ajax({
                     url: this.$form.attr('action'),
                     method: "post",
@@ -25,9 +23,9 @@ export class OrderForm extends Form {
 
                     success: function (response) {
                         if (response.success === 1) {
-                            window.location = window.location;
+                            $(document).trigger('orderProcessed.open', [response.data.ORDER_ID]);
+                            $(document).trigger("preloader.close");
                         } else {
-                            $formErrors.html(response.error);
                         }
                     }
                 });

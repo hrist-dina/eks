@@ -17,6 +17,7 @@ import {Sort} from "../classes/Sort";
 import {StoreBlock} from "../classes/StoreBlock";
 import {BuyModal} from "../classes/BuyModal";
 import {Basket} from "../classes/Basket";
+import {Preloader} from "../classes/Preloader";
 
 
 $(document).ready(function () {
@@ -54,5 +55,8 @@ $(document).ready(function () {
     });
     $('.js-basket').each((i, el) => {
         new Basket(el);
+    });
+    $('.js-wrapper').each((i, el) => {
+        new Preloader(el);
     });
 });

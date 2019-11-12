@@ -9,6 +9,7 @@ export class Basket extends BaseComponent {
     initEvents() {
         this.$element.find('.js-basket-item-remove').on("click", (e) => {
             const $currentItem = $(e.target).closest('.js-basket-item');
+            $(document).trigger("preloader.open");
 
             $.ajax({
                 url: '/ajax/basket/remove/',
@@ -22,6 +23,7 @@ export class Basket extends BaseComponent {
                     if (response.success === 1) {
                         this.$element.html($(response.data.BASKET_HTML).html());
                         this.initEvents();
+                        $(document).trigger("preloader.close");
                     }
                 }
             });
@@ -30,6 +32,7 @@ export class Basket extends BaseComponent {
         this.$element.find('.js-basket-item-quantity').on("change", (e) => {
             const $currentItem = $(e.target).closest('.js-basket-item');
             const quantity = $currentItem.find('.js-basket-item-quantity').val();
+            $(document).trigger("preloader.open");
 
             if (quantity > 0 && quantity <= parseInt($currentItem.find('.js-basket-item-quantity').attr('max'))) {
                 $.ajax({
@@ -45,6 +48,7 @@ export class Basket extends BaseComponent {
                         if (response.success === 1) {
                             $('.js-basket').html($(response.data.BASKET_HTML).html());
                             this.initEvents();
+                            $(document).trigger("preloader.close");
                         }
                     }
                 });

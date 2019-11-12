@@ -13,6 +13,7 @@ export class BuyBlock extends BaseComponent {
     onSubmit() {
         this.$addButton.on("click", (e) => {
             e.preventDefault();
+            const $button = $(e.target);
             const quantity = this.$quantityInput.val();
 
             if (quantity > 0 && quantity <= parseInt(this.$quantityInput.attr('max'))) {
@@ -29,7 +30,8 @@ export class BuyBlock extends BaseComponent {
                     success: function (response) {
                         if (response.success === 1) {
                             $(window).trigger('catalog.storeBlockUpdate', [response.data.STOCK_HTML]);
-                            alert('Товар в корзине. TODO:переделать');
+                            $button.text('В корзине');
+                            $button.addClass('btn-yellow_buyed');
                         }
                     }
                 });

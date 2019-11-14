@@ -6,6 +6,7 @@ export class OrderHistoryItem extends BaseComponent {
         this.$element.find('.js-order-repeat').on('click', (e)=> {
             const $el = $(e.target);
             const orderId = $el.data('id');
+            $(document).trigger("preloader.open");
 
             $.ajax({
                 url: '/ajax/order/repeat/',
@@ -17,7 +18,9 @@ export class OrderHistoryItem extends BaseComponent {
 
                 success: (response) => {
                     if (response.success === 1) {
-                        window.location.reload();
+                        if($el.data('reload') !== 'false') {
+                            window.location.reload();
+                        }
                     } else {
                     }
                 }

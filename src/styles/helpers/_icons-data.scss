@@ -56,6 +56,10 @@
   @return "data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.2929 5H0.5C0.223858 5 0 4.77614 0 4.5C0 4.22386 0.223858 4 0.5 4H10.2929L7.14645 0.853554C6.95118 0.658292 6.95118 0.341709 7.14645 0.146447C7.34171 -0.0488155 7.65829 -0.0488155 7.85355 0.146447L11.8536 4.14645C12.0488 4.34171 12.0488 4.65829 11.8536 4.85355L7.85355 8.85355C7.65829 9.04882 7.34171 9.04882 7.14645 8.85355C6.95118 8.65829 6.95118 8.34171 7.14645 8.14645L10.2929 5Z' fill='%23#{$fill}'/%3E%3C/svg%3E%0A"
 }
 
+@function icon-arrow-middle($fill:'fff') {
+  @return "data:image/svg+xml,%3Csvg width='16' height='9' viewBox='0 0 16 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 4.5H15M15 4.5L11.1864 8M15 4.5L11.1864 1' stroke='%23#{$fill}' /%3E%3C/svg%3E%0A"
+}
+
 @function icon-arrow-triangle($fill:'fff', $opacity:'1') {
   @return "data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.41 0.840088L6 5.42009L10.59 0.840088L12 2.25009L6 8.25009L0 2.25009L1.41 0.840088Z' fill='%23#{$fill}' fill-opacity='#{$opacity}'/%3E%3C/svg%3E%0A"
 }

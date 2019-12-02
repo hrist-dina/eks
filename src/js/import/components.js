@@ -21,6 +21,7 @@ import {Preloader} from "../classes/Preloader";
 import {OrderForm} from "../classes/OrderForm";
 import {OrderProcessed} from "../classes/OrderProcessed";
 import {OrderHistoryItem} from "../classes/OrderHistoryItem";
+import {BuyBonusComponent} from "../classes/BuyBonusComponent";
 
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
@@ -70,4 +71,8 @@ $(document).ready(function () {
     $('.js-order-history-item').each((i, el) => {
         new OrderHistoryItem(el);
     });
+    $('.js-bonusBuyComponent').each((i, el) => {
+        new BuyBonusComponent(el);
+    });
+
 });

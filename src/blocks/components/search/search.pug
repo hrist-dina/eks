@@ -1,3 +1,43 @@
-form(action='' method='get').search
-    input(type='text' name='q' placeholder='Поиск')
-    button.btn.btn-search(type='submit')
+-
+    var searchResult = [
+        {
+            img: 'img/search/item.png',
+            name: '3COB, 6W, 6500K/4500K/3000K, 520ЛМ, D100*75*37, 40шт В',
+            price: '5 999'
+        },
+        {
+            img: 'img/search/item.png',
+            name: '3COB, 12W, 6500K/4500K/3000K, 1080ЛМ, D160*125*37, 30шт, В',
+            price: '4 999'
+        },
+        {
+            img: 'img/search/item.png',
+            name: '3R2R, 7W, 5000K+синий, 630ЛМ, D100*95*35, 50шт В',
+            price: '7 599'
+        },
+        {
+            img: 'img/search/item.png',
+            name: '3COB, 6W, 6500K/4500K/3000K, 520ЛМ, D100*75*37, 40шт В',
+            price: '6 559'
+        }
+    ]
+.search.js-search
+    form(action='' method='get').search__inner
+        input(type='text' name='q' placeholder='Поиск' autocomplete='off')
+        button.btn.btn-search(type='submit')
+    .search__result
+        .search__result-inner
+            for item in searchResult
+                .search__result-item
+                    a(href='#').search__result-left
+                        .search__result-img
+                            img(src=item.img alt=item.name title=item.name)
+                        .search__result-name=item.name
+                    .search__result-rigth
+                        .search__result-price !{item.price} ₽
+                    a.btn-yellow.js-modal-open(href='#' data-modal-type='buy') В корзину
+
+        .search__result-bottom
+            a(href='#').search__result-all
+                span.search__result-icon
+                p Показать все результаты поиска

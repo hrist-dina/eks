@@ -76,13 +76,13 @@
 
     &-left {
       display: none;
-      width: 42%;
+      width: 40%;
 
       @include md-block {
         display: inline-block;
       }
       @include lg-block {
-        width: 52%;
+        width: 38%;
       }
     }
 
@@ -91,30 +91,40 @@
       display: flex;
       flex-direction: column;
       @include md-block {
-        width: 58%;
+        width: 60%;
         align-items: center;
         justify-content: space-between;
         flex-direction: row;
       }
 
       @include lg-block {
-        width: 48%;
+        width: 62%;
       }
     }
   }
 
-  & .search {
+  &__search {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    top: 0;
+    align-self: flex-start;
+
+    @include xl-block {
+      max-width: 68.2%;
+    }
+
     @include lg-block {
-      max-width: 368px;
+      max-width: 65%;
     }
 
     @include md-block {
-      max-width: 280px;
+      max-width: 55%;
     }
   }
 
   @include to($break_md - 1px) {
-    &.is-scroll .search {
+    &.is-scroll &__search {
       margin: 0 40px;
       width: #{calc(100% - 80px)};
     }

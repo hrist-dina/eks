@@ -18,7 +18,7 @@ export class BuyBlock extends BaseComponent {
 
             if (quantity > 0 && quantity <= parseInt(this.$quantityInput.attr('max'))) {
                 $.ajax({
-                    url: '/ajax/basket/add/',
+                    url: '/ajax-virtual/basket/add/',
                     method: "post",
                     data: {
                         'PRODUCT_ID': this.productId,

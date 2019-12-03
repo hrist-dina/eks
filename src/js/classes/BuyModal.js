@@ -20,7 +20,7 @@ export class BuyModal extends BaseComponent {
 
     reloadModal(productId) {
         $.ajax({
-            url: '/ajax/catalog/getModal/',
+            url: '/ajax-virtual/catalog/getModal/',
             method: "post",
             data: {
                 'PRODUCT_ID': productId,

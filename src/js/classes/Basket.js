@@ -20,7 +20,7 @@ export class Basket extends BaseComponent {
             $(document).trigger("preloader.open");
 
             $.ajax({
-                url: '/ajax/basket/remove/',
+                url: '/ajax-virtual/basket/remove/',
                 method: "post",
                 data: {
                     'BASKET_ID': $currentItem.data('product-id'),
@@ -45,7 +45,7 @@ export class Basket extends BaseComponent {
 
             if (quantity > 0 && quantity <= parseInt($currentItem.find('.js-basket-item-quantity').attr('max'))) {
                 $.ajax({
-                    url: '/ajax/basket/quantity/',
+                    url: '/ajax-virtual/basket/quantity/',
                     method: "post",
                     data: {
                         'BASKET_ID': $currentItem.data('product-id'),

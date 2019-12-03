@@ -15,7 +15,7 @@ export class BuyBonusComponent extends BaseComponent {
             e.preventDefault();
 
             $.ajax({
-                url: '/ajax/basket/addBonusProduct/',
+                url: '/ajax-virtual/basket/addBonusProduct/',
                 method: "post",
                 data: {
                     'PRODUCT_ID': this.productId,

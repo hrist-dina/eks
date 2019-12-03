@@ -9,7 +9,7 @@ export class OrderHistoryItem extends BaseComponent {
             $(document).trigger("preloader.open");
 
             $.ajax({
-                url: '/ajax/order/repeat/',
+                url: '/ajax-virtual/order/repeat/',
                 method: "post",
                 data: {
                     ORDER_ID: orderId

@@ -21,7 +21,7 @@ import {Preloader} from "../classes/Preloader";
 import {OrderForm} from "../classes/OrderForm";
 import {OrderProcessed} from "../classes/OrderProcessed";
 import {OrderHistoryItem} from "../classes/OrderHistoryItem";
-import { Search } from "../../blocks/components/search/Search";
+import {Search} from "../../blocks/components/search/Search";
 import {BuyBonusComponent} from "../classes/BuyBonusComponent";
 
 $(document).ready(function () {
@@ -76,6 +76,4 @@ $(document).ready(function () {
         new BuyBonusComponent(el);
     });
     new Search();
-
-
 });

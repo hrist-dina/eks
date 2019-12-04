@@ -75,7 +75,7 @@ export class Search {
         let list = '';
 
         for (let key in data) {
-            list = list + '<div class="search__result-item"><a class="search__result-left" href="#">\n' +
+            list = list + '<div class="search__result-item"><a class="search__result-left" href="'+ data[key].DETAIL_PAGE_URL +'">\n' +
                 '                                                    <div class="search__result-img"><img src="' + data[key].PICTURE.src + '"></div>\n' +
                 '                                                    <div class="search__result-name">' + data[key].NAME + '</div></a>\n' +
                 '                                                <div class="search__result-rigth">\n' +

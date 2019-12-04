@@ -35,10 +35,17 @@ export class Search {
                         request = $.parseJSON(request);
 
                         if (request.success == 1) {
-                            let renderedResults = Search.renderNewResult(request.data.ITEMS);
-
+                            let renderedResults = '';
                             this.clearContainer();
+
+                            if (request.data.AUTH == true) {
+                                renderedResults = Search.renderNewResult(request.data.ITEMS);
+                            } else {
+                                renderedResults = Search.renderNewResultNonAuth(request.data.ITEMS);
+                            }
+
                             this.addResultInContainer(renderedResults);
+
 
                             this.resultContainer.find('.js-modal-add2basket-open').on('click', (e) => {
                                 const $el = $(e.target);
@@ -75,13 +82,26 @@ export class Search {
         let list = '';
 
         for (let key in data) {
-            list = list + '<div class="search__result-item"><a class="search__result-left" href="'+ data[key].DETAIL_PAGE_URL +'">\n' +
+            list = list + '<div class="search__result-item"><a class="search__result-left" href="' + data[key].DETAIL_PAGE_URL + '">\n' +
                 '                                                    <div class="search__result-img"><img src="' + data[key].PICTURE.src + '"></div>\n' +
                 '                                                    <div class="search__result-name">' + data[key].NAME + '</div></a>\n' +
                 '                                                <div class="search__result-rigth">\n' +
                 '                                                    <div class="search__result-price">' + data[key].PRICE + '</div>\n' +
                 '                                                </div><a class="btn-yellow js-modal-add2basket-open" href="javascript:void(0);" data-product-id="' + data[key].ID + '" >В корзину</a>\n' +
                 '                                            </div>';
+        }
+
+        return list;
+    }
+
+    static renderNewResultNonAuth(data) {
+        let list = '';
+
+        for (let key in data) {
+            list = list + '<div class="search__result-item"><a class="search__result-left" href="' + data[key].DETAIL_PAGE_URL + '">\n' +
+                '                                                    <div class="search__result-img"><img src="' + data[key].PICTURE.src + '"></div>\n' +
+                '                                                    <div class="search__result-name">' + data[key].NAME + '</div></a>\n' +
+                '                                           </div>';
         }
 
         return list;

@@ -1,5 +1,4 @@
 import $ from "jquery";
-import {BaronScroll} from "../../../js/classes/BaronScroll";
 
 export class Search {
     constructor(selector = ".js-search") {
@@ -41,8 +40,9 @@ export class Search {
                             this.clearContainer();
                             this.addResultInContainer(renderedResults);
 
-                            new BaronScroll({
-                                root: '.js-result-container'
+                            this.resultContainer.find('.js-modal-add2basket-open').on('click', (e) => {
+                                const $el = $(e.target);
+                                $(window).trigger('catalog.getBuyModal', [$el.data('product-id')]);
                             });
                         }
                     }
@@ -75,13 +75,12 @@ export class Search {
         let list = '';
 
         for (let key in data) {
-            console.log(data[key]);
             list = list + '<div class="search__result-item"><a class="search__result-left" href="#">\n' +
                 '                                                    <div class="search__result-img"><img src="' + data[key].PICTURE.src + '"></div>\n' +
                 '                                                    <div class="search__result-name">' + data[key].NAME + '</div></a>\n' +
                 '                                                <div class="search__result-rigth">\n' +
-                '                                                    <div class="search__result-price">5 999 ₽</div>\n' +
-                '                                                </div><a class="btn-yellow js-modal-open" href="#" data-modal-type="buy">В корзину</a>\n' +
+                '                                                    <div class="search__result-price">' + data[key].PRICE + '</div>\n' +
+                '                                                </div><a class="btn-yellow js-modal-add2basket-open" href="javascript:void(0);" data-product-id="' + data[key].ID + '" >В корзину</a>\n' +
                 '                                            </div>';
         }
 

@@ -38,6 +38,7 @@
   }
 
   &__inner {
+    transform-style: preserve-3d;
     @include bg-main-theme-gradient();
     padding: 30px 25px 30px;
     @include xs-block {

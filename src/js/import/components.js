@@ -23,6 +23,7 @@ import {OrderProcessed} from "../classes/OrderProcessed";
 import {OrderHistoryItem} from "../classes/OrderHistoryItem";
 import {Search} from "../../blocks/components/search/Search";
 import {BuyBonusComponent} from "../classes/BuyBonusComponent";
+import {FormCooperation} from "../classes/FormCooperation";
 
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
@@ -74,6 +75,9 @@ $(document).ready(function () {
     });
     $('.js-bonusBuyComponent').each((i, el) => {
         new BuyBonusComponent(el);
+    });
+    $('.js-cooperationForm').each((i, el) => {
+        new FormCooperation(el);
     });
     new Search();
 });

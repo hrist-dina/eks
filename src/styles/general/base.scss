@@ -43,6 +43,10 @@ main {
   margin: 0 auto;
   padding-left: 16px;
   padding-right: 16px;
+  
+  &_text {
+    color: #FFF;
+  }
 }
 
 input[type="number"]::-webkit-inner-spin-button,

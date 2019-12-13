@@ -19,7 +19,7 @@ export class OrderHistoryItem extends BaseComponent {
                 success: (response) => {
                     if (response.success === 1) {
                         if($el.data('reload') !== 'false') {
-                            window.location.reload();
+                            window.location = '/cart/';
                         }
                     } else {
                     }

@@ -24,6 +24,7 @@ import {OrderHistoryItem} from "../classes/OrderHistoryItem";
 import {Search} from "../../blocks/components/search/Search";
 import {BuyBonusComponent} from "../classes/BuyBonusComponent";
 import {FormCooperation} from "../classes/FormCooperation";
+import {ProfileForm} from "../classes/ProfileForm";
 
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
@@ -78,6 +79,9 @@ $(document).ready(function () {
     });
     $('.js-cooperationForm').each((i, el) => {
         new FormCooperation(el);
+    });
+    $('.js-form-profile').each((i, el) => {
+        new ProfileForm(el);
     });
     new Search();
 });

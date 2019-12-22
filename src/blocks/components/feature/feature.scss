@@ -7,7 +7,7 @@
     @include size-sm(2);
     @include size(4);
     position: relative;
-    height: 76px;
+    min-height: 76px;
     border-bottom: 2px solid #fff;
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
@@ -62,7 +62,7 @@
       overflow: hidden;
       height: 30px;
       width: #{calc(100% + 4px)};
-      top: -15px;
+      top: -14px;
       display: flex;
       align-items: center;
     }

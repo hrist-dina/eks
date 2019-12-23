@@ -1,5 +1,7 @@
 import {BaseComponent} from "./base-component";
 import $ from "jquery/dist/jquery";
+import {BaseModal} from "./base-modal.js";
+
 
 export class BuyBlock extends BaseComponent {
     init() {
@@ -32,6 +34,8 @@ export class BuyBlock extends BaseComponent {
                             $button.text('В корзине');
                             $button.addClass('btn-yellow_buyed');
                             BX.onCustomEvent('OnBasketChange');
+                        } else {
+                            BaseModal.showError('Ошибка', response.error)
                         }
                     }
                 });

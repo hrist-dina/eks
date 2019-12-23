@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "gulp",
     "bitrix": "gulp bitrix --production",
+    "bitrixjs": "gulp scripts --production",
     "build": "gulp prod --production"
   },
   "devDependencies": {

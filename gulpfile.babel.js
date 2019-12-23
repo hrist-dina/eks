@@ -378,6 +378,10 @@ export const bitrix = gulp.series(
     gulp.parallel(watch)
 );
 
+export const bitrixjs = gulp.series(
+    gulp.parallel(scripts)
+);
+
 export const prod = gulp.series(
   cleanFiles,
   serverConfig,

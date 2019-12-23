@@ -39,11 +39,19 @@ export class Basket extends BaseComponent {
         });
 
         this.$element.find('.js-basket-item-quantity').on("change", (e) => {
-            const $currentItem = $(e.target).closest('.js-basket-item');
-            const quantity = $currentItem.find('.js-basket-item-quantity').val();
-            $(document).trigger("preloader.open");
+            this.$currentItem = $(e.target).closest('.js-basket-item');
+            this.quantity = this.$currentItem.find('.js-basket-item-quantity').val();
+            this.maxAddCount = parseInt(this.$currentItem.find('.js-basket-item-quantity').attr('data-max'));
+            this.defaultValue = parseInt(this.$currentItem.find('.js-basket-item-quantity').attr('data-defaultValue'));
 
-            if (quantity > 0 && quantity <= parseInt($currentItem.find('.js-basket-item-quantity').attr('max'))) {
+
+            let quantity = this.quantity;
+            let maxAddCount = this.maxAddCount;
+            let $currentItem = this.$currentItem;
+
+            if (quantity > 0 && quantity <= maxAddCount) {
+                $(document).trigger("preloader.open");
+
                 $.ajax({
                     url: '/ajax-virtual/basket/quantity/',
                     method: "post",
@@ -61,8 +69,58 @@ export class Basket extends BaseComponent {
                         }
                     }
                 });
+            } else if (quantity > maxAddCount) {
+                $currentItem.find('.js-basket-item-quantity').val(maxAddCount);
             }
         });
+    }
+
+    debounce(callback, wait, immediate = false) {
+        let timeout = null
+
+        return function () {
+            const callNow = immediate && !timeout
+            const next = () => callback.apply(this, arguments)
+
+            clearTimeout(timeout)
+            timeout = setTimeout(next, wait)
+
+            if (callNow) {
+                next()
+            }
+        }
+    }
+
+    sendQuantity() {
+        console.log('asdasd');
+
+        let quantity = this.quantity;
+        let maxAddCount = this.maxAddCount;
+        let $currentItem = this.$currentItem;
+
+        if (quantity > 0 && quantity <= maxAddCount) {
+            $(document).trigger("preloader.open");
+
+            $.ajax({
+                url: '/ajax-virtual/basket/quantity/',
+                method: "post",
+                data: {
+                    'BASKET_ID': $currentItem.data('product-id'),
+                    'QUANTITY': quantity,
+                    'TYPE': this.type
+                },
+                dataType: 'json',
+                success: (response) => {
+                    if (response.success === 1) {
+                        this.render(response.data.BASKET_HTML);
+                        this.initEvents();
+                        $(document).trigger("preloader.close");
+                    }
+                }
+            });
+        } else if (quantity > maxAddCount) {
+            $currentItem.find('.js-basket-item-quantity').val(maxAddCount);
+        }
     }
 
     render(html) {

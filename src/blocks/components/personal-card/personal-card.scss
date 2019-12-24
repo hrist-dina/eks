@@ -3,6 +3,7 @@
 
   &__list {
     @include row-flex();
+    margin-bottom: -20px;
   }
 
   &__list & {
@@ -12,10 +13,6 @@
     @include size(4);
 
     margin-bottom: 20px;
-
-    @include xl-block {
-      margin-bottom: 0;
-    }
   }
 
   &__head {

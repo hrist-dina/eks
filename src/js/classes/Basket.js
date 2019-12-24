@@ -44,7 +44,6 @@ export class Basket extends BaseComponent {
             this.maxAddCount = parseInt(this.$currentItem.find('.js-basket-item-quantity').attr('data-max'));
             this.defaultValue = parseInt(this.$currentItem.find('.js-basket-item-quantity').attr('data-defaultValue'));
 
-
             let quantity = this.quantity;
             let maxAddCount = this.maxAddCount;
             let $currentItem = this.$currentItem;

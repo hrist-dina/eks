@@ -12,7 +12,7 @@ export class Quantity {
   init() {
     this.onMinus();
     this.onPlus();
-    this.onChange();
+    // this.onChange();
   }
 
   onPlus() {

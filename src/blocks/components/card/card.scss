@@ -39,7 +39,10 @@
   }
 
   &__inner {
-    padding: 30px;
+    padding: 30px 20px;
+    @include xl-block {
+      padding: 30px;
+    }
     @include lg-block {
       padding: 40px;
     }

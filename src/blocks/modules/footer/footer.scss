@@ -74,9 +74,8 @@
       @include xl-block {
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
         flex-wrap: nowrap;
-        padding-left: 40px;
       }
 
       & .social {

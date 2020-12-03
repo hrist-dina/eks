@@ -25,6 +25,7 @@ import {Search} from "../../blocks/components/search/Search";
 import {BuyBonusComponent} from "../classes/BuyBonusComponent";
 import {FormCooperation} from "../classes/FormCooperation";
 import {ProfileForm} from "../classes/ProfileForm";
+import {PhoneConfirm} from "../classes/PhoneConfirm";
 
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
@@ -53,6 +54,7 @@ $(document).ready(function () {
     new WhereBuy();
     new Form();
     new Sort();
+    new PhoneConfirm()
     $('.js-stores-wrap').each((i, el) => {
         new StoreBlock(el);
     });

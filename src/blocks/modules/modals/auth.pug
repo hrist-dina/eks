@@ -1,15 +1,10 @@
 include ../../components/field/field
+include base
 
-.modal.modal__auth.js-modal(data-modal-type='auth')
-    .modal__inner
-        .close.modal__close.js-modal-close
-        .modal__head
-            .modal__title Войти
-            a(href='registration.html').modal__link Регистрация
-        .modal__content
-            form(action='', method='post').modal__form-auth.js-form.validator
-                +field('Электронная почта', 'email', '', '', 'text', {'validator-require': 'true', 'validator-type': 'email'})
-                +field('Пароль', 'password', '', '', 'password', {'validator-require': 'true'})
-                button(type='submit').btn.btn-yellow.modal__button-auth Войти
-                .modal__link-wrap
-                    a(href='restore-password.html').modal__link.modal__link-forgot Забыли пароль?
++modal('auth', 'Войти', true)
+    form(action='', method='post').modal__form-auth.js-form.validator
+        +field('Электронная почта', 'email', '', '', 'text', {'validator-require': 'true', 'validator-type': 'email'})
+        +field('Пароль', 'password', '', '', 'password', {'validator-require': 'true'})
+        button(type='submit').btn.btn-yellow.modal__button-auth Войти
+        .modal__link-wrap
+            a(href='restore-password.html').modal__link.modal__link-forgot Забыли пароль?

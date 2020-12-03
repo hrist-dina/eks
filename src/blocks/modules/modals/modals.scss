@@ -119,6 +119,7 @@
 
   &__button {
     &-auth {
+      display: block;
       margin-top: 24px;
       width: 100%;
     }
@@ -143,7 +144,124 @@
     }
   }
 
-  &__auth {
+  &__policy {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 0.7;
+    margin-top: 12px;
+  }
+
+  &__phone-confirm {
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration-line: underline;
+    color: #FECC00;
+    opacity: 0.7;
+    margin-top: 16px;
+  }
+
+  &__phone-confirm-block {
+    margin-top: 12px;
+    margin-bottom: 18px;
+    &.hide {
+      display: none;
+    }
+  }
+
+  &__auth,
+  &__buy,
+  &__default {
     max-width: 530px;
+  }
+
+  &__study-register & {
+    &__inner {
+      @include xs-block {
+        padding-top: 53px;
+        padding-bottom: 40px;
+      }
+    }
+  }
+}
+
+.phone-confirm {
+  @include xs-block {
+    flex-direction: row;
+    margin-left: -60px;
+    margin-right: -60px;
+    padding: 14px 32px 32px 60px;
+  }
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  margin-left: -30px;
+  margin-right: -30px;
+  padding: 14px 30px;
+
+
+  &__data {
+    &-text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      color: rgba(45, 45, 57, .7);
+    }
+  }
+
+  &__again {
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(45, 45, 57, .7);
+    text-decoration-line: underline;
+    margin-top: 5px;
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: .5;
+    }
+  }
+
+  &__field {
+    @include xs-block {
+      max-width: 233px;
+      margin-right: 16px;
+    }
+  }
+
+  &__data {
+    @include xs-block {
+      width: #{calc(100% - 240px)};
+    }
+    margin-top: 16px;
+  }
+
+  & .field {
+    margin-top: 0;
+    & input {
+      color: #2D2D39;
+      border-color: #2D2D39;
+
+      &:focus {
+        border-color: #14141a;
+      }
+    }
+    & p {
+      font-size: 15px;
+      line-height: 18px;
+      color: rgba(45, 45, 57, .7);
+    }
   }
 }

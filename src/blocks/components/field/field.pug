@@ -7,10 +7,15 @@ mixin field(title, name, value, placeholder, type='text', data = false)
             }
         }
 
-    label.field(class=name === 'search'? 'field-search' : '')
+    label.field(class={'field-search': name === 'search'})
         if title
             p=title
-        input(type=type name=name value=value placeholder=placeholder class=name === 'phone' ? 'js-input-mask' : '')&attributes(dataAttr)
+        input(
+            type=type
+            name=name
+            value=value
+            placeholder=placeholder
+            class={'js-input-mask': name === 'phone'})&attributes(dataAttr)
 
 mixin textarea(title, name, placeholder)
     label.field

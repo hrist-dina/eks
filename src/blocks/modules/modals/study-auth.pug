@@ -1,0 +1,18 @@
+include ../../components/field/field
+include base
+
++modal('study-auth', 'Вход')
+    form(action='' method='post').modal__form.js-form.validator
+        +field('Электронная почта', 'email', '', '', 'text',
+            {
+                'validator-require': 'true',
+                'validator-type': 'email'
+            }
+        )
+        +field('Пароль', 'password', '', '', 'password', {'validator-require': 'true'})
+        button(type='submit').btn.btn-yellow.modal__button-auth Войти
+        .modal__link-wrap
+            a(
+                href='javascript:void(0)'
+                data-modal-type='study-restore-password'
+            ).modal__link.modal__link-forgot.js-modal-open Восстановить пароль

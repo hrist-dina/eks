@@ -1,0 +1,41 @@
+include ../../components/field/field
+include base
+
++modal('study-register', 'Регистрация')
+    form(action='' method='post').modal__form.js-form.validator
+        +field('Ф.И.О.*', 'name', '', '', 'text', {'validator-require': 'true'})
+        +field('Город*', 'city', '', '', 'text', {'validator-require': 'true'})
+        +field('Электронная почта*', 'email', '', '', 'text',
+            {
+                'validator-require': 'true',
+                'validator-type': 'email'
+            }
+        )
+        +field('Пароль*', 'password', '', '', 'password', {'validator-require': 'true'})
+        +field('Телефон*', 'phone', '', '', 'text',
+            {'validator-require': 'true'}
+        ).js-phone-confirm-input
+        a(
+            href='javascript:void(0)'
+            data-confirm-url='test'
+        ).modal__phone-confirm.js-phone-confirm-link Подтвердите номер телефона*
+        .modal__phone-confirm-block.hide.js-phone-confirm-block
+            .phone-confirm.js-phone-confirm(data-time="120")
+                .phone-confirm__field
+                    +field('Код', 'code', '', '', 'text')
+                .phone-confirm__data
+                    .phone-confirm__data-text
+                        | Получить новый код сможете через
+                        |
+                        b.js-phone-confirm-timer
+                    a(
+                        href='javascript:void(0)'
+                    ).phone-confirm__again.disabled.js-phone-confirm-again Выслать код повторно
+        button(type='submit').btn.btn-yellow.modal__button-auth Зарегистрироваться
+        .modal__policy
+            | Нажимая на кнопку Вы соглашаетесь с политикой конфиденциальности
+        .modal__link-wrap
+            a(
+                href='javascript:void(0)'
+                data-modal-type='study-auth'
+            ).modal__link.modal__link-forgot.js-modal-open Войти

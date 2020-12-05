@@ -6,9 +6,10 @@ mixin modal(type, title, needReg)
     )&attributes(attributes)
         .modal__inner
             .close.modal__close.js-modal-close
-            .modal__head
-                .modal__title=title
-                if needReg
-                    a(href='registration.html').modal__link Регистрация
+            if title
+                .modal__head
+                    .modal__title=title
+                    if needReg
+                        a(href='registration.html').modal__link Регистрация
             .modal__content
                 block

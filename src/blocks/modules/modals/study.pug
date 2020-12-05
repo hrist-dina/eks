@@ -1,0 +1,23 @@
+include ../../components/field/field
+include base
+
++modal('study')
+    .modal__content-head
+        span.modal__custom-title Приветствую на обучении EKS!
+    .video-response.modal__video
+        iframe(
+            width='890'
+            height='523'
+            src='https://www.youtube.com/embed/9hjmJNNZ7Zg?enablejsapi=1&controls=0&fs=0&iv_load_policy=3&rel=0&showinfo=0&loop=1&start=1'
+            frameborder='0'
+            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+            allowfullscreen
+        )
+    a(
+        href='javascript:void(0)'
+        data-modal-type='study-register'
+    ).btn.btn-yellow.js-modal-open.modal__button-register Бесплатная регистрация
+    a(
+        href='javascript:void(0)'
+        data-modal-type='study-auth'
+    ).btn.btn-bordered.js-modal-open.modal__button-auth Вход

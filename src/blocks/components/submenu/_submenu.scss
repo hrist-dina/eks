@@ -18,19 +18,35 @@
     }
 
     & a {
+      @include lg-block {
+        font-size: 14px;
+      }
+      @include transition();
       font-weight: 500;
       font-size: 13px;
       line-height: 143%;
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
-      @include transition();
 
       &:hover {
         color: #cda500;
       }
+    }
+  }
 
-      @include lg-block {
-        font-size: 14px;
+  & &__study {
+    padding: 0;
+    margin-left: -14px;
+    display: inline-flex;
+    a {
+      background: #cda500;
+      color: #2F2F30;
+      font-style: normal;
+      font-weight: normal;
+      padding: 14px 14px 16px;
+
+      &:hover {
+        color: #fff;
       }
     }
   }

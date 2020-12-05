@@ -15,6 +15,19 @@ mixin cabinet-section
                 .content__box
                     block
 
+mixin study-section
+    include ../personal-card/personal-card
+
+    section.section-title
+        .container
+            h1.h1=h1
+    section.section
+        .container
+            .content-sidebar.cabinet__wrap
+                .sidebar__box
+                    include ../study-sidebar/study-sidebar
+                .content__box
+                    block
 
 mixin cabinet-box(cabinetBox)
     .cabinet-box
@@ -31,6 +44,70 @@ mixin cabinet-box(cabinetBox)
         if block
             .cabinet-body
                 block
+
+mixin cabinet-test-answer(type, title)
+    label.cabinet-test__answer
+        input(type='checkbox' name=type value='1')
+        .cabinet-test__answer-inner
+            .cabinet-test__answer-type=type
+            .cabinet-test__answer-title=title
+
+mixin cabinet-test-question
+    .cabinet-test__question
+        | Какой класс ленты используется в LED панелях EKS: AURA, CLASSIK И UNIVERSAL?
+    .cabinet-test__desc (Ответов может быть от 2-х до 4-х)
+    .cabinet-test__answer-list
+        +cabinet-test-answer('a', 'Класс «B»')
+        +cabinet-test-answer('b', 'Класс «G»')
+        +cabinet-test-answer('c', 'Класс «D»')
+        +cabinet-test-answer('d', 'Класс «A»')
+
+mixin cabinet-test-result(type)
+    .cabinet-test__result
+        if ('success' === type)
+            .cabinet-test__result-icon
+                svg(width='136' height='136' viewBox='0 0 136 136' fill='none' xmlns='http://www.w3.org/2000/svg')
+                    path(d='M42.5 61L54.5 21L70 24V50H90.75H115L106.5 119H18V76.5L40 69.5L42.5 61Z' fill='white')
+                    path(d='M117.659 70.882C119.89 67.9335 121.125 64.321 121.125 60.5625C121.125 54.5992 117.791 48.9546 112.426 45.807C111.044 44.9968 109.472 44.5703 107.87 44.5718H76.0219L76.8188 28.2492C77.0047 24.3046 75.6102 20.5593 72.9008 17.7039C71.5711 16.2964 69.967 15.1766 68.1875 14.4136C66.408 13.6507 64.4909 13.2607 62.5547 13.2679C55.6484 13.2679 49.5391 17.9164 47.7063 24.5703L36.2977 65.875H19.125C16.7742 65.875 14.875 67.7742 14.875 70.125V118.469C14.875 120.819 16.7742 122.719 19.125 122.719H98.9852C100.207 122.719 101.402 122.48 102.505 122.002C108.827 119.305 112.904 113.13 112.904 106.277C112.904 104.603 112.665 102.956 112.187 101.362C114.418 98.414 115.653 94.8015 115.653 91.0429C115.653 89.3695 115.414 87.7226 114.936 86.1289C117.167 83.1804 118.402 79.5679 118.402 75.8093C118.376 74.1359 118.137 72.4757 117.659 70.882ZM24.4375 113.156V75.4375H35.1953V113.156H24.4375ZM108.959 66.2734L106.051 68.7968L107.897 72.1703C108.505 73.2815 108.82 74.5293 108.813 75.796C108.813 77.9874 107.857 80.0726 106.21 81.507L103.302 84.0304L105.148 87.4039C105.756 88.5151 106.071 89.7629 106.064 91.0296C106.064 93.221 105.108 95.3062 103.461 96.7406L100.552 99.264L102.398 102.637C103.007 103.749 103.322 104.996 103.315 106.263C103.315 109.238 101.562 111.921 98.8523 113.143H43.6953V75.0125L56.9102 27.1335C57.2509 25.9064 57.9824 24.8237 58.9938 24.0496C60.0051 23.2755 61.2413 22.8521 62.5148 22.8437C63.5242 22.8437 64.5203 23.1359 65.3172 23.7335C66.632 24.7164 67.3359 26.2039 67.2562 27.7843L65.9812 54.1343H107.738C110.102 55.582 111.562 58.0257 111.562 60.5625C111.562 62.7539 110.606 64.8257 108.959 66.2734Z' fill='#219F0C')
+            .cabinet-test__result-title
+                | Результаты за тест. «Круто! Вы прошли тест!»
+        if ('error' === type)
+            .cabinet-test__result-icon
+                svg(width='136' height='136' viewBox='0 0 136 136' fill='none' xmlns='http://www.w3.org/2000/svg')
+                    path(d='M100 16.5H22V63.5H39L48.5 98.5L55.5 118.5H70V107V95L75 90.5L110 86L118 72L110 45.5L107 28.5L100 16.5Z' fill='white')
+                    path(d='M117.542 65.0962C118.019 63.494 118.257 61.8385 118.257 60.1563C118.257 56.3779 117.025 52.7464 114.799 49.7825C115.276 48.1803 115.514 46.5248 115.514 44.8425C115.514 41.0642 114.282 37.4327 112.056 34.4687C112.533 32.8666 112.772 31.211 112.772 29.5288C112.772 22.6396 108.704 16.4313 102.397 13.7211C101.288 13.2395 100.093 12.994 98.8857 13.0001H19.24C16.8947 13.0001 15 14.9093 15 17.2725V65.8706C15 68.2337 16.8947 70.1429 19.24 70.1429H36.3722L47.7407 111.638C49.5692 118.327 55.6642 123 62.5542 123C66.4895 123 70.1597 121.425 72.876 118.541C75.5922 115.67 76.9835 111.905 76.7847 107.94L75.9897 91.5314H107.776C109.38 91.5314 110.943 91.1042 112.321 90.2897C117.674 87.1522 121 81.4647 121 75.47C121 71.6916 119.768 68.0601 117.542 65.0962ZM24.54 60.5168V22.5996H35.2725V60.5168H24.54ZM107.644 81.932H65.986L67.258 108.421C67.3375 110.009 66.6352 111.505 65.3235 112.493C64.5152 113.093 63.5215 113.401 62.5277 113.387C61.2582 113.375 60.0268 112.948 59.0186 112.17C58.0104 111.393 57.2797 110.306 56.9362 109.075L43.7525 60.944V22.5996H98.793C100.117 23.1977 101.242 24.1685 102.032 25.3954C102.822 26.6223 103.243 28.053 103.245 29.5154C103.245 30.8105 102.94 32.0388 102.331 33.1603L100.489 36.5515L103.391 39.0882C104.207 39.801 104.862 40.6827 105.31 41.6734C105.759 42.6641 105.99 43.7404 105.988 44.8292C105.988 46.1242 105.683 47.3525 105.073 48.474L103.232 51.8652L106.133 54.4019C106.95 55.1147 107.605 55.9965 108.053 56.9871C108.501 57.9778 108.732 59.0542 108.73 60.1429C108.73 61.438 108.426 62.6663 107.816 63.7878L105.961 67.1923L108.863 69.729C109.68 70.4418 110.334 71.3236 110.783 72.3142C111.231 73.3049 111.462 74.3813 111.46 75.47C111.46 78.0201 110.002 80.4767 107.644 81.932Z' fill='#E86565')
+            .cabinet-test__result-title К сожалению, не все ответы верны.
+            .cabinet-test__result-desc Попробуйте ещё раз!
+
+mixin study-box(cabinetBox)
+    include ../../components/share/share
+    .cabinet-box.cabinet-box--study
+        .cabinet-head
+            .cabinet-study__title=cabinetBox.title
+            .cabinet-study__pic(style='background-image: url(../img/study/pic.png);')
+        .cabinet-body
+            .cabinet-share
+                +share
+            .cabinet-share
+                .video-response
+                    iframe(
+                        width='890'
+                        height='523'
+                        src='https://www.youtube.com/embed/9hjmJNNZ7Zg?enablejsapi=1&controls=0&fs=0&iv_load_policy=3&rel=0&showinfo=0&loop=1&start=1'
+                        frameborder='0'
+                        allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                        allowfullscreen
+                    )
+            .cabinet-tabs
+                a(
+                    href='javascript:void(0)'
+                    class={active: !cabinetBox.test}
+                ).btn.cabinet-tab__button Просмотр видео
+                a(
+                    href='javascript:void(0)'
+                    class={active: cabinetBox.test}
+                ).btn.cabinet-tab__button Тестирование
+        block
 
 mixin cabinet-form
     form(action='/' method='POST').cabinet-form.js-form.validator

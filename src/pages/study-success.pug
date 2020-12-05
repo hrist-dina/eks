@@ -1,0 +1,25 @@
+extends ../views/layouts/default
+block variables
+	include ../data/study
+	- var h1 = "Обучение";
+	- var title = `${h1} | ${cabinetBox.title}`;
+
+
+block content
+	include ../blocks/components/cabinet/cabinet
+	+study-section
+		+study-box(cabinetBox)
+			.cabinet-test
+				+cabinet-test-result('success')
+			.cabinet-footer
+				.cabinet-question
+					span.cabinet-question__title Вопрос:
+					span.cabinet-question__count 3/3
+				.cabinet-actions
+					a(href='#').btn.btn-yellow.cabinet-actions__button Следующий урок
+
+
+
+
+
+

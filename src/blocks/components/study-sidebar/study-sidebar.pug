@@ -1,0 +1,34 @@
+-
+    const studyItem = (lesson, title, disable, active) => ({lesson, title, disable, active})
+    const studySidebar = [
+        studyItem('Урок №1', 'LED Панели'),
+        studyItem('Урок №2', 'LED Панели'),
+        studyItem('Урок №3', 'LED Панели'),
+        studyItem('Урок №4', 'LED Панели'),
+        studyItem('Урок №5', 'LED Панели'),
+        studyItem('Урок №6', 'LED Панели'),
+        studyItem('Урок №2', 'Светотехника и комплектующие для натяжных потолков', false, true),
+        studyItem('Урок №7', 'LED Панели', true),
+        studyItem('Урок №8', 'LED Панели', true),
+        studyItem('Урок №9', 'LED Панели', true),
+        studyItem('Урок №10', 'LED Панели', true),
+        studyItem('Урок №11', 'LED Панели', true),
+        studyItem('Урок №12', 'LED Панели', true),
+        studyItem('Урок №13', 'LED Панели', true),
+        studyItem('Урок №14', 'LED Панели', true),
+        studyItem('Урок №15', 'LED Панели', true),
+        studyItem('Урок №16', 'LED Панели', true),
+    ]
+
+section.study-sidebar-section
+    ul.study-sidebar.scroll-custom
+        for item in studySidebar
+            li.__item(class={active: item.active})
+                if (!item.disable)
+                    a(href='#').__link
+                        .__lesson=item.lesson
+                        .__title=item.title
+                else
+                   .__link.disabled
+                       .__lesson=item.lesson
+                       .__title=item.title

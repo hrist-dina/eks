@@ -177,3 +177,29 @@
   height: 24px;
   background: url(icon-location()) no-repeat center;
 }
+
+@mixin icon-share($icon) {
+  width: 40px;
+  height: 40px;
+  background: url($icon) no-repeat center;
+}
+
+.icon-share-tg {
+  @include icon-share(icon-share-tg());
+}
+
+.icon-share-ok {
+  @include icon-share(icon-share-ok());
+}
+
+.icon-share-vk {
+  @include icon-share(icon-share-vk());
+}
+
+.icon-share-fb {
+  @include icon-share(icon-share-fb());
+}
+
+.icon-share-wa {
+  @include icon-share(icon-share-wa());
+}

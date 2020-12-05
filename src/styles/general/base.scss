@@ -325,3 +325,25 @@ input[type="number"]::-webkit-outer-spin-button {
 .video-response {
   @include response-video;
 }
+
+.scroll-custom {
+  /* Firefox */
+  scrollbar-color: #747474 #fff;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #747474;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+  }
+}

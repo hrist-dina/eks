@@ -258,8 +258,106 @@
     }
   }
 
+  &__study-profile {
+    max-width: 474px;
+    & .modal__inner {
+      padding: 0;
+    }
+    & .modal__close {
+      @include xs-block {
+        right: 15px;
+        top: 15px;
+      }
+      right: 15px;
+      top: 15px;
+    }
+  }
+
+  &__block {
+    padding: 30px 32px;
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--bordered {
+      border-top: 1px solid #898C9B;
+    }
+  }
+
   &__video {
     margin-bottom: 32px;
+  }
+
+  &__result {
+    &-item {
+      display: flex;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &-key {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: rgba(255, 255, 255, .7);
+      margin-right: 20px;
+    }
+
+    &-value {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      p {
+        font-weight: 500;
+      }
+      span {
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  &__person {
+    display: flex;
+
+    &-img {
+      max-width: 106px;
+      margin-right: 12px;
+    }
+
+    &-data {
+      width: #{calc(100% - 106px)};
+    }
+
+    &-name {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 27px;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    &-value {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 6px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
@@ -335,5 +433,54 @@
       line-height: 18px;
       color: rgba(45, 45, 57, .7);
     }
+  }
+}
+
+.load-image {
+  width: 106px;
+  height: 106px;
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    display: flex;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__preview {
+    position: relative;
+    overflow: hidden;
+
+    &-img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__action {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 4px;
+    background: rgba(47, 47, 47, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-30px);
+    transition: visibility ease .3s, opacity ease .3s, transform ease .3s;
+  }
+
+  &__preview:hover &__action {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 }

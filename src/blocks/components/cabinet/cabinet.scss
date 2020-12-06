@@ -9,6 +9,10 @@
     color: #fecc00;
     padding-left: 28px;
 
+    &--study {
+      margin-left: 20px;
+    }
+
     @include xs-block {
       font-size: 16px;
       line-height: 24px;
@@ -19,12 +23,23 @@
       left: auto;
       right: 0;
       top: -88px;
+      &--study {
+        position: relative;
+        left: auto;
+        top: auto;
+      }
     }
 
     @include xl-block {
       position: absolute;
       left: 0;
       top: -88px;
+
+      &--study {
+        position: relative;
+        left: auto;
+        top: auto;
+      }
     }
 
     &:before {

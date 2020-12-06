@@ -20,7 +20,17 @@ mixin study-section
 
     section.section-title
         .container
-            h1.h1=h1
+            .section-title__inner
+                .section-title__title
+                    h1.h1=h1
+                    a(
+                        href='#'
+                    ).cabinet-logout.cabinet-logout--study Выйти
+                .section-title__profile
+                    a(
+                        href='javascript:void(0)'
+                        data-modal-type='study-profile'
+                    ).btn.btn-border-yellow.js-modal-open Профиль
     section.section
         .container
             .content-sidebar.cabinet__wrap

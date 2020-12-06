@@ -1,0 +1,66 @@
+include ../../components/field/field
+include base
+
++modal('study-profile')
+    form(action='' method='post').modal__form.js-form.validator
+        .modal__block
+            .modal__person
+                .load-image.js-load-image.modal__person-img
+                    label.load-image__label
+                        input(
+                            data-default='img/study/preview-default.svg'
+                            type='file'
+                            accept="image/*"
+                        ).load-image__input.js-load-image-input
+                        .load-image__preview
+                            .load-image__action
+                                i.icon-cross-thin.load-image__action-icon.js-load-image-delete
+                                i.icon-download-file.load-image__action-icon.js-load-image-change
+                            img(
+                                src='img/study/preview-default.svg'
+                                alt='preview'
+                            ).load-image__preview-img.js-load-image-preview
+                .modal__person-data
+                    .modal__person-name
+                        span Бородач Владислав Сергеевич
+                    .modal__person-value
+                        span gwwwel@google.com
+                    .modal__person-value
+                        span +7 (233) 654-32-23
+
+            +field('ФИО*', 'fio', '', '', 'text',
+                {
+                    'validator-require': 'true'
+                }
+            )
+            +field('Город*', 'city', '', '', 'text',
+                {
+                    'validator-require': 'true'
+                }
+            )
+            +field('Электронная почта*', 'email', '', '', 'text',
+                {
+                    'validator-require': 'true',
+                    'validator-type': 'email'
+                }
+            )
+            +field('Телефон', 'phone')
+        .modal__block.modal__block--bordered
+            .modal__result
+                .modal__result-item
+                    .modal__result-key Кол-во пройденных уроков:
+                    .modal__result-value
+                        p 42
+                        span из
+                        p 100
+                .modal__result-item
+                    .modal__result-key Кол-во правильных ответов:
+                    .modal__result-value
+                        p 96
+
+        .modal__block.modal__block--bordered
+            .modal__block-inner
+                button(type='submit').btn.btn-yellow.modal__save Сохранить
+                a(href='#').link-download
+                    i.icon-download-thin.link-download__icon
+                    span.link-download__text Скачать сертификат

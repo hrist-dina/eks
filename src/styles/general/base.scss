@@ -145,6 +145,16 @@ input[type="number"]::-webkit-outer-spin-button {
     & .h1 {
       margin-bottom: 0;
     }
+
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title {
+      display: flex;
+      align-items: flex-end;
+    }
   }
 
   &-center {

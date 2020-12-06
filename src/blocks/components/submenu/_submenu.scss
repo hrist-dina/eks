@@ -39,14 +39,16 @@
     margin-left: -14px;
     display: inline-flex;
     a {
-      background: #cda500;
+      background: #FECC00;
       color: #2F2F30;
       font-style: normal;
       font-weight: normal;
       padding: 14px 14px 16px;
+      transition: color ease .3s, background ease .3s;
 
       &:hover {
         color: #fff;
+        background: #cda500;
       }
     }
   }

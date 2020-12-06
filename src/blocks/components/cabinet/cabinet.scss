@@ -728,14 +728,22 @@
     }
 
     &__answer {
+      @include sm-block {
+        width: #{calc(50% - 23px)};
+        margin: 10px;
+      }
       display: inline-flex;
       cursor: pointer;
       box-sizing: border-box;
-      width: #{calc(50% - 23px)};
-      margin: 10px;
+      width: 100%;
+      margin-bottom: 10px;
 
       &-list {
-        margin: 30px -10px -10px;
+        @include sm-block {
+          margin: 30px -10px -10px;
+        }
+        margin-top: 20px;
+        margin-bottom: -10px;
       }
 
       & input {
@@ -776,8 +784,12 @@
           font-size: 23px;
           line-height: 28px;
         }
-        width: 60px;
-        min-height: 60px;
+        @include sm-block {
+          min-height: 60px;
+          width: 60px;
+        }
+        width: 52px;
+        min-height: 40px;
         border: 1px solid #FECC00;
         box-sizing: border-box;
         display: inline-flex;
@@ -796,7 +808,11 @@
           font-size: 23px;
           line-height: 28px;
         }
-        width: #{calc(100% - 60px)};
+        @include sm-block {
+          padding: 17px 28px 14px;
+          width: #{calc(100% - 60px)};
+        }
+        width: #{calc(100% - 52px)};
         border: 1px solid #fff;
         box-sizing: border-box;
         font-style: normal;
@@ -805,7 +821,7 @@
         line-height: 24px;
         color: #fff;
         text-transform: uppercase;
-        padding: 17px 28px 14px;
+        padding: 14px 18px 12px;
         border-left: none;
       }
 

@@ -54,6 +54,32 @@
     }
   }
 
+  &__mobile-study {
+    display: none;
+
+    .header.active & {
+      @include md-block {
+        display: none;
+      }
+      display: inline-flex;
+      margin-top: 16px;
+    }
+
+    &-link {
+      background: #FECC00;
+      color: #2F2F30;
+      font-style: normal;
+      font-weight: normal;
+      padding: 14px 14px 16px;
+      text-decoration: none;
+
+      &:hover {
+        color: #fff;
+        background: #cda500;
+      }
+    }
+  }
+
   &__top {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 

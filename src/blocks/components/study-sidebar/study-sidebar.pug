@@ -17,11 +17,11 @@
         studyItem('Урок №13', 'LED Панели', true),
         studyItem('Урок №14', 'LED Панели', true),
         studyItem('Урок №15', 'LED Панели', true),
-        studyItem('Урок №16', 'LED Панели', true),
+        studyItem('Урок №16', 'LED Панели', true)
     ]
 
-section.study-sidebar-section
-    ul.study-sidebar.scroll-custom
+section.study-sidebar-section.js-study-sidebar
+    ul.study-sidebar.scroll-custom.js-study-sidebar-scroll
         for item in studySidebar
             li.__item(class={active: item.active})
                 if (!item.disable)

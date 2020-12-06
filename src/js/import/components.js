@@ -10,6 +10,7 @@ import {Map} from "%components%/map/Map";
 import {BaseModal} from "../classes/base-modal";
 import {Quantity} from "%components%/quantity/Quantity";
 import {WhereBuy} from "%components%/where-buy/WhereBuy";
+import {StudySidebar} from "%components%/study-sidebar/StudySidebar";
 import {InputMask} from "../classes/InputMask";
 import {Form} from "../classes/Form";
 import {FormAuth} from "../classes/FormAuth";
@@ -57,6 +58,7 @@ $(document).ready(function () {
     new Sort();
     new PhoneConfirm();
     new LoadImage();
+    new StudySidebar();
     $('.js-stores-wrap').each((i, el) => {
         new StoreBlock(el);
     });

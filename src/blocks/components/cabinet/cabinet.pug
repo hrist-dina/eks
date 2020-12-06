@@ -94,7 +94,8 @@ mixin study-box(cabinetBox)
     .cabinet-box.cabinet-box--study
         .cabinet-head
             .cabinet-study__title=cabinetBox.title
-            .cabinet-study__pic(style='background-image: url(../img/study/pic.png);')
+            .cabinet-study__pic
+                img(src='img/study/pic.png' alt='')
         .cabinet-body
             .cabinet-share
                 +share

@@ -31,7 +31,7 @@ import yargs from "yargs";
 const webpackConfig = require("./webpack.config.js"),
   argv = yargs.argv,
   production = !!argv.production,
-  assetDir = production ? "../assets/" : "./dist/",
+  assetDir = production ? "../../local/assets/" : "./dist/",
   smartgrid = require("smart-grid"),
   paths = {
     views: {

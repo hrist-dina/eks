@@ -4,6 +4,7 @@ export class Header {
   constructor(selector = ".js-mobile-menu") {
     this.menu = selector;
     this.open = `${selector}-open`;
+    this.reg = '.js-student-reg';
 
     this.init();
   }
@@ -11,6 +12,7 @@ export class Header {
   init() {
     this.initScroll();
     this.onClick();
+    this.studentRegSubmit();
   }
 
   initScroll() {
@@ -31,5 +33,13 @@ export class Header {
       $(this).toggleClass("active");
       $("html").toggleClass("o-hidden");
     });
+  }
+
+  studentRegSubmit() {
+    const self = this;
+    $(this.reg).on('submit', function(e) {
+      e.preventDefault();
+      console.log(self);
+    })
   }
 }

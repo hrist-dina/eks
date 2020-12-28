@@ -11,6 +11,9 @@ import {BaseModal} from "../classes/base-modal";
 import {Quantity} from "%components%/quantity/Quantity";
 import {WhereBuy} from "%components%/where-buy/WhereBuy";
 import {StudySidebar} from "%components%/study-sidebar/StudySidebar";
+import {StudentReg} from "../../blocks/components/student-reg/StudentReg";
+import {StudentAuth} from "../../blocks/components/student-auth/StudentAuth";
+import {StudentRestore} from "../../blocks/components/student-restore/StudentRestore";
 import {InputMask} from "../classes/InputMask";
 import {Form} from "../classes/Form";
 import {FormAuth} from "../classes/FormAuth";
@@ -90,4 +93,8 @@ $(document).ready(function () {
         new ProfileForm(el);
     });
     new Search();
+
+    new StudentReg();
+    new StudentAuth();
+    new StudentRestore();
 });

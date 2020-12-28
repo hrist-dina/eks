@@ -5,6 +5,7 @@ import {CatalogDetail} from "%components%/catalog-detail/CatalogDetail";
 import {FancyBox} from "../classes/FancyBox";
 import {SliderMain} from "%components%/slider-main/SliderMain";
 import {SliderVideo} from "%components%/slider-video/SliderVideo";
+import {SliderStudy} from "%components%/slider-study/SliderStudy";
 import {SwiperRecommended} from "%components%/recommendation/SwiperRecommended";
 import {Map} from "%components%/map/Map";
 import {BaseModal} from "../classes/base-modal";
@@ -35,6 +36,7 @@ import {LoadImage} from "../classes/LoadImage";
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
     new SliderVideo(".js-slider-video");
+    new SliderStudy(".js-slider-study");
     new MenuAccordion();
     new Select();
     new CatalogDetail();

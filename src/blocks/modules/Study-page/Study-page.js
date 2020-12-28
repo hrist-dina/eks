@@ -40,6 +40,7 @@ export class StudyPage {
         this.videoTabBtn = $('.js-video-tab-btn');
         this.testTabBtn = $('.js-test-tab-btn');
         this.nextLessonBtn = $('.js-lesson-next-action');
+        this.shareBtn = $('.js-share');
         //checkboxes
         this.answerCheckbox = $('.js-answer-checkbox');
         this.lessonVideo = $('#lessonVideo');
@@ -228,6 +229,7 @@ export class StudyPage {
                     successResult.toggleClass(activeClass, true);
                     errorResult.toggleClass(activeClass, false);
                     self.nextLessonBtn.addClass(self.classes.activeClass);
+                    self.shareBtn.addClass(self.classes.activeClass);
                 } else {
                     successResult.toggleClass(activeClass, false);
                     errorResult.toggleClass(activeClass, true);

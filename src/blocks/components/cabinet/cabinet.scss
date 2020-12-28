@@ -698,6 +698,14 @@
     position: relative;
     margin-bottom: 28px;
 
+    &.cabinet-share__block {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
     &__link {
       display: inline-block;
       max-width: 298px;

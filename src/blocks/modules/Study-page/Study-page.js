@@ -1,4 +1,5 @@
 import $ from "jquery";
+// import {BaseModal} from "./../../../js/classes/base-modal";
 
 export class StudyPage {
     constructor(selector = ".js-cabinet__wrap") {
@@ -44,10 +45,16 @@ export class StudyPage {
         //checkboxes
         this.answerCheckbox = $('.js-answer-checkbox');
         this.lessonVideo = $('#lessonVideo');
+
+        //emojiPopup
+
+        this.successPopup = $('.js-success-popup');
+        this.failurePopup = $('.js-failure-popup');
         this.init();
     }
 
     init() {
+        // this.successModal = new BaseModal(this.successPopup);
         this.repeatTestInit();
         this.nextQuestionInit();
         this.choiceAnswerInit();
@@ -85,7 +92,6 @@ export class StudyPage {
     }
 
     disableLessonVideo() {
-        console.log(1);
         if (this.testTabBtn.hasClass(this.classes.activeClass)) return false;
         this.videoTabBtn.removeClass(this.classes.activeClass);
         if (!this.videoTabBtn.hasClass(this.classes.disabledClass)) this.videoTabBtn.addClass(this.classes.disabledClass);
@@ -110,7 +116,6 @@ export class StudyPage {
 
     showQuestionNodeById(id) {
         let questionWrap = document.querySelectorAll(this.selectors.jsQuestionWrap);
-        console.log(questionWrap);
         let currentQuestionClass = this.classes.currentQuestion;
         for (let i = 0; i < questionWrap.length; i ++) {
             questionWrap[i].classList.remove(currentQuestionClass);
@@ -122,7 +127,6 @@ export class StudyPage {
 
     parseFormDataJsonToObject() {
         let DATA = this.testForm.attr('data-json-result').replace(/\u005c/g , '');
-        console.log(DATA);
         /** переводим JS0N.строку из дата-аттрибута в обычную JSON.строку и преобразуем в объект */
         DATA = DATA.substring(1, DATA.length);
         DATA = DATA.substring(0, DATA.length - 1);
@@ -144,9 +148,7 @@ export class StudyPage {
 
     choiceAnswer(e) {
         let checkbox = $(e.target);
-        console.log(checkbox);
         let addToList = true;
-        console.log(this );
         let currentQuestionWrapper = checkbox.parents(this.selectors.jsQuestionWrap);
         let questionId = currentQuestionWrapper.attr('data-question-id');
         let answerId = checkbox.attr('data-answer-id');
@@ -218,6 +220,7 @@ export class StudyPage {
             type: 'POST',
             data: {'jsonResultString': data},
             success(response) {
+                let responseData = JSON.parse(response.data);
                 if (self.videoTabBtn.hasClass(self.classes.disabledClass)) self.videoTabBtn.removeClass(self.classes.disabledClass);
                 let activeClass = self.classes.activeClass;
                 let successResult = self.successBlock;
@@ -226,11 +229,13 @@ export class StudyPage {
                 self.nextActionBlock.addClass(activeClass);
                 self.nextBtn.removeClass(activeClass);
                 if (response.success) {
+                    self.showSuccessPopup(responseData);
                     successResult.toggleClass(activeClass, true);
                     errorResult.toggleClass(activeClass, false);
                     self.nextLessonBtn.addClass(self.classes.activeClass);
                     self.shareBtn.addClass(self.classes.activeClass);
                 } else {
+                    self.showFailurePopup();
                     successResult.toggleClass(activeClass, false);
                     errorResult.toggleClass(activeClass, true);
                 }
@@ -239,6 +244,24 @@ export class StudyPage {
     }
 
     //Optional
+
+    showSuccessPopup(data) {
+        let text = data.text ? data.text : undefined;
+        let picture = data.picture ? data.picture : undefined;
+        let description = data.description ? data.description : undefined;
+
+        this.successPopup.find('.js-modal-text').html(text);
+        this.successPopup.find('.js-modal-picture').attr("src", picture);
+        if (description) {
+            this.successPopup.find('.js-modal-description').html(description);
+        }
+        // BaseModal.openModal('study-success');
+        // this.successModal.open(this.successPopup.data("modal-type"));
+    }
+
+    showFailurePoup(data) {
+
+    }
 
 
     /** Устанавливаем номер текущего вопроса */

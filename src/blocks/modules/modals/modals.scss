@@ -328,6 +328,14 @@
       right: 15px;
       top: 15px;
     }
+
+    & .modal-success {
+      color: #0a962f;
+    }
+
+    & .modal-error {
+      color: #EC1212;
+    }
   }
 
   &__block {

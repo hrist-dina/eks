@@ -45,6 +45,12 @@
             }
         }
 
+        & .study__slider {
+            & * {
+                outline: none!important;
+            }
+        }
+
     }
 
     &__item {

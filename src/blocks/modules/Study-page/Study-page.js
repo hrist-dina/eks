@@ -1,5 +1,4 @@
-import $ from "jquery";
-// import {BaseModal} from "./../../../js/classes/base-modal";
+    import $ from "jquery";
 
 export class StudyPage {
     constructor(selector = ".js-cabinet__wrap") {
@@ -55,6 +54,7 @@ export class StudyPage {
 
     init() {
         // this.successModal = new BaseModal(this.successPopup);
+        this.clickEvent = new Event('click');
         this.repeatTestInit();
         this.nextQuestionInit();
         this.choiceAnswerInit();
@@ -221,6 +221,7 @@ export class StudyPage {
             data: {'jsonResultString': data},
             success(response) {
                 let responseData = JSON.parse(response.data);
+                console.log(response,responseData);
                 if (self.videoTabBtn.hasClass(self.classes.disabledClass)) self.videoTabBtn.removeClass(self.classes.disabledClass);
                 let activeClass = self.classes.activeClass;
                 let successResult = self.successBlock;
@@ -229,13 +230,13 @@ export class StudyPage {
                 self.nextActionBlock.addClass(activeClass);
                 self.nextBtn.removeClass(activeClass);
                 if (response.success) {
-                    self.showSuccessPopup(responseData);
+                    self.showSuccessPopup.call(self, responseData);
                     successResult.toggleClass(activeClass, true);
                     errorResult.toggleClass(activeClass, false);
                     self.nextLessonBtn.addClass(self.classes.activeClass);
                     self.shareBtn.addClass(self.classes.activeClass);
                 } else {
-                    self.showFailurePopup();
+                    self.showFailurePpoup();
                     successResult.toggleClass(activeClass, false);
                     errorResult.toggleClass(activeClass, true);
                 }
@@ -246,21 +247,36 @@ export class StudyPage {
     //Optional
 
     showSuccessPopup(data) {
+        // TODO
         let text = data.text ? data.text : undefined;
         let picture = data.picture ? data.picture : undefined;
         let description = data.description ? data.description : undefined;
+        this.testForm.find('.cabinet-test__result-icon img').attr('src', picture);
+        this.testForm.find('.cabinet-test__result-title').html(text);
 
         this.successPopup.find('.js-modal-text').html(text);
         this.successPopup.find('.js-modal-picture').attr("src", picture);
         if (description) {
             this.successPopup.find('.js-modal-description').html(description);
         }
-        // BaseModal.openModal('study-success');
-        // this.successModal.open(this.successPopup.data("modal-type"));
+        let successPopupOpen = $('.js-success-popup-open');
+        successPopupOpen.trigger(this.clickEvent);
     }
 
-    showFailurePoup(data) {
+    showFailurePopup(data) {
+        let text = data.text ? data.text : undefined;
+        let picture = data.picture ? data.picture : undefined;
+        let description = data.description ? data.description : undefined;
+        this.testForm.find('.cabinet-test__result-icon img').attr('src', picture);
+        this.testForm.find('.cabinet-test__result-title').html(text);
 
+        this.successPopup.find('.js-modal-text').html(text);
+        this.successPopup.find('.js-modal-picture').attr("src", picture);
+        if (description) {
+            this.successPopup.find('.js-modal-description').html(description);
+        }
+        let successPopupOpen = $('.js-success-failure-open');
+        successPopupOpen.trigger(this.clickEvent);
     }
 
 

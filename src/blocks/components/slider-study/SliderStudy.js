@@ -25,8 +25,9 @@ class SliderStudy {
                 // loopedSlides: 3,
                 // loopAdditionalSlides: 3,
                 mousewheel: true,
-                atuoHeight: true,
-                loop: true,});
+                loop: true,
+                height: 450
+            });
         }
     }
 
@@ -37,7 +38,7 @@ class SliderStudy {
     }
 
     centerActiveItem() {
-        if (!this.wrapper || !this.activeItem) return false;
+        if (!this.wrapper.length || !this.activeItem.length) return false;
 
         let activeItemOffsetTop = this.activeItem.offset().top;
         let wrapperHeight = this.wrapper.height();

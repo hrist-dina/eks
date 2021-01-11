@@ -5,8 +5,6 @@ import Swiper from "swiper";
 class SliderStudy {
     constructor(selector) {
         this.selector = selector;
-        this.activeSlide =
-        // this.options = options;
 
         this.init();
     }
@@ -14,41 +12,37 @@ class SliderStudy {
         // super.init();
         // this.bindOptions();
         this.initSwiper();
-        this.swiperAfterInit();
     }
 
     initSwiper() {
         if ($(this.selector).length) {
-            new Swiper(this.selector, {
+            this.swiper = new Swiper(this.selector, {
                 direction: 'vertical',
-                slidesPerView: 5,
+                slidesPerView: 'auto',
+                loopedSlides: 6,
                 // loopedSlides: 3,
                 // loopAdditionalSlides: 3,
-                mousewheel: true,
+                mousewheel: {
+                    releaseOnEdges: true,
+                },
                 loop: true,
-                height: 450
+                height: 450,
+                speed: 200,
+                centeredSlides: true,
+                freeMode: true,
             });
+            console.log(this.swiper.slides);
+            let activeElement = null;
+            for(let i = 0; i < this.swiper.slides.length; i ++) {
+                if (this.swiper.slides[i].classList.contains('active')) {
+                    activeElement = i;
+                    break;
+                }
+            }
+            this.swiper.slideTo(activeElement || 0)
         }
+
     }
-
-    swiperAfterInit() {
-        this.wrapper = $(this.selector).find('.js-study__slider');
-        this.activeItem = this.wrapper.find('.js-study-sidebar__item.active');
-        this.centerActiveItem();
-    }
-
-    centerActiveItem() {
-        if (!this.wrapper.length || !this.activeItem.length) return false;
-
-        let activeItemOffsetTop = this.activeItem.offset().top;
-        let wrapperHeight = this.wrapper.height();
-        console.log(wrapperHeight);
-        let centerPosition = wrapperHeight / 2;
-        console.log(centerPosition);
-        let activeItemCenterOffset  = Number(centerPosition) - Number(activeItemOffsetTop);
-        console.log(activeItemCenterOffset);
-    }
-
 
     bindOptions(options) {
         let defaultOptions = {

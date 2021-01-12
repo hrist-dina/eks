@@ -5,7 +5,6 @@ import {Form} from "./Form";
 export class ProfileForm extends Form {
     init() {
         this.$form = $(this.form);
-        console.log(this.$form);
         this.onSubmit();
     }
 

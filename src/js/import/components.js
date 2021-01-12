@@ -30,6 +30,7 @@ import {Search} from "../../blocks/components/search/Search";
 import {BuyBonusComponent} from "../classes/BuyBonusComponent";
 import {FormCooperation} from "../classes/FormCooperation";
 import {ProfileForm} from "../classes/ProfileForm";
+import {StudentProfileForm} from "../classes/StudentProfileForm";
 import {PhoneConfirm} from "../classes/PhoneConfirm";
 import {LoadImage} from "../classes/LoadImage";
 
@@ -94,6 +95,10 @@ $(document).ready(function () {
     $('.js-form-profile').each((i, el) => {
         new ProfileForm(el);
     });
+
+    if ('#jsStudentProfile') {
+        new StudentProfileForm('#jsStudentProfile');
+    }
     new Search();
 
     new StudentReg();

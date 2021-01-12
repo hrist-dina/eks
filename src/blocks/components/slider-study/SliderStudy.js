@@ -1,5 +1,4 @@
 import $ from "jquery";
-import SwiperBase from "../../../js/classes/SwiperBase";
 import Swiper from "swiper";
 
 class SliderStudy {
@@ -9,8 +8,6 @@ class SliderStudy {
         this.init();
     }
     init() {
-        // super.init();
-        // this.bindOptions();
         this.initSwiper();
     }
 
@@ -20,8 +17,6 @@ class SliderStudy {
                 direction: 'vertical',
                 slidesPerView: 'auto',
                 loopedSlides: 6,
-                // loopedSlides: 3,
-                // loopAdditionalSlides: 3,
                 mousewheel: {
                     releaseOnEdges: true,
                 },
@@ -31,28 +26,8 @@ class SliderStudy {
                 centeredSlides: true,
                 freeMode: true,
             });
-            console.log(this.swiper.slides);
-            let activeElement = null;
-            for(let i = 0; i < this.swiper.slides.length; i ++) {
-                if (this.swiper.slides[i].classList.contains('active')) {
-                    activeElement = i;
-                    break;
-                }
-            }
-            this.swiper.slideTo(activeElement || 0)
+
         }
-
-    }
-
-    bindOptions(options) {
-        let defaultOptions = {
-            direction: 'vertical',
-            slidesPerView: 5,
-            spaceBetween: 30,
-            mousewheel: true,
-            loop: true,
-        };
-        this.options = $.extend(defaultOptions, options);
     }
 }
 

@@ -221,7 +221,6 @@ export class StudyPage {
             data: {'jsonResultString': data},
             success(response) {
                 let responseData = JSON.parse(response.data);
-                console.log(response,responseData);
                 if (self.videoTabBtn.hasClass(self.classes.disabledClass)) self.videoTabBtn.removeClass(self.classes.disabledClass);
                 let activeClass = self.classes.activeClass;
                 let successResult = self.successBlock;

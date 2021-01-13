@@ -8,7 +8,7 @@ export class StudentProfileForm extends Form {
 
         this.profileName = this.$form.find('.modal__person-name span');
         this.profileMail = this.$form.find('.modal__person-value span');
-        this.pictureInput = this.$form.find('.js-student-picture');
+        this.pictureInput = this.$form.find('.js-load-image-input');
 
         this.successMessage = this.$form.find('.js-modal-success');
         this.errorMessage = this.$form.find('.js-modal-error');
@@ -25,14 +25,6 @@ export class StudentProfileForm extends Form {
             e.preventDefault();
             let self = this;
             let data = this.$form.serializeArray();
-            // let file = this.$form.find('.js-student-picture');
-            // if (file.length) {
-            //     let files = file.prop('files');
-            //     let fileValue = files[0] != null ? files[0].name : undefined;
-            //     let fileName = file.prop('name') != null ? file.prop('name') : undefined;
-            //
-            //     if (fileValue && fileName) data.push({name: fileName, value: fileValue});
-            // }
 
             if (!validator.init()) {
                 $(document).trigger("preloader.open");
@@ -63,32 +55,38 @@ export class StudentProfileForm extends Form {
 
     onSendPicture() {
         this.pictureInput.on('change', () => {
-            if (!this.pictureInput.prop('files')) return false;
+            let filesProp = 'files';
+
+            if (!this.pictureInput.prop(filesProp)) return false;
 
             let data = new FormData();
-            data.append('picture', this.pictureInput.prop('files')[0]);
-
-            console.log(data.get('picture'));
+            data.append('picture', this.pictureInput.prop(filesProp)[0]);
 
             $.ajax({
                 url: this.$form.attr('action'),
-                method: "post",
+                method: 'post',
                 processData: false,
                 contentType: false,
                 data,
 
-                success: function (response) {
-                    // $(document).trigger("preloader.close");
-                    // let parsedResponse = JSON.parse(response);
-                    // if (parsedResponse.success && parsedResponse.data && parsedResponse.message) {
-                    //     self.renderSuccessMessage(parsedResponse.message);
-                    //     self.renderErrorMessage('');
-                    //     self.renderProfileName(parsedResponse.data.fio);
-                    //     self.renderProfileMail(parsedResponse.data.email);
-                    // } else if (!response.success && parsedResponse.data) {
-                    //     self.renderErrorMessage(parsedResponse.message);
-                    //     self.renderSuccessMessage('');
-                    // }
+                success: response => {
+                    let parsedResponse = JSON.parse(response);
+                    if (parsedResponse.success) {
+                        this.pictureInput.trigger('imageLoad');
+
+                        if (parsedResponse.data) {
+                            if (parsedResponse.data.fio) this.renderProfileName(parsedResponse.data.fio);
+                            if (parsedResponse.data.email) this.renderProfileMail(parsedResponse.data.email);
+                        }
+
+                        if (parsedResponse.message) {
+                            this.renderSuccessMessage(parsedResponse.message);
+                            this.renderErrorMessage('');
+                        }
+                    } else if (response.message) {
+                        this.renderErrorMessage(parsedResponse.message);
+                        this.renderSuccessMessage('');
+                    }
                 }
             });
         })

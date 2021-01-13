@@ -15,8 +15,9 @@ export class LoadImage {
 
 
   init() {
-    this.$input.on('change', ({target}) => this.readURL(target));
-    this.$change.on('click', () => this.$input.trigger('change'));
+    let imageLoadEvent = 'imageLoad';
+    this.$input.on(imageLoadEvent, ({target}) => this.readURL(target));
+    this.$change.on('click', () => this.$input.trigger(imageLoadEvent));
     this.$delete.on('click', (e) => {
       e.preventDefault();
       this.$input.val('');

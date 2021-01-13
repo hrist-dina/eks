@@ -29,12 +29,9 @@ class StudentRestore {
             type: 'POST',
             data: data,
             success(response) {
-                console.log(response);
                 if (response.success && response.data) {
-                    console.log(response);
                     self.form.html(response.data);
                 } else if (!response.success && response.data) {
-                    console.log(123);
                     self.warningBlock.html(response.data);
                 }
             }

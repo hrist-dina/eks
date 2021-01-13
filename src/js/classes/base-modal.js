@@ -79,7 +79,11 @@ class BaseModal {
     close() {
         this.element.map((item, elem) => {
             $(elem).iziModal("close");
-            BaseModal.clear(elem);
+
+            if (!elem.dataset.modalType === 'study-profile') {
+                BaseModal.clear(elem);
+            }
+            
         });
     }
 
@@ -88,6 +92,8 @@ class BaseModal {
     }
 
     static clear(element) {
+        console.log(element);
+        console.log(element);
         $(element)
             .find("input")
             .filter(":text, :password, :file")

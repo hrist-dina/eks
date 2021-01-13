@@ -18,8 +18,7 @@ export class LoadImage {
     let imageLoadEvent = 'imageLoad';
     this.$input.on(imageLoadEvent, ({target}) => this.readURL(target));
     this.$change.on('click', () => this.$input.trigger(imageLoadEvent));
-    this.$delete.on('click', (e) => {
-      e.preventDefault();
+    this.$delete.on('deletePicture', (e) => {
       this.$input.val('');
       this.$preview.attr('src', this.$input.data('default'));
     });

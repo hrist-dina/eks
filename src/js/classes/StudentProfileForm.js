@@ -8,6 +8,8 @@ export class StudentProfileForm extends Form {
 
         this.profileName = this.$form.find('.modal__person-name span');
         this.profileMail = this.$form.find('.modal__person-value span');
+        
+        this.pictureDelete = this.$form.find('.js-load-image-delete');
         this.pictureInput = this.$form.find('.js-load-image-input');
 
         this.successMessage = this.$form.find('.js-modal-success');
@@ -15,6 +17,7 @@ export class StudentProfileForm extends Form {
 
         this.onSubmit();
         this.onSendPicture();
+        this.onDeletePicture();
     }
 
     onSubmit() {
@@ -78,6 +81,37 @@ export class StudentProfileForm extends Form {
                             if (parsedResponse.data.fio) this.renderProfileName(parsedResponse.data.fio);
                             if (parsedResponse.data.email) this.renderProfileMail(parsedResponse.data.email);
                         }
+
+                        if (parsedResponse.message) {
+                            this.renderSuccessMessage(parsedResponse.message);
+                            this.renderErrorMessage('');
+                        }
+                    } else if (response.message) {
+                        this.renderErrorMessage(parsedResponse.message);
+                        this.renderSuccessMessage('');
+                    }
+                }
+            });
+        })
+    }
+
+    onDeletePicture() {
+        this.pictureDelete.on('click', e => {
+            e.preventDefault();
+            let actionName = 'deletePicture';
+            let data = new FormData();
+            data.append(actionName, true);
+            $.ajax({
+                url: this.$form.attr('action') + actionName + '/',
+                method: 'post',
+                data,
+                processData: false,
+                contentType: false,
+
+                success: response => {
+                    let parsedResponse = JSON.parse(response);
+                    if (parsedResponse.success) {
+                        this.pictureDelete.trigger(actionName);
 
                         if (parsedResponse.message) {
                             this.renderSuccessMessage(parsedResponse.message);

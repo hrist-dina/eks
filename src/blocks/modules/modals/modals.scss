@@ -329,12 +329,22 @@
       top: 15px;
     }
 
+    & .modal {
+      &-success, &-error {
+        white-space: normal;
+      }
+    }
+
     & .modal-success {
-      color: #0a962f;
+      color: #fff;
     }
 
     & .modal-error {
-      color: #EC1212;
+      color: #f8717a;
+    }
+
+    & .modal__save {
+      margin-right: 20px;
     }
   }
 

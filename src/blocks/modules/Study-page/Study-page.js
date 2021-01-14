@@ -8,23 +8,19 @@ export class StudyPage {
             currentCabinet: 'current-cabinet',
             activeClass: 'active',
             disabledClass: 'disabled',
-            testTabBtnClass: '.js-test-tab-btn',
-            videoTabBtnClass: '.js-video-tab-btn',
         };
 
         this.selectors = {
-            jsCabinetQuestion: '.js-cabinet-question',
             repeatTestBtn: '.js-repeat-test-btn',
             jsQuestionWrap: '.js-question-wrap',
-            jsAnswerInputChecked: '.js-answer-checkbox:checked',
+            modalFailure: '.js-modal-failure',
+            modalSuccess: '.js-modal-success',
         };
 
         //elements
         this.testForm = $('.js-answer-form');
 
         this.testResultBlock = $('.cabinet-test__result');
-        this.successBlock = $('.js-success');
-        this.errorBlock = $('.js-error');
         this.nextActionBlock = $('.test-next-action');
         this.videoBlockerBlock = $('.js-video-blocker');
         this.cabinetDynamicBlock = $('.js-cabinet-dynamic-block');
@@ -47,14 +43,12 @@ export class StudyPage {
 
         //emojiPopup
 
-        this.successPopup = $('.js-success-popup');
-        this.failurePopup = $('.js-failure-popup');
+        this.successPopup = $(this.selectors.modalSuccess);
+        this.failurePopup = $(this.selectors.modalfailure);
         this.init();
     }
 
     init() {
-        // this.successModal = new BaseModal(this.successPopup);
-        this.clickEvent = new Event('click');
         this.repeatTestInit();
         this.nextQuestionInit();
         this.choiceAnswerInit();
@@ -223,21 +217,15 @@ export class StudyPage {
                 let responseData = JSON.parse(response.data);
                 if (self.videoTabBtn.hasClass(self.classes.disabledClass)) self.videoTabBtn.removeClass(self.classes.disabledClass);
                 let activeClass = self.classes.activeClass;
-                let successResult = self.successBlock;
-                let errorResult = self.errorBlock;
                 self.testWrap.removeClass(activeClass);
                 self.nextActionBlock.addClass(activeClass);
                 self.nextBtn.removeClass(activeClass);
                 if (response.success) {
-                    self.showSuccessPopup.call(self, responseData);
-                    successResult.toggleClass(activeClass, true);
-                    errorResult.toggleClass(activeClass, false);
+                    self.showSuccessPopup(responseData);
                     self.nextLessonBtn.addClass(self.classes.activeClass);
                     self.shareBtn.addClass(self.classes.activeClass);
                 } else {
-                    self.showFailurePpoup();
-                    successResult.toggleClass(activeClass, false);
-                    errorResult.toggleClass(activeClass, true);
+                    self.showFailurePopup(responseData);
                 }
             }
         })
@@ -250,32 +238,27 @@ export class StudyPage {
         let text = data.text ? data.text : undefined;
         let picture = data.picture ? data.picture : undefined;
         let description = data.description ? data.description : undefined;
-        this.testForm.find('.cabinet-test__result-icon img').attr('src', picture);
-        this.testForm.find('.cabinet-test__result-title').html(text);
 
         this.successPopup.find('.js-modal-text').html(text);
         this.successPopup.find('.js-modal-picture').attr("src", picture);
         if (description) {
             this.successPopup.find('.js-modal-description').html(description);
         }
-        let successPopupOpen = $('.js-success-popup-open');
-        successPopupOpen.trigger(this.clickEvent);
+        this.successPopup.trigger('click');
+
     }
 
     showFailurePopup(data) {
         let text = data.text ? data.text : undefined;
         let picture = data.picture ? data.picture : undefined;
         let description = data.description ? data.description : undefined;
-        this.testForm.find('.cabinet-test__result-icon img').attr('src', picture);
-        this.testForm.find('.cabinet-test__result-title').html(text);
 
-        this.successPopup.find('.js-modal-text').html(text);
-        this.successPopup.find('.js-modal-picture').attr("src", picture);
+        this.failurePopup.find('.js-modal-text').html(text);
+        this.failurePopup.find('.js-modal-picture').attr("src", picture);
         if (description) {
-            this.successPopup.find('.js-modal-description').html(description);
+            this.failurePopup.find('.js-modal-description').html(description);
         }
-        let successPopupOpen = $('.js-success-failure-open');
-        successPopupOpen.trigger(this.clickEvent);
+        this.failurePopup.trigger('click');
     }
 
 

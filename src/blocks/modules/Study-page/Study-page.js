@@ -15,6 +15,13 @@ export class StudyPage {
             jsQuestionWrap: '.js-question-wrap',
             modalFailure: '.js-modal-failure',
             modalSuccess: '.js-modal-success',
+
+            repeatTestBtn: '.js-repeat-test-btn',
+            repeatLessonBtn: '.js-repeat-lesson-btn',
+
+            jsModalTest: '.js-modal-text',
+            jsModalPicture: '.js-modal-picture',
+            jsModalDescription: '.js-modal-description',
         };
 
         //elements
@@ -32,7 +39,9 @@ export class StudyPage {
 
         //btns
         this.nextBtn = $('.js-next-question-btn');
-        this.repeatTestBtn = $('.js-repeat-test-btn');
+        this.repeatTestBtn = $(this.selectors.repeatTestBtn);
+        this.repeatLessonBtn = $(this.selectors.repeatLessonBtn);
+        console.log(this.repeatTestBtn);
         this.videoTabBtn = $('.js-video-tab-btn');
         this.testTabBtn = $('.js-test-tab-btn');
         this.nextLessonBtn = $('.js-lesson-next-action');
@@ -44,12 +53,13 @@ export class StudyPage {
         //emojiPopup
 
         this.successPopup = $(this.selectors.modalSuccess);
-        this.failurePopup = $(this.selectors.modalfailure);
+        this.failurePopup = $(this.selectors.modalFailure);
         this.init();
     }
 
     init() {
         this.repeatTestInit();
+        this.repeatLessonInit();
         this.nextQuestionInit();
         this.choiceAnswerInit();
         this.setPassedQuestionsCountInit();
@@ -60,7 +70,15 @@ export class StudyPage {
     //eventListeners
 
     repeatTestInit() {
-        this.repeatTestBtn.on('click', this.repeatTest.bind(this));
+        this.repeatTestBtn.each((i, el) => {
+            $(el).on('click', this.repeatTest.bind(this))
+        });
+    }
+
+    repeatLessonInit() {
+        this.repeatLessonBtn.each((i, el) => {
+            $(el).on('click', this.repeatLesson.bind(this))
+        });
     }
 
     nextQuestionInit() {
@@ -181,26 +199,25 @@ export class StudyPage {
 
     sendAnswers(data) {
         if (!data) return false;
-        let self = this;
 
         $.ajax('/ajax-virtual/student-progress/send-answer/', {
             type: 'POST',
             data: {'jsonResultString': data},
-            success(response) {
+            success: response => {
                 if (response.success && response.data) {
                     let jsonString = '"' + response.data + '"';
-                    let jsonStringForHTML = self.parseFormDataJsonToHTMLFormat(jsonString);
+                    let jsonStringForHTML = this.parseFormDataJsonToHTMLFormat(jsonString);
                     let parsedData = JSON.parse(response.data);
                     if (!parsedData.is_final) {
                         if (parsedData && parsedData.current_question_id) {
-                            self.showQuestionNodeById(parsedData.current_question_id);
+                            this.showQuestionNodeById(parsedData.current_question_id);
                         }
                     } else {
-                        self.sendAllAnswers(response.data);
+                        this.sendAllAnswers(response.data);
                     }
 
-                    self.setFormDataJsonResult(jsonStringForHTML);
-                    self.setPassedQuestionsCount();
+                    this.setFormDataJsonResult(jsonStringForHTML);
+                    this.setPassedQuestionsCount();
                 }
             }
         });
@@ -208,24 +225,23 @@ export class StudyPage {
 
     sendAllAnswers(data) {
         if (!data) return false;
-        let self = this;
 
         $.ajax('/ajax-virtual/student-progress/send-answers/', {
             type: 'POST',
             data: {'jsonResultString': data},
-            success(response) {
+            success: response => {
                 let responseData = JSON.parse(response.data);
-                if (self.videoTabBtn.hasClass(self.classes.disabledClass)) self.videoTabBtn.removeClass(self.classes.disabledClass);
-                let activeClass = self.classes.activeClass;
-                self.testWrap.removeClass(activeClass);
-                self.nextActionBlock.addClass(activeClass);
-                self.nextBtn.removeClass(activeClass);
+                if (this.videoTabBtn.hasClass(this.classes.disabledClass)) this.videoTabBtn.removeClass(this.classes.disabledClass);
+                let activeClass = this.classes.activeClass;
+                this.testWrap.removeClass(activeClass);
+                this.nextActionBlock.addClass(activeClass);
+                this.nextBtn.removeClass(activeClass);
                 if (response.success) {
-                    self.showSuccessPopup(responseData);
-                    self.nextLessonBtn.addClass(self.classes.activeClass);
-                    self.shareBtn.addClass(self.classes.activeClass);
+                    this.showSuccessPopup(responseData);
+                    this.nextLessonBtn.addClass(this.classes.activeClass);
+                    this.shareBtn.addClass(this.classes.activeClass);
                 } else {
-                    self.showFailurePopup(responseData);
+                    this.showFailurePopup(responseData);
                 }
             }
         })
@@ -239,10 +255,10 @@ export class StudyPage {
         let picture = data.picture ? data.picture : undefined;
         let description = data.description ? data.description : undefined;
 
-        this.successPopup.find('.js-modal-text').html(text);
-        this.successPopup.find('.js-modal-picture').attr("src", picture);
+        this.successPopup.find(this.selectors.jsModalTest).html(text);
+        this.successPopup.find(this.selectors.jsModalPicture).attr("src", picture);
         if (description) {
-            this.successPopup.find('.js-modal-description').html(description);
+            this.successPopup.find(this.selectors.jsModalDescription).html(description);
         }
         this.successPopup.trigger('click');
 
@@ -253,12 +269,14 @@ export class StudyPage {
         let picture = data.picture ? data.picture : undefined;
         let description = data.description ? data.description : undefined;
 
-        this.failurePopup.find('.js-modal-text').html(text);
-        this.failurePopup.find('.js-modal-picture').attr("src", picture);
+        this.failurePopup.find(this.selectors.jsModalTest).html(text);
+        this.failurePopup.find(this.selectors.jsModalPicture).attr("src", picture);
         if (description) {
-            this.failurePopup.find('.js-modal-description').html(description);
+            this.failurePopup.find(this.selectors.jsModalDescription).html(description);
         }
         this.failurePopup.trigger('click');
+        this.failurePopup.find(this.selectors.repeatTestBtn).on('click', this.repeatTest.bind(this));
+        this.failurePopup.find(this.selectors.repeatLessonBtn).on('click', this.repeatLesson.bind(this));
     }
 
 
@@ -296,17 +314,37 @@ export class StudyPage {
     repeatTest() {
         let formData = this.parseFormDataJsonToObject();
         let JSONData = JSON.stringify(formData);
-        let self = this;
         $.ajax('/ajax-virtual/student-progress/reset-progress/', {
             type: 'POST',
             data: {'jsonResultString': JSONData},
-            success(response) {
+            success: response => {
                 if (response.success && response.data) {
                     let jsonString = '"' + response.data + '"';
-                    let jsonStringForHTML = self.parseFormDataJsonToHTMLFormat(jsonString);
+                    let jsonStringForHTML = this.parseFormDataJsonToHTMLFormat(jsonString);
 
-                    self.setFormDataJsonResult(jsonStringForHTML);
-                    self.resetProgress();
+                    this.setFormDataJsonResult(jsonStringForHTML);
+                    this.resetProgress();
+                }
+            }
+        });
+    }
+
+    repeatLesson() {
+        let formData = this.parseFormDataJsonToObject();
+        let JSONData = JSON.stringify(formData);
+        $.ajax('/ajax-virtual/student-progress/reset-progress/', {
+            type: 'POST',
+            data: {'jsonResultString': JSONData},
+            success: response => {
+                if (response.success && response.data) {
+                    let jsonString = '"' + response.data + '"';
+                    let jsonStringForHTML = this.parseFormDataJsonToHTMLFormat(jsonString);
+
+                    this.setFormDataJsonResult(jsonStringForHTML);
+                    this.resetProgress();
+
+                    this.enableLessonVideo();
+
                 }
             }
         });

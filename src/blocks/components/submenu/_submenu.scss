@@ -32,6 +32,12 @@
         color: #cda500;
       }
     }
+
+    &.gray-gradient {
+      background: linear-gradient(181.28deg, #434551 -6.25%, #9EA2B3 51.06%, #454754 105.7%);
+      padding: 14px 16px 16px;
+      color: #fff;
+    }
   }
 
   & &__study {

@@ -215,6 +215,11 @@
         padding-top: 53px;
         padding-bottom: 40px;
       }
+
+      & .modal__response {
+        line-height: 1.5;
+        color: #fff;
+      }
     }
   }
   &__study {
@@ -265,6 +270,10 @@
           margin-bottom: 32px;
           width: 403px;
           height: 226px;
+
+          @include sm-block {
+            margin-bottom: 16px;
+          }
         }
       }
 
@@ -312,6 +321,73 @@
         text-align: center;
         text-decoration: none;
         line-break: anywhere;
+      }
+    }
+  }
+
+  &__study-result {
+    max-width: 724px;
+
+    & .modal__inner {
+      padding: 107px 83px 92px;
+
+    }
+
+    & .modal__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 45px;
+
+      & .modal__picture {
+        @include lg-block {
+          margin-bottom: 90px;
+        }
+
+        @include xs-block {
+          margin-bottom: 70px;
+        }
+
+        & img {
+          max-width: 162px;
+        }
+      }
+
+      & .modal__text {
+        font-size: 30px;
+        text-align: center;
+        line-height: 37px;
+        margin-bottom: 52px;
+
+        @include xs-block {
+          margin-bottom: 115px;
+        }
+      }
+
+      & .btn-yellow {
+        padding: 16px 36px;
+
+        &:first-of-type {
+          margin-bottom: 20px;
+          margin-right: 0;
+        }
+
+        @include xs-block {
+          &:first-of-type {
+            margin-right: 20px;
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      & .modal__controls {
+        display: flex;
+        flex-direction: column;
+
+        @include sm-block {
+          flex-direction: row;
+        }
       }
     }
   }

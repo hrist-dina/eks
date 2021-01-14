@@ -109,14 +109,14 @@
 
     &__title {
       width: 100%;
-      top: 40px;
+      top: 10px;
       font-size: 28px;
       line-height: 30px;
       padding-right: 8px;
       text-align: center;
 
-      @include sm-block {
-        top: 10px;
+      @include xs-block {
+        top: 40px;
         font-size: 32px;
         line-height: 39px;
       }
@@ -262,6 +262,9 @@
     padding-bottom: 18px;
 
     .cabinet-actions {
+      display: flex;
+      flex-direction: column;
+
       .test-next-action {
         display: none;
 
@@ -276,6 +279,10 @@
         &.active {
           display: block;
         }
+      }
+
+      @include xs-block {
+        flex-direction: row;
       }
     }
 
@@ -777,7 +784,7 @@
       height: 100%;
       top: 0;
       left: 0;
-      z-index: 100;
+      z-index: 20;
       background: #000;
       opacity: .8;
 
@@ -787,14 +794,14 @@
 
       &-info {
         position: absolute;
-        top: 50%;
+        width: 100%;
         left: 50%;
+        top: 62%;
         transform: translate(-50%, -50%);
         color: #fff;
 
-        @include sm-block {
-          width: 100%;
-          top: 62%;
+        @include xs-block {
+          top: 50%;
         }
 
         &__text {
@@ -805,13 +812,13 @@
             position: absolute;
             width: 32px;
             height: 32px;
-            top: -45px;
+            top: -35px;
             left: 50%;
             transform: translateX(-50%);
             background-image: url('/local/assets/img/study/warning.svg');
 
-            @include sm-block {
-              top: -35px;
+            @include xs-block {
+              top: -45px;
             }
           }
         }

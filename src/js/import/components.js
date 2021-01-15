@@ -33,6 +33,7 @@ import {ProfileForm} from "../classes/ProfileForm";
 import {StudentProfileForm} from "../classes/StudentProfileForm";
 import {PhoneConfirm} from "../classes/PhoneConfirm";
 import {LoadImage} from "../classes/LoadImage";
+import {YaShare} from "%components%/ya-share/YaShare";
 
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
@@ -96,7 +97,7 @@ $(document).ready(function () {
         new ProfileForm(el);
     });
 
-    if ('#jsStudentProfile') {
+    if ($('#jsStudentProfile')) {
         new StudentProfileForm('#jsStudentProfile');
     }
     new Search();
@@ -104,4 +105,8 @@ $(document).ready(function () {
     new StudentReg();
     new StudentAuth();
     new StudentRestore();
+
+    if ($('.share')) {
+        new YaShare('.share');
+    }
 });

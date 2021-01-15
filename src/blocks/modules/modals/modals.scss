@@ -308,6 +308,31 @@
 
         & .share {
           margin-bottom: 56px;
+
+          & .ya-share2__list.ya-share2__list_direction_horizontal {
+            & > .ya-share2__item {
+              margin: 0 5px;
+
+              & .ya-share2__badge {
+                position: relative!important;
+                width: 40px!important;
+                height: 40px!important;
+                background-color: transparent!important;
+                border: 1px solid silver!important;
+                border-radius: 0!important;
+
+                & .ya-share2__icon {
+                  position: absolute!important;
+                  height: 35px!important;
+                  width: 35px!important;
+                  top: 50%!important;
+                  left: 50%!important;
+                  transform: translate(-50%, -50%)!important;
+                  background-size: 35px 35px!important;
+                }
+              }
+            }
+          }
         }
       }
 

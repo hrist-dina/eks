@@ -15,6 +15,7 @@ export class StudyPage {
             jsQuestionWrap: '.js-question-wrap',
             modalFailure: '.js-modal-failure',
             modalSuccess: '.js-modal-success',
+            modalProfile: '.js-modal-profile',
 
             repeatTestBtn: '.js-repeat-test-btn',
             repeatLessonBtn: '.js-repeat-lesson-btn',
@@ -41,7 +42,6 @@ export class StudyPage {
         this.nextBtn = $('.js-next-question-btn');
         this.repeatTestBtn = $(this.selectors.repeatTestBtn);
         this.repeatLessonBtn = $(this.selectors.repeatLessonBtn);
-        console.log(this.repeatTestBtn);
         this.videoTabBtn = $('.js-video-tab-btn');
         this.testTabBtn = $('.js-test-tab-btn');
         this.nextLessonBtn = $('.js-lesson-next-action');
@@ -55,6 +55,11 @@ export class StudyPage {
         this.successPopup = $(this.selectors.modalSuccess);
         this.failurePopup = $(this.selectors.modalFailure);
         this.init();
+
+        //profilePopup
+
+        this.profilePopup = $(this.selectors.modalProfile);
+        this.profilePopupCertDownloadLink = this.profilePopup.find('.js-link-download');
     }
 
     init() {
@@ -189,6 +194,13 @@ export class StudyPage {
         this.setFormDataJsonResult(this.parseFormDataJsonToHTMLFormat(jsonString));
     }
 
+    enableCert(href) {
+        if (!this.profilePopupCertDownloadLink) return false;
+        this.profilePopupCertDownloadLink.attr('href', href);
+        this.profilePopupCertDownloadLink.toggleClass('active', true);
+        return true;
+    }
+
     // AJAX
 
     sendAnswer() {
@@ -230,18 +242,23 @@ export class StudyPage {
             type: 'POST',
             data: {'jsonResultString': data},
             success: response => {
-                let responseData = JSON.parse(response.data);
+                let parsedResponse = JSON.parse(response);
                 if (this.videoTabBtn.hasClass(this.classes.disabledClass)) this.videoTabBtn.removeClass(this.classes.disabledClass);
                 let activeClass = this.classes.activeClass;
                 this.testWrap.removeClass(activeClass);
                 this.nextActionBlock.addClass(activeClass);
                 this.nextBtn.removeClass(activeClass);
-                if (response.success) {
-                    this.showSuccessPopup(responseData);
-                    this.nextLessonBtn.addClass(this.classes.activeClass);
-                    this.shareBtn.addClass(this.classes.activeClass);
+                if (parsedResponse.success) {
+                    // Если это последний урок из серии - делаем сертификат активным для скачивания
+                    if (parsedResponse.data.file_path) {
+                        this.enableCert(parsedResponse.data.file_path);
+                    } else {
+                        this.showSuccessPopup(parsedResponse);
+                        this.nextLessonBtn.addClass(this.classes.activeClass);
+                        this.shareBtn.addClass(this.classes.activeClass);
+                    }
                 } else {
-                    this.showFailurePopup(responseData);
+                    this.showFailurePopup(parsedResponse.data);
                 }
             }
         })

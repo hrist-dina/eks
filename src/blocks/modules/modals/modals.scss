@@ -437,6 +437,14 @@
       }
     }
 
+    & .link-download__text {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
     & .modal-success {
       color: #fff;
     }

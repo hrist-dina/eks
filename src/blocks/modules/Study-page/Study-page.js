@@ -16,11 +16,12 @@ export class StudyPage {
             modalFailure: '.js-modal-failure',
             modalSuccess: '.js-modal-success',
             modalProfile: '.js-modal-profile',
+            modalFinish: '.js-modal-finish',
 
             repeatTestBtn: '.js-repeat-test-btn',
             repeatLessonBtn: '.js-repeat-lesson-btn',
 
-            jsModalTest: '.js-modal-text',
+            jsModalText: '.js-modal-text',
             jsModalPicture: '.js-modal-picture',
             jsModalDescription: '.js-modal-description',
         };
@@ -46,6 +47,7 @@ export class StudyPage {
         this.testTabBtn = $('.js-test-tab-btn');
         this.nextLessonBtn = $('.js-lesson-next-action');
         this.shareBtn = $('.js-share');
+
         //checkboxes
         this.answerCheckbox = $('.js-answer-checkbox');
         this.lessonVideo = $('#lessonVideo');
@@ -53,13 +55,17 @@ export class StudyPage {
         //emojiPopup
 
         this.successPopup = $(this.selectors.modalSuccess);
+
         this.failurePopup = $(this.selectors.modalFailure);
-        this.init();
 
         //profilePopup
 
         this.profilePopup = $(this.selectors.modalProfile);
         this.profilePopupCertDownloadLink = this.profilePopup.find('.js-link-download');
+
+        //finishPopup
+        this.finishPopup = $(this.selectors.modalFinish);
+        this.init();
     }
 
     init() {
@@ -248,10 +254,12 @@ export class StudyPage {
                 this.testWrap.removeClass(activeClass);
                 this.nextActionBlock.addClass(activeClass);
                 this.nextBtn.removeClass(activeClass);
+                console.log(parsedResponse);
                 if (parsedResponse.success) {
                     // Если это последний урок из серии - делаем сертификат активным для скачивания
                     if (parsedResponse.data.file_path) {
                         this.enableCert(parsedResponse.data.file_path);
+                        this.showFinishPopup(Object.assign({text: parsedResponse.message}, parsedResponse.data));
                     } else {
                         this.showSuccessPopup(parsedResponse);
                         this.nextLessonBtn.addClass(this.classes.activeClass);
@@ -272,11 +280,12 @@ export class StudyPage {
         let picture = data.picture ? data.picture : undefined;
         let description = data.description ? data.description : undefined;
 
-        this.successPopup.find(this.selectors.jsModalTest).html(text);
-        this.successPopup.find(this.selectors.jsModalPicture).attr("src", picture);
+        if (text) this.successPopup.find(this.selectors.jsModalText).html(text);
+        if (picture) this.successPopup.find(this.selectors.jsModalText).attr('src', picture);
         if (description) {
             this.successPopup.find(this.selectors.jsModalDescription).html(description);
         }
+
         this.successPopup.trigger('click');
 
     }
@@ -286,14 +295,30 @@ export class StudyPage {
         let picture = data.picture ? data.picture : undefined;
         let description = data.description ? data.description : undefined;
 
-        this.failurePopup.find(this.selectors.jsModalTest).html(text);
-        this.failurePopup.find(this.selectors.jsModalPicture).attr("src", picture);
+        if (text) this.failurePopup.find(this.selectors.jsModalText).html(text);
+        if (picture) this.failurePopup.find(this.selectors.jsModalPicture).attr('src', picture);
+
         if (description) {
             this.failurePopup.find(this.selectors.jsModalDescription).html(description);
         }
+
         this.failurePopup.trigger('click');
         this.failurePopup.find(this.selectors.repeatTestBtn).on('click', this.repeatTest.bind(this));
         this.failurePopup.find(this.selectors.repeatLessonBtn).on('click', this.repeatLesson.bind(this));
+    }
+
+    showFinishPopup(data) {
+        console.log(data);
+        let picture = data.certificate_icon ? data.certificate_icon : undefined;
+        console.log(picture)
+
+        if (picture) {
+            console.log(this.finishPopupPicture);
+            console.log(picture);
+            this.finishPopup.find(this.selectors.jsModalPicture).attr('src', picture);
+        }
+        this.finishPopup.trigger('click');
+
     }
 
 

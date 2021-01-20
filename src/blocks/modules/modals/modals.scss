@@ -446,8 +446,17 @@
       }
     }
 
-    & .link-download__text {
+    & .link-download {
       display: none;
+
+      &.active {
+        display: flex;
+      }
+    }
+
+    .modal__block-response {
+      display: none;
+      margin-top: 10px;
 
       &.active {
         display: block;

@@ -60,11 +60,6 @@ export class StudyPage {
 
         this.failurePopup = $(this.selectors.modalFailure);
 
-        //profilePopup
-
-        this.profilePopup = $(this.selectors.modalProfile);
-        this.profilePopupCertDownloadLink = this.profilePopup.find('.js-link-download');
-
         //finishPopup
         this.finishPopup = $(this.selectors.modalFinish);
         this.init();
@@ -78,6 +73,9 @@ export class StudyPage {
         this.setPassedQuestionsCountInit();
         this.disableVideoInit();
         this.enableVideoInit();
+        this.profilePopupInit();
+        this.profileTriggerInit();
+        this.downloadCertLinkInit();
     }
 
     //eventListeners
@@ -103,8 +101,6 @@ export class StudyPage {
         this.answerCheckbox.on('change', this.choiceAnswer.bind(this));
     }
 
-    //
-
     disableVideoInit() {
         this.testTabBtn.on('click', this.disableLessonVideo.bind(this));
         this.testTabBtn.on('click', this.hideCabinetTabs.bind(this));
@@ -117,6 +113,25 @@ export class StudyPage {
 
     setPassedQuestionsCountInit() {
         this.setPassedQuestionsCount();
+    }
+
+    profileTriggerInit() {
+        this.profileTrigger = this.finishPopup.find('.js-profile-trigger');
+        this.profileTrigger.on('click', () => {
+            this.profilePopup.trigger('click');
+            // костыль, чтобы не открывание не перебивалось открыванием остальных попапов
+            setTimeout(() => {
+                $(document).find('.js-modal-profile-open').trigger('click');
+            }, 1000);
+        })
+    }
+
+    downloadCertLinkInit() {
+        this.profilePopupCertDownloadLink = this.profilePopup.find('.js-link-download');
+    }
+
+    profilePopupInit() {
+        this.profilePopup = $(this.selectors.modalProfile);
     }
 
     disableLessonVideo() {
@@ -259,12 +274,16 @@ export class StudyPage {
                 this.testWrap.removeClass(activeClass);
                 this.nextActionBlock.addClass(activeClass);
                 this.nextBtn.removeClass(activeClass);
-                console.log(parsedResponse);
                 if (parsedResponse.success) {
                     // Если это последний урок из серии - делаем сертификат активным для скачивания
-                    if (parsedResponse.data.file_path) {
-                        this.enableCert(parsedResponse.data.file_path);
+                    let certificatePath = parsedResponse.data.file_path;
+                    if (certificatePath) {
+                        this.enableCert(certificatePath);
+                        this.downloadCertLinkInit();
                         this.showFinishPopup(Object.assign({text: parsedResponse.message}, parsedResponse.data));
+                        this.profilePopupInit();
+                        this.profileTriggerInit();
+                        this.makeCertificateLinkAvailable(certificatePath);
                     } else {
                         this.showSuccessPopup(parsedResponse);
                         this.nextLessonBtn.addClass(this.classes.activeClass);
@@ -313,17 +332,12 @@ export class StudyPage {
     }
 
     showFinishPopup(data) {
-        console.log(data);
         let picture = data.certificate_icon ? data.certificate_icon : undefined;
-        console.log(picture)
 
         if (picture) {
-            console.log(this.finishPopupPicture);
-            console.log(picture);
             this.finishPopup.find(this.selectors.jsModalPicture).attr('src', picture);
         }
         this.finishPopup.trigger('click');
-
     }
 
 
@@ -404,4 +418,14 @@ export class StudyPage {
     hideCabinetTabs() {
         if (this.cabinetTabs.hasClass(this.classes.activeClass)) this.cabinetTabs.removeClass(this.classes.activeClass)
     }
+
+    makeCertificateLinkAvailable(href) {
+        if (!href) return false;
+        if (!this.profilePopupCertDownloadLink.hasClass(this.classes.activeClass)) this.profilePopupCertDownloadLink.addClass(this.classes.activeClass);
+        this.profilePopupCertDownloadLink.attr('href', href);
+
+        return true;
+    }
+
+
 }

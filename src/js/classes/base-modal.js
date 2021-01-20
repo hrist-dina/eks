@@ -82,6 +82,7 @@ class BaseModal {
 
             if (!elem.dataset.modalType === 'study-profile') {
                 BaseModal.clear(elem);
+                $(elem).find('.js-modal-response').trigger('hide');
             }
             
         });

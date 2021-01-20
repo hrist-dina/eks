@@ -4,6 +4,10 @@ import {Form} from "./Form";
 
 export class StudentProfileForm extends Form {
     init() {
+        this.classes = {
+            activeClass: 'active',
+        };
+
         this.$form = $(this.form);
 
         this.profileName = this.$form.find('.modal__person-name span');
@@ -11,13 +15,18 @@ export class StudentProfileForm extends Form {
         
         this.pictureDelete = this.$form.find('.js-load-image-delete');
         this.pictureInput = this.$form.find('.js-load-image-input');
-
+        this.responseBlock = this.$form.find('.js-modal-response');
         this.successMessage = this.$form.find('.js-modal-success');
         this.errorMessage = this.$form.find('.js-modal-error');
 
         this.onSubmit();
         this.onSendPicture();
         this.onDeletePicture();
+        this.triggerHideResponseBlockInit();
+    }
+
+    triggerHideResponseBlockInit() {
+        this.responseBlock.on('hide', this.hideResponseBlock());
     }
 
     onSubmit() {
@@ -48,6 +57,8 @@ export class StudentProfileForm extends Form {
                             self.renderErrorMessage(parsedResponse.message);
                             self.renderSuccessMessage('');
                         }
+
+                        this.showResponseBlock();
                     }
                 });
 
@@ -90,6 +101,8 @@ export class StudentProfileForm extends Form {
                         this.renderErrorMessage(parsedResponse.message);
                         this.renderSuccessMessage('');
                     }
+
+                    this.showResponseBlock();
                 }
             });
         })
@@ -121,6 +134,8 @@ export class StudentProfileForm extends Form {
                         this.renderErrorMessage(parsedResponse.message);
                         this.renderSuccessMessage('');
                     }
+
+                    this.showResponseBlock();
                 }
             });
         })
@@ -151,6 +166,13 @@ export class StudentProfileForm extends Form {
         if (profileMail === undefined) return false;
 
         if (this.profileMail != profileMail) this.profileMail.html(profileMail);
+    }
 
+    showResponseBlock() {
+        if (!this.responseBlock.hasClass(this.classes.activeClass)) this.responseBlock.addClass(this.classes.activeClass);
+    }
+
+    hideResponseBlock() {
+        if (this.responseBlock.hasClass(this.classes.activeClass)) this.responseBlock.removeClass(this.classes.activeClass);
     }
 }

@@ -830,9 +830,13 @@
     @include sm-block {
       flex-direction: row;
     }
-    display: flex;
+    display: none;
     justify-content: space-between;
     flex-direction: column;
+
+    &.active {
+      display: flex;
+    }
   }
 
   &-tabs &-tab__button {
@@ -981,7 +985,7 @@
 
       &-title {
         @include md-block {
-          font-size: 23px;
+          font-size: 19px;
           line-height: 28px;
         }
         @include sm-block {

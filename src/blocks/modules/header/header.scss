@@ -368,13 +368,11 @@
 
   & .study-fixed-button {
     position: fixed;
-    max-width: 271px;
-    width: 271px;
     max-height: 63px;
-    padding: 19px 23px 23px 23px;
+    padding: 19px 80px 23px 23px;
     background: #FECC00;
     transform: rotate(-90deg);
-    left: -104px;
+    left: -160px;
     bottom: 152px;
     z-index: 1000;
     text-decoration: none;
@@ -391,7 +389,7 @@
     width: 39px;
     height: 39px;
     top: 50%;
-    right: 20px;
+    right: 18px;
     transform: translateY(-50%) rotate(90deg);
     background-image: url('/local/assets/img/study/arrow_white.png');
   }

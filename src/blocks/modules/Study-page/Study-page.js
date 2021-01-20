@@ -2,6 +2,7 @@
 
 export class StudyPage {
     constructor(selector = ".js-cabinet__wrap") {
+        this.$el = $(document).find(selector);
         this.page = selector;
         this.classes = {
             currentQuestion: 'current-question',
@@ -36,6 +37,7 @@ export class StudyPage {
 
         this.questionWrap = $('.js-question-wrap');
         this.testWrap = $('.test-wrap');
+        this.cabinetTabs = this.$el.find('.js-cabinet-tabs');
 
         this.currentQuestionCounter = $('.js-current-count');
 
@@ -82,13 +84,14 @@ export class StudyPage {
 
     repeatTestInit() {
         this.repeatTestBtn.each((i, el) => {
-            $(el).on('click', this.repeatTest.bind(this))
+            $(el).on('click', this.repeatTest.bind(this));
         });
     }
 
     repeatLessonInit() {
         this.repeatLessonBtn.each((i, el) => {
-            $(el).on('click', this.repeatLesson.bind(this))
+            $(el).on('click', this.repeatLesson.bind(this));
+            $(el).on('click', this.showCabinetTabs.bind(this));
         });
     }
 
@@ -104,10 +107,12 @@ export class StudyPage {
 
     disableVideoInit() {
         this.testTabBtn.on('click', this.disableLessonVideo.bind(this));
+        this.testTabBtn.on('click', this.hideCabinetTabs.bind(this));
     }
 
     enableVideoInit() {
         this.videoTabBtn.on('click', this.enableLessonVideo.bind(this));
+        this.videoTabBtn.on('click', this.showCabinetTabs.bind(this));
     }
 
     setPassedQuestionsCountInit() {
@@ -390,5 +395,13 @@ export class StudyPage {
                 }
             }
         });
+    }
+
+    showCabinetTabs() {
+        if (!this.cabinetTabs.hasClass(this.classes.activeClass)) this.cabinetTabs.addClass(this.classes.activeClass)
+    }
+
+    hideCabinetTabs() {
+        if (this.cabinetTabs.hasClass(this.classes.activeClass)) this.cabinetTabs.removeClass(this.classes.activeClass)
     }
 }

@@ -13,6 +13,7 @@ class BaseModal {
         this.selectorOpen = `${selector}-open`;
         this.selectorClose = `${selector}-close`;
         this.options = $.extend(BaseModal.baseOptions(), options);
+        this.fisrtInput = null;
         this.init();
     }
 
@@ -52,6 +53,8 @@ class BaseModal {
                 event.preventDefault();
                 self.close();
                 self.open($(this).data("modal-type"));
+                let input = $(document).find(self.selector).find('input[type=text]').first();
+                self.triggerInput(input);
             });
         $(this.selectorClose).on("click", function (event) {
             event.preventDefault();
@@ -82,10 +85,17 @@ class BaseModal {
 
             if (!elem.dataset.modalType === 'study-profile') {
                 BaseModal.clear(elem);
-                $(elem).find('.js-modal-response').trigger('hide');
             }
-            
+            $(elem).find('.js-modal-response').trigger('hide');
+
         });
+    }
+
+    triggerInput(input) {
+        if (!input.length) return false;
+
+        input.focus();
+        return true;
     }
 
     static renderMessage(modal, message) {
@@ -93,8 +103,6 @@ class BaseModal {
     }
 
     static clear(element) {
-        console.log(element);
-        console.log(element);
         $(element)
             .find("input")
             .filter(":text, :password, :file")

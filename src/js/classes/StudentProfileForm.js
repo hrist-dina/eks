@@ -1,13 +1,14 @@
 import $ from "jquery";
 import Validator from "./Validator";
 import {Form} from "./Form";
+import {LoadImage} from './LoadImage';
 
 export class StudentProfileForm extends Form {
     init() {
         this.classes = {
             activeClass: 'active',
+            hiddenClass: 'hidden',
         };
-
         this.$form = $(this.form);
 
         this.profileName = this.$form.find('.modal__person-name span');
@@ -23,6 +24,7 @@ export class StudentProfileForm extends Form {
         this.onSendPicture();
         this.onDeletePicture();
         this.triggerHideResponseBlockInit();
+        new LoadImage();
     }
 
     triggerHideResponseBlockInit() {
@@ -58,7 +60,7 @@ export class StudentProfileForm extends Form {
                             self.renderSuccessMessage('');
                         }
 
-                        this.showResponseBlock();
+                        self.showResponseBlock();
                     }
                 });
 
@@ -168,8 +170,13 @@ export class StudentProfileForm extends Form {
         if (this.profileMail != profileMail) this.profileMail.html(profileMail);
     }
 
-    showResponseBlock() {
+    showResponseBlock(timeset = 3000) {
         if (!this.responseBlock.hasClass(this.classes.activeClass)) this.responseBlock.addClass(this.classes.activeClass);
+        if (this.responseBlock.hasClass(this.classes.hiddenClass)) this.responseBlock.removeClass(this.classes.hiddenClass);
+
+        setTimeout(() => {
+            if (!this.responseBlock.hasClass(this.classes.hiddenClass)) this.responseBlock.addClass(this.classes.hiddenClass);
+        }, timeset);
     }
 
     hideResponseBlock() {

@@ -49,6 +49,7 @@ export class StudyPage {
         this.testTabBtn = $('.js-test-tab-btn');
         this.nextLessonBtn = $('.js-lesson-next-action');
         this.shareBtn = $('.js-share');
+        this.shareLink = $('.js-modal-share__link');
 
         //checkboxes
         this.answerCheckbox = $('.js-answer-checkbox');
@@ -76,6 +77,7 @@ export class StudyPage {
         this.profilePopupInit();
         this.profileTriggerInit();
         this.downloadCertLinkInit();
+        this.copyShareLinkInit();
     }
 
     //eventListeners
@@ -132,6 +134,10 @@ export class StudyPage {
 
     profilePopupInit() {
         this.profilePopup = $(this.selectors.modalProfile);
+    }
+
+    copyShareLinkInit() {
+        this.shareLink.on('click', this.copyShareLink.bind(this));
     }
 
     disableLessonVideo() {
@@ -267,8 +273,8 @@ export class StudyPage {
         $.ajax('/ajax-virtual/student-progress/send-answers/', {
             type: 'POST',
             data: {'jsonResultString': data},
-            success: response => {
-                let parsedResponse = JSON.parse(response);
+            success: parsedResponse => {
+                // let parsedResponse = JSON.parse(response);
                 if (this.videoTabBtn.hasClass(this.classes.disabledClass)) this.videoTabBtn.removeClass(this.classes.disabledClass);
                 let activeClass = this.classes.activeClass;
                 this.testWrap.removeClass(activeClass);
@@ -277,6 +283,7 @@ export class StudyPage {
                 if (parsedResponse.success) {
                     // Если это последний урок из серии - делаем сертификат активным для скачивания
                     let certificatePath = parsedResponse.data.file_path;
+                    console.log(parsedResponse);
                     if (certificatePath) {
                         this.enableCert(certificatePath);
                         this.downloadCertLinkInit();
@@ -315,16 +322,18 @@ export class StudyPage {
     }
 
     showFailurePopup(data) {
+        console.log(data);
         let text = data.text ? data.text : undefined;
         let picture = data.picture ? data.picture : undefined;
-        let description = data.description ? data.description : undefined;
+        let failedQuestionsArray = data.failed_questions ? data.failed_questions : undefined;
+
+        if (failedQuestionsArray && failedQuestionsArray.length) {
+            let failedString = failedQuestionsArray.join(', ');
+            text = text + '<br>Ошибки в вопросах: ' +  failedString;
+        }
 
         if (text) this.failurePopup.find(this.selectors.jsModalText).html(text);
         if (picture) this.failurePopup.find(this.selectors.jsModalPicture).attr('src', picture);
-
-        if (description) {
-            this.failurePopup.find(this.selectors.jsModalDescription).html(description);
-        }
 
         this.failurePopup.trigger('click');
         this.failurePopup.find(this.selectors.repeatTestBtn).on('click', this.repeatTest.bind(this));
@@ -427,5 +436,15 @@ export class StudyPage {
         return true;
     }
 
+    copyShareLink(e) {
+        e.preventDefault();
+        if (!this.shareLink.length || !this.shareLink.attr('href')) return false;
+        let tmp = $('<textarea>');
+        $("body").append(tmp);
+        tmp.val(this.shareLink.attr('href')).select();
+        document.execCommand("copy");
+        tmp.remove();
 
+        return true;
+    }
 }

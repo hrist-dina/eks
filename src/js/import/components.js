@@ -21,6 +21,7 @@ import {FormAuth} from "../classes/FormAuth";
 import {Sort} from "../classes/Sort";
 import {StoreBlock} from "../classes/StoreBlock";
 import {BuyModal} from "../classes/BuyModal";
+import {StudentProfileModal} from "../classes/StudentProfileModal";
 import {Basket} from "../classes/Basket";
 import {Preloader} from "../classes/Preloader";
 import {OrderForm} from "../classes/OrderForm";
@@ -96,10 +97,11 @@ $(document).ready(function () {
     $('.js-form-profile').each((i, el) => {
         new ProfileForm(el);
     });
-
-    if ($('#jsStudentProfile')) {
-        new StudentProfileForm('#jsStudentProfile');
+    
+    if ($('.js-modal-profile')) {
+        new StudentProfileModal('.js-modal-profile');
     }
+
     new Search();
 
     new StudentReg();

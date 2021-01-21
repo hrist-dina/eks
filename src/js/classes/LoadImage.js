@@ -9,7 +9,7 @@ export class LoadImage {
     this.$preview = this.$el.find(`${selector}-preview`);
     this.$delete = this.$el.find(`${selector}-delete`);
     this.$change = this.$el.find(`${selector}-change`);
-
+    
     this.init();
   }
 

@@ -457,9 +457,14 @@
     .modal__block-response {
       display: none;
       margin-top: 10px;
+      transition: 1s opacity;
 
       &.active {
         display: block;
+      }
+
+      &.hidden {
+        opacity: 0;
       }
     }
 

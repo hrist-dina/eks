@@ -199,17 +199,24 @@
     }
 
     &-body {
-      @include lg-block {
-        padding: 60px 115px 42px 145px;
+      @include lg-block{
+        padding: 40px 115px 40px 145px;
+
       }
     }
-    &-body {
-      @include lg-block {
-        //padding-top: 20px;
-        padding-bottom: 40px;
-        padding-top: 75px;
-      }
-    }
+
+    //&-body {
+    //  @include lg-block {
+    //    padding: 60px 115px 42px 145px;
+    //  }
+    //}
+    //&-body {
+    //  @include lg-block {
+    //    //padding-top: 20px;
+    //    padding-bottom: 40px;
+    //    padding-top: 75px;
+    //  }
+    //}
   }
 
   &-test, &-footer {
@@ -717,7 +724,7 @@
 
       position: absolute;
       width: 100%;
-      top: 40px;
+      top: 10px;
       z-index: 10;
       text-align: center;
       font-style: normal;
@@ -919,6 +926,10 @@
       margin-bottom: 10px;
 
       &-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: stretch;
         @include sm-block {
           margin: 30px -10px -10px;
         }

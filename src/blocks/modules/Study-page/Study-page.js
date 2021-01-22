@@ -1,4 +1,4 @@
-    import $ from "jquery";
+import $ from "jquery";
 
 export class StudyPage {
     constructor(selector = ".js-cabinet__wrap") {
@@ -18,6 +18,7 @@ export class StudyPage {
             modalSuccess: '.js-modal-success',
             modalProfile: '.js-modal-profile',
             modalFinish: '.js-modal-finish',
+            modalOpen: '.js-modal-open',
 
             repeatTestBtn: '.js-repeat-test-btn',
             repeatLessonBtn: '.js-repeat-lesson-btn',
@@ -78,7 +79,6 @@ export class StudyPage {
         this.profileTriggerInit();
         this.downloadCertLinkInit();
         this.copyShareLinkInit();
-        // this.nextLessonInit();
     }
 
     //eventListeners
@@ -99,12 +99,6 @@ export class StudyPage {
     nextQuestionInit() {
         this.nextBtn.on('click', this.sendAnswer.bind(this));
     }
-
-    // nextLessonInit() {
-    //     this.nextLessonBtn.each((i, el) => {
-    //         el.on('click', this.nextLesson.bind(this));
-    //     });
-    // }
 
     choiceAnswerInit() {
         this.answerCheckbox.on('change', this.choiceAnswer.bind(this));
@@ -145,6 +139,15 @@ export class StudyPage {
 
     copyShareLinkInit() {
         this.shareLink.on('click', this.copyShareLink.bind(this));
+    }
+
+    nextLessonInModalInit() {
+        let nextLesson = $('.js-next-lesson-modal');
+        let nextLessonBtnHref = nextLesson.attr('href');
+        if (!nextLessonBtnHref || nextLessonBtnHref === 'javascript:void(0)') return false;
+        nextLesson.on('click', () => {
+            window.location.href = nextLessonBtnHref;
+        });
     }
 
     disableLessonVideo() {
@@ -324,7 +327,7 @@ export class StudyPage {
             this.successPopup.find(this.selectors.jsModalDescription).html(description);
         }
 
-        this.successPopup.trigger('click');
+        this.successPopup.find(this.selectors.modalOpen).trigger('click');
         this.nextLessonInModalInit();
     }
 
@@ -341,7 +344,7 @@ export class StudyPage {
         if (text) this.failurePopup.find(this.selectors.jsModalText).html(text);
         if (picture) this.failurePopup.find(this.selectors.jsModalPicture).attr('src', picture);
 
-        this.failurePopup.trigger('click');
+        this.failurePopup.find(this.selectors.modalOpen).trigger('click');
         this.failurePopup.find(this.selectors.repeatTestBtn).on('click', this.repeatTest.bind(this));
         this.failurePopup.find(this.selectors.repeatLessonBtn).on('click', this.repeatLesson.bind(this));
     }
@@ -352,7 +355,7 @@ export class StudyPage {
         if (picture) {
             this.finishPopup.find(this.selectors.jsModalPicture).attr('src', picture);
         }
-        this.finishPopup.trigger('click');
+        this.finishPopup.find(this.selectors.modalOpen).trigger('click');
     }
 
 
@@ -452,14 +455,5 @@ export class StudyPage {
         tmp.remove();
 
         return true;
-    }
-
-    nextLessonInModalInit() {
-        let nextLesson = $('.js-next-lesson-modal');
-        let nextLessonBtnHref = nextLesson.attr('href');
-        if (!nextLessonBtnHref || nextLessonBtnHref === 'javascript:void(0)') return false;
-        nextLesson.on('click', () => {
-            window.location.href = nextLessonBtnHref;
-        });
     }
 }

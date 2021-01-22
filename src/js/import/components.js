@@ -9,6 +9,7 @@ import {SliderStudy} from "%components%/slider-study/SliderStudy";
 import {SwiperRecommended} from "%components%/recommendation/SwiperRecommended";
 import {Map} from "%components%/map/Map";
 import {BaseModal} from "../classes/base-modal";
+import {ShareModal} from "../classes/ShareModal";
 import {Quantity} from "%components%/quantity/Quantity";
 import {WhereBuy} from "%components%/where-buy/WhereBuy";
 import {StudySidebar} from "%components%/study-sidebar/StudySidebar";
@@ -100,6 +101,9 @@ $(document).ready(function () {
     
     if ($('.js-modal-profile')) {
         new StudentProfileModal('.js-modal-profile');
+    }
+    if ($('.js-modal-share')) {
+        new ShareModal('.js-modal-share');
     }
 
     new Search();

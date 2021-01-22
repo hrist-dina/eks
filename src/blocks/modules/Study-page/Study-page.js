@@ -50,7 +50,6 @@ export class StudyPage {
         this.testTabBtn = $('.js-test-tab-btn');
         this.nextLessonBtn = $('.js-lesson-next-action');
         this.shareBtn = $('.js-share');
-        this.shareLink = $('.js-modal-share__link');
 
         //checkboxes
         this.answerCheckbox = $('.js-answer-checkbox');
@@ -78,7 +77,6 @@ export class StudyPage {
         this.profilePopupInit();
         this.profileTriggerInit();
         this.downloadCertLinkInit();
-        this.copyShareLinkInit();
     }
 
     //eventListeners
@@ -135,10 +133,6 @@ export class StudyPage {
 
     profilePopupInit() {
         this.profilePopup = $(this.selectors.modalProfile);
-    }
-
-    copyShareLinkInit() {
-        this.shareLink.on('click', this.copyShareLink.bind(this));
     }
 
     nextLessonInModalInit() {
@@ -295,13 +289,17 @@ export class StudyPage {
                 if (parsedResponse.success) {
                     // Если это последний урок из серии - делаем сертификат активным для скачивания
                     let certificatePath = parsedResponse.data.file_path;
-                    if (certificatePath) {
-                        this.enableCert(certificatePath);
-                        this.downloadCertLinkInit();
+                    let courseFinished = parsedResponse.data.course_finished;
+                    if (courseFinished) {
+
+                        if (certificatePath) {
+                            this.enableCert(certificatePath);
+                            this.downloadCertLinkInit();
+                            this.makeCertificateLinkAvailable(certificatePath);
+                        }
                         this.showFinishPopup(Object.assign({text: parsedResponse.message}, parsedResponse.data));
                         this.profilePopupInit();
                         this.profileTriggerInit();
-                        this.makeCertificateLinkAvailable(certificatePath);
                     } else {
                         this.showSuccessPopup(parsedResponse.data);
                         this.nextLessonBtn.addClass(this.classes.activeClass);
@@ -350,6 +348,7 @@ export class StudyPage {
     }
 
     showFinishPopup(data) {
+        console.log(data)
         let picture = data.certificate_icon ? data.certificate_icon : undefined;
 
         if (picture) {
@@ -441,18 +440,6 @@ export class StudyPage {
         if (!href) return false;
         if (!this.profilePopupCertDownloadLink.hasClass(this.classes.activeClass)) this.profilePopupCertDownloadLink.addClass(this.classes.activeClass);
         this.profilePopupCertDownloadLink.attr('href', href);
-
-        return true;
-    }
-
-    copyShareLink(e) {
-        e.preventDefault();
-        if (!this.shareLink.length || !this.shareLink.attr('href')) return false;
-        let tmp = $('<textarea>');
-        $("body").append(tmp);
-        tmp.val(this.shareLink.attr('href')).select();
-        document.execCommand("copy");
-        tmp.remove();
 
         return true;
     }

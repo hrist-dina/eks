@@ -78,6 +78,7 @@ export class StudyPage {
         this.profileTriggerInit();
         this.downloadCertLinkInit();
         this.copyShareLinkInit();
+        // this.nextLessonInit();
     }
 
     //eventListeners
@@ -98,6 +99,12 @@ export class StudyPage {
     nextQuestionInit() {
         this.nextBtn.on('click', this.sendAnswer.bind(this));
     }
+
+    // nextLessonInit() {
+    //     this.nextLessonBtn.each((i, el) => {
+    //         el.on('click', this.nextLesson.bind(this));
+    //     });
+    // }
 
     choiceAnswerInit() {
         this.answerCheckbox.on('change', this.choiceAnswer.bind(this));
@@ -161,6 +168,7 @@ export class StudyPage {
         this.testTabBtn.removeClass(this.classes.activeClass);
         if (this.cabinetDynamicBlock.hasClass(this.classes.activeClass)) this.cabinetDynamicBlock.removeClass(this.classes.activeClass);
         if (this.videoBlockerBlock.hasClass(this.classes.activeClass)) this.videoBlockerBlock.removeClass(this.classes.activeClass);
+        this.showCabinetTabs();
     }
 
     showQuestionNodeById(id) {
@@ -274,6 +282,7 @@ export class StudyPage {
             type: 'POST',
             data: {'jsonResultString': data},
             success: parsedResponse => {
+
                 // let parsedResponse = JSON.parse(response);
                 if (this.videoTabBtn.hasClass(this.classes.disabledClass)) this.videoTabBtn.removeClass(this.classes.disabledClass);
                 let activeClass = this.classes.activeClass;
@@ -283,7 +292,6 @@ export class StudyPage {
                 if (parsedResponse.success) {
                     // Если это последний урок из серии - делаем сертификат активным для скачивания
                     let certificatePath = parsedResponse.data.file_path;
-                    console.log(parsedResponse);
                     if (certificatePath) {
                         this.enableCert(certificatePath);
                         this.downloadCertLinkInit();
@@ -292,7 +300,7 @@ export class StudyPage {
                         this.profileTriggerInit();
                         this.makeCertificateLinkAvailable(certificatePath);
                     } else {
-                        this.showSuccessPopup(parsedResponse);
+                        this.showSuccessPopup(parsedResponse.data);
                         this.nextLessonBtn.addClass(this.classes.activeClass);
                         this.shareBtn.addClass(this.classes.activeClass);
                     }
@@ -306,26 +314,24 @@ export class StudyPage {
     //Optional
 
     showSuccessPopup(data) {
-        // TODO
-        let text = data.text ? data.text : undefined;
-        let picture = data.picture ? data.picture : undefined;
-        let description = data.description ? data.description : undefined;
+        let text = data.text ? data.text : '';
+        let picture = data.picture ? data.picture : '';
+        let description = data.description ? data.description : '';
 
         if (text) this.successPopup.find(this.selectors.jsModalText).html(text);
-        if (picture) this.successPopup.find(this.selectors.jsModalText).attr('src', picture);
+        if (picture) this.successPopup.find(this.selectors.jsModalPicture).attr('src', picture);
         if (description) {
             this.successPopup.find(this.selectors.jsModalDescription).html(description);
         }
 
         this.successPopup.trigger('click');
-
+        this.nextLessonInModalInit();
     }
 
     showFailurePopup(data) {
-        console.log(data);
-        let text = data.text ? data.text : undefined;
-        let picture = data.picture ? data.picture : undefined;
-        let failedQuestionsArray = data.failed_questions ? data.failed_questions : undefined;
+        let text = data.text ? data.text : '';
+        let picture = data.picture ? data.picture : '';
+        let failedQuestionsArray = data.failed_questions ? data.failed_questions : [];
 
         if (failedQuestionsArray && failedQuestionsArray.length) {
             let failedString = failedQuestionsArray.join(', ');
@@ -446,5 +452,14 @@ export class StudyPage {
         tmp.remove();
 
         return true;
+    }
+
+    nextLessonInModalInit() {
+        let nextLesson = $('.js-next-lesson-modal');
+        let nextLessonBtnHref = nextLesson.attr('href');
+        if (!nextLessonBtnHref || nextLessonBtnHref === 'javascript:void(0)') return false;
+        nextLesson.on('click', () => {
+            window.location.href = nextLessonBtnHref;
+        });
     }
 }

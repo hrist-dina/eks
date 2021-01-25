@@ -3,12 +3,12 @@ import $ from "jquery";
 export class StudyPage {
     constructor(selector = ".js-cabinet__wrap") {
         this.$el = $(document).find(selector);
-        this.page = selector;
         this.classes = {
             currentQuestion: 'current-question',
             currentCabinet: 'current-cabinet',
             activeClass: 'active',
             disabledClass: 'disabled',
+            fixedClass: 'fixed',
         };
 
         this.selectors = {
@@ -29,31 +29,32 @@ export class StudyPage {
         };
 
         //elements
-        this.testForm = $('.js-answer-form');
+        this.testForm = this.$el.find('.js-answer-form');
 
-        this.testResultBlock = $('.cabinet-test__result');
-        this.nextActionBlock = $('.test-next-action');
-        this.videoBlockerBlock = $('.js-video-blocker');
-        this.cabinetDynamicBlock = $('.js-cabinet-dynamic-block');
+        this.testResultBlock = this.$el.find('.cabinet-test__result');
+        this.nextActionBlock = this.$el.find('.test-next-action');
+        this.videoBlockerBlock = this.$el.find('.js-video-blocker');
+        this.cabinetDynamicBlock = this.$el.find('.js-cabinet-dynamic-block');
+        this.sidebarBox = this.$el.find('.js-sidebar__box');
 
-        this.questionWrap = $('.js-question-wrap');
-        this.testWrap = $('.test-wrap');
+        this.questionWrap = this.$el.find('.js-question-wrap');
+        this.testWrap = this.$el.find('.test-wrap');
         this.cabinetTabs = this.$el.find('.js-cabinet-tabs');
 
         this.currentQuestionCounter = $('.js-current-count');
 
         //btns
-        this.nextBtn = $('.js-next-question-btn');
-        this.repeatTestBtn = $(this.selectors.repeatTestBtn);
-        this.repeatLessonBtn = $(this.selectors.repeatLessonBtn);
-        this.videoTabBtn = $('.js-video-tab-btn');
-        this.testTabBtn = $('.js-test-tab-btn');
-        this.nextLessonBtn = $('.js-lesson-next-action');
-        this.shareBtn = $('.js-share');
+        this.nextBtn = this.$el.find('.js-next-question-btn');
+        this.repeatTestBtn = this.$el.find(this.selectors.repeatTestBtn);
+        this.repeatLessonBtn = this.$el.find(this.selectors.repeatLessonBtn);
+        this.videoTabBtn = this.$el.find('.js-video-tab-btn');
+        this.testTabBtn = this.$el.find('.js-test-tab-btn');
+        this.nextLessonBtn = this.$el.find('.js-lesson-next-action');
+        this.shareBtn = this.$el.find('.js-share');
 
         //checkboxes
-        this.answerCheckbox = $('.js-answer-checkbox');
-        this.lessonVideo = $('#lessonVideo');
+        this.answerCheckbox = this.$el.find('.js-answer-checkbox');
+        this.lessonVideo = this.$el.find('#lessonVideo');
 
         //emojiPopup
 
@@ -77,6 +78,9 @@ export class StudyPage {
         this.profilePopupInit();
         this.profileTriggerInit();
         this.downloadCertLinkInit();
+        this.swipperContriner = $('document').find('.swiper-wrapper');
+        this.scrollPageInit();
+
     }
 
     //eventListeners
@@ -114,6 +118,12 @@ export class StudyPage {
 
     setPassedQuestionsCountInit() {
         this.setPassedQuestionsCount();
+    }
+
+    scrollPageInit() {
+        $(window).on('scroll', () => {
+            this.fixSideBarPosition();
+        });
     }
 
     profileTriggerInit() {
@@ -348,7 +358,6 @@ export class StudyPage {
     }
 
     showFinishPopup(data) {
-        console.log(data)
         let picture = data.certificate_icon ? data.certificate_icon : undefined;
 
         if (picture) {
@@ -442,5 +451,13 @@ export class StudyPage {
         this.profilePopupCertDownloadLink.attr('href', href);
 
         return true;
+    }
+
+    fixSideBarPosition() {
+        if (window.pageYOffset > this.$el.offset().top) {
+            if (!this.sidebarBox.hasClass(this.classes.fixedClass)) this.sidebarBox.addClass(this.classes.fixedClass);
+        } else {
+            if (this.sidebarBox.hasClass(this.classes.fixedClass)) this.sidebarBox.removeClass(this.classes.fixedClass);
+        }
     }
 }

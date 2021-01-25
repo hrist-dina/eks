@@ -14,7 +14,6 @@ class ShareModal extends BaseModal {
 
     copyShareLinkInit() {
         this.shareLink = this.element.find('.js-share-link');
-        console.log(this.shareLink);
         this.shareLink.on('click', this.copyShareLink.bind(this));
     }
 

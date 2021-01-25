@@ -19,6 +19,8 @@ export class StudyPage {
             modalProfile: '.js-modal-profile',
             modalFinish: '.js-modal-finish',
             modalOpen: '.js-modal-open',
+            currentQuestion: '.current-question',
+            answersCheckbox: '.js-answer-checkbox',
 
             repeatTestBtn: '.js-repeat-test-btn',
             repeatLessonBtn: '.js-repeat-lesson-btn',
@@ -53,7 +55,7 @@ export class StudyPage {
         this.shareBtn = this.$el.find('.js-share');
 
         //checkboxes
-        this.answerCheckbox = this.$el.find('.js-answer-checkbox');
+        this.answerCheckbox = this.$el.find(this.selectors.answersCheckbox);
         this.lessonVideo = this.$el.find('#lessonVideo');
 
         //emojiPopup
@@ -253,7 +255,18 @@ export class StudyPage {
     sendAnswer() {
         let formData = this.parseFormDataJsonToObject();
         let JSONData = JSON.stringify(formData);
-        this.sendAnswers(JSONData);
+        let currentQuestionBlock = this.$el.find(this.selectors.currentQuestion);
+
+        let answersCheckboxes = currentQuestionBlock.find(this.selectors.answersCheckbox);
+        let answerChoosen = false;
+
+        answersCheckboxes.each((i, el) => {
+           if (el.checked) {
+               answerChoosen = true;
+           }
+        });
+
+        if (answerChoosen) this.sendAnswers(JSONData);
     }
 
     sendAnswers(data) {
@@ -353,8 +366,16 @@ export class StudyPage {
         if (picture) this.failurePopup.find(this.selectors.jsModalPicture).attr('src', picture);
 
         this.failurePopup.find(this.selectors.modalOpen).trigger('click');
-        this.failurePopup.find(this.selectors.repeatTestBtn).on('click', this.repeatTest.bind(this));
-        this.failurePopup.find(this.selectors.repeatLessonBtn).on('click', this.repeatLesson.bind(this));
+        let closeModal = this.failurePopup.find('.js-modal-close');
+
+        this.failurePopup.find(this.selectors.repeatTestBtn).on('click', () => {
+            this.repeatTest();
+            closeModal.trigger('click');
+        });
+        this.failurePopup.find(this.selectors.repeatLessonBtn).on('click', () => {
+            this.repeatLesson();
+            closeModal.trigger('click');
+        });
     }
 
     showFinishPopup(data) {

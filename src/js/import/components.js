@@ -13,7 +13,7 @@ import {ShareModal} from "../classes/ShareModal";
 import {Quantity} from "%components%/quantity/Quantity";
 import {WhereBuy} from "%components%/where-buy/WhereBuy";
 import {StudySidebar} from "%components%/study-sidebar/StudySidebar";
-import {StudentReg} from "../../blocks/components/student-reg/StudentReg";
+import {StudentRegModal} from "../classes/StudentRegModal";
 import {StudentAuth} from "../../blocks/components/student-auth/StudentAuth";
 import {StudentRestore} from "../../blocks/components/student-restore/StudentRestore";
 import {InputMask} from "../classes/InputMask";
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
     new Search();
 
-    new StudentReg();
+    new StudentRegModal('.js-modal-study');
     new StudentAuth();
     new StudentRestore();
 

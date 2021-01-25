@@ -15,11 +15,10 @@ class StudentAuth {
         this.form.on('submit', this.onSubmit.bind(this));
     }
 
-    onSubmit(e) {
+    onAuthAction(e) {
         e.preventDefault();
         let url = this.form.attr('action');
         let data = this.form.serializeArray();
-        let self = this;
         if (!url) return false;
         for (let field of data) {
             if (!field.value) return false;
@@ -28,11 +27,11 @@ class StudentAuth {
         $.ajax(url, {
             type: 'POST',
             data: data,
-            success(response) {
+            success: response =>  {
                 if (response.success && response.data) {
                     document.location.href = response.data;
                 } else if (!response.success && response.data) {
-                    self.warningBlock.html(response.data);
+                    this.warningBlock.html(response.data);
                 }
             }
         });

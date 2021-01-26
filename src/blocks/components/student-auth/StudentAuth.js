@@ -8,11 +8,11 @@ class StudentAuth {
     }
 
     init() {
-        this.onSubmitInit();
+        this.onAuthInit();
     }
 
-    onSubmitInit() {
-        this.form.on('submit', this.onSubmit.bind(this));
+    onAuthInit() {
+        this.form.on('submit', this.onAuthAction.bind(this));
     }
 
     onAuthAction(e) {

@@ -108,7 +108,7 @@ $(document).ready(function () {
 
     new Search();
 
-    new StudentRegModal('.js-modal-study');
+    new StudentRegModal('.js-modal-reg');
     new StudentAuth();
     new StudentRestore();
 

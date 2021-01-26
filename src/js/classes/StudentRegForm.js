@@ -6,10 +6,10 @@ class StudentRegForm extends Form {
         this.$form = $(this.form);
         this.warningBlock = this.$form.find('.js-reg-warning');
         super.init();
-        this.onReagActionInit();
+        this.onRegActionInit();
     }
 
-    onReagActionInit() {
+    onRegActionInit() {
         this.$form.on('submit', this.onRegAction.bind(this));
     }
 

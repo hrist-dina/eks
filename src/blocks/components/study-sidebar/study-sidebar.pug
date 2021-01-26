@@ -20,15 +20,49 @@
         studyItem('Урок №16', 'LED Панели', true)
     ]
 
+
 section.study-sidebar-section.js-study-sidebar
-    ul.study-sidebar.scroll-custom.js-study-sidebar-scroll
-        for item in studySidebar
-            li.__item(class={active: item.active})
-                if (!item.disable)
-                    a(href='#').__link
-                        .__lesson=item.lesson
-                        .__title=item.title
-                else
-                   .__link.disabled
-                       .__lesson=item.lesson
-                       .__title=item.title
+    .swiper-container.js-slider-study
+        .study__slider.js-study__slider.swiper-wrapper.js-study-sidebar-scroll
+            .js-study-sidebar__item.study-sidebar__item.swiper-slide.active
+                a.study-sidebar__link(href='/study/?lesson=808')
+                    .study-sidebar__lesson Урок 1
+                    .study-sidebar__title Конкурентные преимущества LED ПАНЕЛЕЙ EKS
+            .js-study-sidebar__item.study-sidebar__item.swiper-slide
+                a.study-sidebar__link(href='/study/?lesson=811')
+                    .study-sidebar__lesson Урок 2
+                    .study-sidebar__title Модельный ряд LED ПАНЕЛЕЙ EKS
+            .js-study-sidebar__item.study-sidebar__item.swiper-slide
+                a.study-sidebar__link(href='/study/?lesson=813')
+                    .study-sidebar__lesson Урок 3
+                    .study-sidebar__title Декоративные светильник и работа с ними
+            .js-study-sidebar__item.study-sidebar__item.swiper-slide
+                a.study-sidebar__link(href='/study/?lesson=816')
+                    .study-sidebar__lesson Урок 4
+                    .study-sidebar__title Подключение светодиодной ленты с контроллером
+            .js-study-sidebar__item.study-sidebar__item.swiper-slide
+                a.study-sidebar__link(href='/study/?lesson=817')
+                    .study-sidebar__lesson Урок 5
+                    .study-sidebar__title Светотехника
+            .js-study-sidebar__item.study-sidebar__item.swiper-slide
+                a.study-sidebar__link(href='/study/?lesson=818')
+                    .study-sidebar__lesson Урок 6
+                    .study-sidebar__title Светотехника
+            .js-study-sidebar__item.study-sidebar__item.swiper-slide
+                a.study-sidebar__link(href='/study/?lesson=819')
+                    .study-sidebar__lesson Урок 7
+                    .study-sidebar__title Светотехника
+
+mixin study-with-srroll
+    section.study-sidebar-section.js-study-sidebar
+        ul.study-sidebar.scroll-custom.js-study-sidebar-scroll
+            for item in studySidebar
+                li.__item(class={active: item.active})
+                    if (!item.disable)
+                        a(href='#').__link
+                            .__lesson=item.lesson
+                            .__title=item.title
+                    else
+                       .__link.disabled
+                           .__lesson=item.lesson
+                           .__title=item.title

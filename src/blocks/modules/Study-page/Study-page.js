@@ -5,13 +5,13 @@ export class StudyPage {
         this.$el = $(document).find(selector);
         this.classes = {
             currentQuestion: 'current-question',
-            currentCabinet: 'current-cabinet',
             activeClass: 'active',
             disabledClass: 'disabled',
             fixedClass: 'fixed',
         };
 
         this.selectors = {
+            currentCabinet: '.js-current-cabinet',
             repeatTestBtn: '.js-repeat-test-btn',
             jsQuestionWrap: '.js-question-wrap',
             modalFailure: '.js-modal-failure',
@@ -42,6 +42,7 @@ export class StudyPage {
         this.questionWrap = this.$el.find('.js-question-wrap');
         this.testWrap = this.$el.find('.test-wrap');
         this.cabinetTabs = this.$el.find('.js-cabinet-tabs');
+        this.currentCabinet = this.$el.find(this.selectors.currentCabinet);
 
         this.currentQuestionCounter = $('.js-current-count');
 
@@ -307,7 +308,7 @@ export class StudyPage {
                 if (this.videoTabBtn.hasClass(this.classes.disabledClass)) this.videoTabBtn.removeClass(this.classes.disabledClass);
                 let activeClass = this.classes.activeClass;
                 this.testWrap.removeClass(activeClass);
-                this.nextActionBlock.addClass(activeClass);
+                this.showNextActionBlock();
                 this.nextBtn.removeClass(activeClass);
                 if (parsedResponse.success) {
                     // Если это последний урок из серии - делаем сертификат активным для скачивания
@@ -324,6 +325,8 @@ export class StudyPage {
                         this.profilePopupInit();
                         this.profileTriggerInit();
                     } else {
+                        this.hideNextActionBlock();
+                        this.hideCurrentCabinet();
                         this.showSuccessPopup(parsedResponse.data);
                         this.nextLessonBtn.addClass(this.classes.activeClass);
                         this.shareBtn.addClass(this.classes.activeClass);
@@ -413,7 +416,8 @@ export class StudyPage {
         this.testWrap.addClass(activeClass);
         questionNode.eq(0).addClass(currentQuestion);
         this.answerCheckbox.prop('checked', false);
-        this.nextActionBlock.removeClass(activeClass);
+        this.hideNextActionBlock();
+        this.showCurrentCabinet();
         this.nextBtn.addClass(activeClass);
 
         this.setPassedQuestionsCount();
@@ -481,4 +485,22 @@ export class StudyPage {
             if (this.sidebarBox.hasClass(this.classes.fixedClass)) this.sidebarBox.removeClass(this.classes.fixedClass);
         }
     }
+
+    showNextActionBlock() {
+        if (!this.nextActionBlock.hasClass(this.classes.activeClass)) this.nextActionBlock.addClass(this.classes.activeClass);
+    }
+
+    hideNextActionBlock() {
+        if (this.nextActionBlock.hasClass(this.classes.activeClass)) this.nextActionBlock.removeClass(this.classes.activeClass);
+    }
+
+    hideCurrentCabinet() {
+        if (!this.currentCabinet.hasClass(this.classes.disabledClass)) this.currentCabinet.addClass(this.classes.disabledClass);
+    }
+
+    showCurrentCabinet() {
+        if (this.currentCabinet.hasClass(this.classes.disabledClass)) this.currentCabinet.removeClass(this.classes.disabledClass);
+    }
+
+
 }

@@ -1103,6 +1103,11 @@
   }
 
   &-question {
+
+    &.disabled {
+      display: none;
+    }
+
     @include md-block {
       font-size: 18px;
       line-height: 22px;

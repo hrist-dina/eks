@@ -4,7 +4,6 @@ import Swiper from "swiper";
 class SliderStudy {
     constructor(selector) {
         this.selector = selector;
-
         this.init();
     }
     init() {
@@ -26,8 +25,13 @@ class SliderStudy {
                 centeredSlides: true,
                 freeMode: true,
             });
-
         }
+        if (this.swiper) {
+            this.swiper.on('slideChange', () => {
+                this.swiper.$wrapperEl.trigger('scroll');
+            });
+        }
+
     }
 }
 

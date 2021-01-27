@@ -42,22 +42,12 @@
             }
         }
 
-        //&:before {
-        //    top: -.2em;
-        //    background: linear-gradient(180deg, rgba(85,86,104,1) 15%, rgba(43,43,55,0) 100%);
-        //}
-
         &.fadeBottom {
             &:after {
                 bottom: -.2em;
                 background: linear-gradient(0deg, rgba(85,86,104,1) 15%, rgba(43,43,55,0) 100%);
             }
         }
-
-        //&:after {
-        //    bottom: -.2em;
-        //    background: linear-gradient(0deg, rgba(85,86,104,1) 15%, rgba(43,43,55,0) 100%);
-        //}
 
         & .study__slider {
             & * {
@@ -86,7 +76,7 @@
 
     &__link {
         text-decoration: none;
-        opacity: 0.2;
+        //opacity: 0.2;
     }
 
     &__lesson {

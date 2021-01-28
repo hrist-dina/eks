@@ -29,7 +29,7 @@ export class StudySidebar {
       }
       this.setTransformY(this.getTransformY());
 
-      if (this.sliderFadePosition === -1) {
+      if (this.sliderFadePosition === 1) {
         if (!el.hasClass(this.classes.fadeBottom)) el.addClass(this.classes.fadeBottom);
         if (el.hasClass(this.classes.fadeTop)) el.removeClass(this.classes.fadeTop);
       } else if (this.sliderFadePosition === 0) {

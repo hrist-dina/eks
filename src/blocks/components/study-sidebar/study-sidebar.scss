@@ -60,6 +60,21 @@
             padding: 0;
         }
 
+
+        .preloader {
+            &-loader {
+                position: absolute;
+            }
+
+            &-wrap {
+                position: absolute;
+
+                @include lg-block {
+                    width: 95%;
+                }
+            }
+
+        }
     }
 
     &__item {

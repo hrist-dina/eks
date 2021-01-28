@@ -40,7 +40,7 @@ import {YaShare} from "%components%/ya-share/YaShare";
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
     new SliderVideo(".js-slider-video");
-    new SliderStudy(".js-slider-study");
+    new SliderStudy(".js-slider-study", {preloadSelector: '.js-study-sidebar'});
     new MenuAccordion();
     new Select();
     new CatalogDetail();

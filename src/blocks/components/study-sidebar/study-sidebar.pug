@@ -21,8 +21,13 @@
     ]
 
 
-section.study-sidebar-section.js-study-sidebar
-    .swiper-container.js-slider-study
+section.study-sidebar-section.js-study-sidebar.preloader-visible
+    .preloader-loader
+        .preloader-inner.preloader-one
+        .preloader-inner.preloader-two
+        .preloader-inner.preloader-three
+    .preloader-wrap
+    .swiper-container.js-slider-study(style='opacity: 0')
         .study__slider.js-study__slider.swiper-wrapper.js-study-sidebar-scroll
             .js-study-sidebar__item.study-sidebar__item.swiper-slide.active
                 a.study-sidebar__link(href='/study/?lesson=808')

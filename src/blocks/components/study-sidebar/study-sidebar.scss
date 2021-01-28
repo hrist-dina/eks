@@ -68,12 +68,7 @@
 
             &-wrap {
                 position: absolute;
-
-                @include lg-block {
-                    width: 95%;
-                }
             }
-
         }
     }
 

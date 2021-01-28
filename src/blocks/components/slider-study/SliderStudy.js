@@ -30,7 +30,6 @@ class SliderStudy {
 
             let self = this;
 
-            this.swiper.on('beforeInit', self.addPreload.bind(self));
             this.swiper.on('init', self.removePreload.bind(self));
 
             if (this.swiper) {
@@ -43,17 +42,11 @@ class SliderStudy {
         }
     }
 
-    addPreload() {
-        console.log(this.preloadContainer);
-        this.swiper.$el.css('display', 'none');
-        console.log(123);
-        $(this.preloadContainer).trigger('preloader.open');
-    }
-
     removePreload() {
-        $(this.preloadContainer).trigger('preloader.close');
-        this.swiper.$el.css('display', 'block');
-        console.log(321);
+        this.preloadContainer.removeClass('preloader-visible');
+        this.swiper.$el.css('opacity', '1');
+        this.preloadContainer.find('.preloader-loader').remove();
+        this.preloadContainer.find('.preloader-wrap').remove();
     }
 }
 

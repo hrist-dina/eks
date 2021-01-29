@@ -215,21 +215,39 @@
       @include lg-block{
         padding: 40px 115px 40px 145px;
 
+        .video-blocker-similar {
+          height: 25%;
+          top: 65%;
+          left: 14px;
+        }
+      }
+
+      @include md-block {
+        .video-blocker-similar {
+          top: 39%;
+          height: 41%;
+        }
+      }
+
+      @include sm-block {
+        .video-blocker-similar {
+          height: 36%;
+          top: 50%;
+          left: 8px;
+
+          &.active {
+            display: block;
+          }
+        }
+      }
+
+      .video-blocker-similar {
+        display: none;
+        position: absolute;
+        width: 98%;
+        background: red;
       }
     }
-
-    //&-body {
-    //  @include lg-block {
-    //    padding: 60px 115px 42px 145px;
-    //  }
-    //}
-    //&-body {
-    //  @include lg-block {
-    //    //padding-top: 20px;
-    //    padding-bottom: 40px;
-    //    padding-top: 75px;
-    //  }
-    //}
   }
 
   &-test, &-footer {

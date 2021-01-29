@@ -37,6 +37,8 @@ import {PhoneConfirm} from "../classes/PhoneConfirm";
 import {LoadImage} from "../classes/LoadImage";
 import {YaShare} from "%components%/ya-share/YaShare";
 
+import {CabinetVideo} from "%components%/cabinet-video/CabinetVideo";
+
 $(document).ready(function () {
     new SliderMain(".js-slider-main");
     new SliderVideo(".js-slider-video");
@@ -111,6 +113,12 @@ $(document).ready(function () {
     new StudentRegModal('.js-modal-reg');
     new StudentAuth();
     new StudentRestore();
+
+    new CabinetVideo(
+        'video-player',
+        '.video-response',
+        '.video-blocker-similar',
+        {width: 1083, height: 609});
 
     if ($('.share')) {
         new YaShare('.share');

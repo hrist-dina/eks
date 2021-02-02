@@ -114,11 +114,16 @@ $(document).ready(function () {
     new StudentAuth();
     new StudentRestore();
 
-    new CabinetVideo(
-        'video-player',
-        '.video-response',
-        '.video-blocker-similar',
-        {width: 1083, height: 609});
+    if ($('.video-response').length) {
+        console.log($('.video-response'))
+        new CabinetVideo(
+            'video-player',
+            '.video-response',
+            '.video-blocker-similar',
+            {width: 1083, height: 609}
+        );
+    }
+
 
     if ($('.share')) {
         new YaShare('.share');

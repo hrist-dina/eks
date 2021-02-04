@@ -24,7 +24,6 @@ export class CabinetVideo {
     playerInit() {
         window.onload = () => {
             if (this.src) {
-                console.log(this.src);
                 this.player = new YT.Player(this.containerSelector, {
                     height: this.height,
                     width: this.width,
@@ -50,12 +49,10 @@ export class CabinetVideo {
 
     insertScript() {
         let firstScriptTag = document.getElementsByTagName('script')[0];
-        console.log(firstScriptTag, this.script);
         firstScriptTag.parentNode.insertBefore(this.script, firstScriptTag);
     }
 
     onPlayerReady(event) {
-        console.log('ready');
     }
 
     onPlayerStateChange(event) {

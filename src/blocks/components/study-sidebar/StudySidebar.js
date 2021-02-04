@@ -13,14 +13,14 @@ export class StudySidebar {
     this.$scroll = this.$el.find(`${selector}-scroll`);
     this.sliderTransformY = null;
     this.sliderFadePosition = 0;
-    this.init();
+    // this.init();
   }
 
 
   init() {
     const el = this.$el;
     this.$scroll.on('scroll', (e) => {
-      // получаем translateY от слайдера
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ translateY пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
       let translateY = this.getTransformY();
       if (translateY < this.sliderTransformY && this.sliderFadePosition > -1) {
         this.sliderFadePosition = this.sliderFadePosition -= 1;

@@ -11,6 +11,7 @@ class SliderStudy {
         this.disabledClass = 'disabled';
         this.linkSelector = '.study-sidebar__link';
         this.prevSlide = null;
+        this.prevSlideIndex = null;
         this.nextSlide = null;
         this.init();
     }
@@ -61,6 +62,8 @@ class SliderStudy {
     }
 
     checkIfSlidingIsAvailable() {
+        this.setPrevSlideIndex(this.swiper.previousIndex);
+        console.log(this.prevSlideIndex);
         let activeIndex = this.swiper.activeIndex;
         // Отнимаем количество loopedSlides, т.к. в бесконечном слайдере это количество прибавляется к РЕАЛЬНОМУ индексу слайда
         let prevSlideIndex = activeIndex - this.loopedSlides - this.nextSlideAddIndexesCount;
@@ -78,6 +81,7 @@ class SliderStudy {
 
         if (this.prevSlide.find(this.linkSelector).hasClass(this.disabledClass)) {
             this.swiper.allowSlidePrev = false;
+            this.swiper.slideTo(this.getPrevSlideIndex());
         } else {
             this.swiper.allowSlidePrev = true;
         }
@@ -87,10 +91,23 @@ class SliderStudy {
         if (!this.nextSlide.length) return false;
 
         if (this.nextSlide.find(this.linkSelector).hasClass(this.disabledClass)) {
+            console.log(this.nextSlide.find(this.linkSelector));
             this.swiper.allowSlideNext = false;
+            this.swiper.slideTo(this.getPrevSlideIndex());
         } else {
             this.swiper.allowSlideNext = true;
         }
+    }
+
+    setPrevSlideIndex(index) {
+        this.prevSlideIndex = index;
+        return true;
+    }
+
+    getPrevSlideIndex() {
+        if (!this.prevSlideIndex) return false;
+
+        return this.prevSlideIndex;
     }
 }
 

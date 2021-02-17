@@ -17,8 +17,8 @@
 
     &-section {
         @include md-block {
-            max-height: 500px;
-            height: 500px;
+            max-height: 650px;
+            height: 650px;
         }
         position: relative;
         max-height: 450px;
@@ -28,7 +28,7 @@
         &:before, &:after {
             @include lg-block {
                 max-width: 414px;
-                height: 30%;
+                height: 25%;
             }
             content: '';
             position: absolute;
@@ -77,6 +77,7 @@
     }
 
     &__item {
+        transition: padding .2s ease-in-out;
         scroll-snap-align: center;
         padding-top: 15px;
         padding-bottom: 15px;
@@ -102,6 +103,7 @@
     }
 
     &__lesson {
+        transition: color .2s ease-in-out;
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
@@ -119,12 +121,10 @@
     }
 
     &__item.active & {
-        transition: padding .2s ease-in-out;
         padding-top: 20px;
         padding-bottom: 23px;
 
         &__lesson {
-            transition: all .2s ease-in-out;
             font-size: 22px;
             line-height: 27px;
             color: #FECC00;
@@ -132,7 +132,6 @@
         }
 
         &__title {
-            transition: all .2s ease-in-out;
             font-weight: bold;
             font-size: 22px;
             line-height: 27px;

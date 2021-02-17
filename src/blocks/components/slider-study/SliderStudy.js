@@ -6,7 +6,7 @@ class SliderStudy {
         this.selector = selector;
         if (options.preloadSelector)
             this.preloadContainer = $(options.preloadSelector);
-        this.loopedSlides = 6;
+        this.loopedSlides = 5;
         this.nextSlideAddIndexesCount = 1;
         this.slideDuplicateSelector = ".swiper-slide-duplicate";
         this.disabledClass = "disabled";
@@ -37,10 +37,11 @@ class SliderStudy {
                 height: 450,
                 speed: 400,
                 centeredSlides: true,
+                autoHeight: true,
                 freeMode: true,
                 breakpoints: {
                     1024: {
-                        height: 500,
+                        height: 650,
                     },
                 }
             });
@@ -51,9 +52,16 @@ class SliderStudy {
             //this.swiper.on('init', self.checkIfSlidingIsAvailable.bind(self));
 
             if (this.swiper) {
-                // this.swiper.on("slideChange", () => {
-                //     this.swiper.$wrapperEl.trigger('scroll');
-                // });
+                this.swiper.on("scroll", (event) => {
+                    const activeIndex = this.swiper.activeIndex;
+                    const prevIndex = activeIndex - 1;
+                    const nextIndex = activeIndex + 1;
+                    if (event.wheelDeltaY < 0 && this.swiper.slides[nextIndex]) {
+                        this.swiper.slideTo(nextIndex);
+                    } else if (event.wheelDeltaY > 0 && this.swiper.slides[prevIndex]) {
+                        this.swiper.slideTo(prevIndex);
+                    }
+                });
 
                 this.swiper.on("slideChange", this.processChangeSlide.bind(this));
 

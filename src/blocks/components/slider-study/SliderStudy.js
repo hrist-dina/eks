@@ -61,6 +61,7 @@ class SliderStudy {
                     } else if (event.wheelDeltaY > 0 && this.swiper.slides[prevIndex]) {
                         this.swiper.slideTo(prevIndex);
                     }
+                    this.swiper.mousewheel.disable();
                 });
 
                 this.swiper.on("slideChange", this.processChangeSlide.bind(this));

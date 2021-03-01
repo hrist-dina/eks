@@ -784,7 +784,7 @@
     }
 
     &__link {
-      display: inline-block;
+      display: inline-flex!important;
       max-width: 298px;
       word-break: break-word;
       position: relative;
@@ -797,17 +797,23 @@
       //letter-spacing: 0em;
       text-align: left;
 
-
-      &:after {
-        position: absolute;
-        content: '';
+      &-after {
+        display: block;
         width: 24px;
-        height: 24px;
-        right: -36px;
-        top: 50%;
-        transform: translateY(-50%);
-        background-image: url('/local/assets/img/study/share.svg');
+        margin-left: 10px;
+        background-image: url('/local/assets/img/study/share-black.svg');
+        background-repeat: no-repeat;
       }
+      //&:after {
+      //  position: absolute;
+      //  content: '';
+      //  width: 24px;
+      //  height: 24px;
+      //  right: -36px;
+      //  top: 50%;
+      //  transform: translateY(-50%);
+      //  background-image: url('/local/assets/img/study/share-black.svg');
+      //}
     }
 
     & .video-blocker {

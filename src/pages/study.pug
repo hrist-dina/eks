@@ -6,17 +6,127 @@ block variables
 
 
 block content
-	include ../blocks/components/cabinet/cabinet
-	+study-section
-		+study-box(cabinetBox)
-			.cabinet-test
-				+cabinet-test-question
-			.cabinet-footer
-				.cabinet-question
-					span.cabinet-question__title Вопрос:
-					span.cabinet-question__count 1/3
-				.cabinet-actions
-					a(href='#').btn.btn-yellow.cabinet-actions__button Далее
+	section.section
+		.container
+			.content-sidebar.cabinet__wrap.js-cabinet__wrap
+				.sidebar__box.js-sidebar__box
+					.section-title__title
+						h1.h1 Обучение
+						a.cabinet-logout.cabinet-logout--study(href='/?logout=yes') Выйти
+					section.study-sidebar-section.js-study-sidebar.preloader-visible.fadeTop.fadeBottom
+						.preloader-loader
+							.preloader-inner.preloader-one
+							.preloader-inner.preloader-two
+							.preloader-inner.preloader-three
+						.preloader-wrap
+						.swiper-container.js-slider-study(style='opacity: 0')
+							.study__slider.js-study__slider.swiper-wrapper.js-study-sidebar-scroll
+								.js-study-sidebar__item.study-sidebar__item.swiper-slide.active
+									a.study-sidebar__link(href='/study/?lesson=819')
+										.study-sidebar__lesson Урок 7
+										.study-sidebar__title Светотехника
+								.js-study-sidebar__item.study-sidebar__item.swiper-slide
+									a.study-sidebar__link(href='/study/?lesson=808')
+										.study-sidebar__lesson Урок 1
+										.study-sidebar__title Конкурентные преимущества LED ПАНЕЛЕЙ EKS
+								.js-study-sidebar__item.study-sidebar__item.swiper-slide
+									a.study-sidebar__link(href='/study/?lesson=811')
+										.study-sidebar__lesson Урок 2
+										.study-sidebar__title Модельный ряд LED ПАНЕЛЕЙ EKS
+								.js-study-sidebar__item.study-sidebar__item.swiper-slide
+									a.study-sidebar__link(href='/study/?lesson=813')
+										.study-sidebar__lesson Урок 3
+										.study-sidebar__title Декоративные светильник и работа с ними
+								.js-study-sidebar__item.study-sidebar__item.swiper-slide
+									a.study-sidebar__link(href='/study/?lesson=816')
+										.study-sidebar__lesson Урок 4
+										.study-sidebar__title Подключение светодиодной ленты с контроллером
+								.js-study-sidebar__item.study-sidebar__item.swiper-slide
+									a.study-sidebar__link(href='/study/?lesson=817')
+										.study-sidebar__lesson Урок 5
+										.study-sidebar__title Светотехника
+								.js-study-sidebar__item.study-sidebar__item.swiper-slide
+									a.study-sidebar__link(href='/study/?lesson=818')
+										.study-sidebar__lesson Урок 6
+										.study-sidebar__title Светотехника
+				.content__box
+					.cabinet-box.cabinet-box--study
+						.cabinet-head(style="height: auto; background: url('') no-repeat;background-size: cover;")
+							.cabinet-study__title Урок 7: Светотехника
+						.cabinet-body
+							.cabinet-share
+								.video-blocker.js-video-blocker.active
+									.video-blocker-info
+										.video-blocker-info__text
+											| Во время прохождения теста просмотр урока не доступен.
+											| Для просмотра урока завершите тестирование
+								.video-response(style='position: relative;' data-video='https://www.youtube.com/embed/uBmbI8dzc-M&t=3831s')
+									#video-player
+									.video-blocker-similar(style="background: url('/upload/iblock/158/158ee98adc1ffad27e83b3c99aa11f53.jpg')")
+							.cabinet-share.js-share.cabinet-share__block
+								a.btn.btn-yellow.js-modal-share-open.cabinet-share__link(href='javascript:void(0)' data-modal-type='study-share')
+									span Поделиться
+									span.cabinet-share__link-after
+							.cabinet-tabs.js-cabinet-tabs
+								a.btn.cabinet-tab__button.js-video-tab-btn.disabled(href='javascript:void(0)') Просмотр видео
+								a.btn.cabinet-tab__button.js-test-tab-btn.active(href='javascript:void(0)') Тестирование
+						form.js-answer-form(method='POST' action='/local/scripts/send-answer.php' data-current-question-id='844' data-current-lesson-id='819' data-questions-quantity='1' data-json-result='"{\"lesson_id\":\"819\",\"answers_list\":[{\"answers\":[57,60],\"question_id\":\"844\"}],\"current_question_id\":\"844\",\"lesson_questions_ids\":[\"844\"],\"is_final\":true,\"db_not_changed\":true}"')
+							.cabinet-dynamic-block.js-cabinet-dynamic-block.active
+								.cabinet-test.js-cabinet-test
+									.test-wrap.active
+										.cabinet-text__wrap.js-question-wrap.current-question(data-question-id='844')
+											.cabinet-test__question Вопрос к уроку 7
+											.cabinet-test__desc (Ответов может быть от 1-го до 4-х)
+											.cabinet-test__answer-list
+												label.cabinet-test__answer
+													input.js-answer-checkbox(type='checkbox' data-answer-id='57' value='57' checked='')
+													.cabinet-test__answer-inner
+														.cabinet-test__answer-type A
+														.cabinet-test__answer-title 7. Верный
+												label.cabinet-test__answer
+													input.js-answer-checkbox(type='checkbox' data-answer-id='58' value='58')
+													.cabinet-test__answer-inner
+														.cabinet-test__answer-type B
+														.cabinet-test__answer-title 7. Не верный 1
+												label.cabinet-test__answer
+													input.js-answer-checkbox(type='checkbox' data-answer-id='59' value='59')
+													.cabinet-test__answer-inner
+														.cabinet-test__answer-type C
+														.cabinet-test__answer-title 7. Не верный 2
+												label.cabinet-test__answer
+													input.js-answer-checkbox(type='checkbox' data-answer-id='60' value='60' checked='')
+													.cabinet-test__answer-inner
+														.cabinet-test__answer-type D
+														.cabinet-test__answer-title 7. Верный 2
+								.cabinet-footer
+									.cabinet-question-wrap
+										.cabinet-question.current-cabinet.js-current-cabinet
+											// <div class="js-cabinet-question cabinet-question current-cabinet js-current-cabinet">
+											span.cabinet-question__title Вопрос:
+											span.cabinet-question__count.js-current-count -
+											span.cabinet-question__count /
+											span.cabinet-question__count 1
+									.cabinet-actions
+										a.btn.btn-yellow.cabinet-actions__button.js-next-question-btn.next-question-btn.active(href='javascript:void(0)') Далее
+										.test-next-action
+											a.btn.btn-yellow.cabinet-actions__button.js-repeat-test-btn(href='javascript:void(0)') Повтор теста
+											a.btn.btn-yellow.cabinet-actions__button.js-repeat-lesson-btn(href='javascript:void(0)') Повтор видео
+										.lesson-next-action.js-lesson-next-action
+											a.btn.btn-yellow.cabinet-actions__button(href='/study/?lesson=808')
+												| Следующий
+												| урок
+
+	//include ../blocks/components/cabinet/cabinet
+	//+study-section
+	//	+study-box(cabinetBox)
+	//		.cabinet-test
+	//			+cabinet-test-question
+	//		.cabinet-footer
+	//			.cabinet-question
+	//				span.cabinet-question__title Вопрос:
+	//				span.cabinet-question__count 1/3
+	//			.cabinet-actions
+	//				a(href='#').btn.btn-yellow.cabinet-actions__button Далее
 
 
 

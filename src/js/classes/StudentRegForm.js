@@ -1,5 +1,6 @@
 import $ from "jquery";
 import {Form} from './Form';
+import {BaseModal} from './base-modal';
 
 class StudentRegForm extends Form {
     init() {
@@ -27,6 +28,8 @@ class StudentRegForm extends Form {
             data: data,
             success: response => {
                 if (response.success && response.data) {
+                    let prevModal = $('.js-modal-study');
+                    BaseModal.closeCurrent(prevModal);
                     this.$form.html(response.data);
                 }else if (!response.success && response.data) {
                     this.warningBlock.html(response.data);

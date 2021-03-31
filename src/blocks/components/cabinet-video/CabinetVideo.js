@@ -1,6 +1,7 @@
 export class CabinetVideo {
     constructor(containerSelector = 'video-player', srcBlockSelector, blockerSelector, options = {}) {
-        this.src = document.querySelector(srcBlockSelector).dataset.video;
+    	this.element = document.querySelector(srcBlockSelector);
+        this.src = this.element.dataset.video;
         this.blocker = document.querySelector(blockerSelector);
         this.containerSelector = containerSelector;
         this.script;
@@ -14,6 +15,7 @@ export class CabinetVideo {
     }
 
     init() {
+    	if (!this.element || !this.src) return false;
         this.prepareSrc();
         this.getScript();
         this.insertScript();

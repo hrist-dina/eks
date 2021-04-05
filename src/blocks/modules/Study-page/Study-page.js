@@ -164,7 +164,7 @@ export class StudyPage {
         this.testTabBtn.addClass(this.classes.activeClass);
 
         let src = this.lessonVideo.attr('src');
-
+        $(window).trigger('stop-video');
         this.lessonVideo.attr('src', '');
         this.lessonVideo.attr('src', src);
 

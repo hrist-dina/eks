@@ -38,6 +38,11 @@ export class CabinetVideo {
 
             }
         }
+        $(window).on('stop-video', () => {
+            if (this.player) {
+                this.player.pauseVideo();
+            }
+        })
     }
 
     prepareSrc() {

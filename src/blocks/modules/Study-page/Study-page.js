@@ -314,6 +314,7 @@ export class StudyPage {
                     // Если это последний урок из серии - делаем сертификат активным для скачивания
                     let certificatePath = parsedResponse.data.file_path;
                     let courseFinished = parsedResponse.data.course_finished;
+                    this.shareBtn.addClass(this.classes.activeClass);
                     if (courseFinished) {
 
                         if (certificatePath) {
@@ -329,7 +330,6 @@ export class StudyPage {
                         this.hideCurrentCabinet();
                         this.showSuccessPopup(parsedResponse.data);
                         this.nextLessonBtn.addClass(this.classes.activeClass);
-                        this.shareBtn.addClass(this.classes.activeClass);
                     }
                 } else {
                     this.showFailurePopup(parsedResponse.data);

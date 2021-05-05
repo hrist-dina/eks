@@ -63,7 +63,7 @@ class SliderStudy {
                     }
                 });
 
-                this.swiper.on("slideChange", this.processChangeSlide.bind(this));
+                //this.swiper.on("slideChange", this.processChangeSlide.bind(this));
 
                 // this.swiper.on('slideChange', this.checkIfSlidingIsAvailable.bind(this));
             }

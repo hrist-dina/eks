@@ -34,7 +34,7 @@ class SliderStudy {
                     thresholdTime: .7
                 },
                 loop: true,
-                height: 450,
+                height: 260,
                 speed: 400,
                 centeredSlides: true,
                 autoHeight: true,
@@ -106,11 +106,7 @@ class SliderStudy {
         ) {
             this.swiper.slideTo(nextIndex);
         } else if (!isActiveDisabledLink) {
-            $(this.swiper.slides).removeClass("active");
-            active.addClass("active");
-            const activeLink = active.find(this.linkSelector);
-            this.swiper.mousewheel.disable();
-            window.location = activeLink.attr("href");
+            return false;
         } else {
             let activeFindIndex = null;
             this.swiper.slides.each((i, el) => {

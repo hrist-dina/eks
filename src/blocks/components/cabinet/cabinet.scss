@@ -789,8 +789,14 @@
   }
 
   &-share {
+    @include md-block {
+      margin-bottom: 28px;
+      margin-right: 0;
+      margin-left: 0;
+    }
+    margin-left: -17px;
+    margin-right: -17px;
     position: relative;
-    margin-bottom: 28px;
 
     &.cabinet-share__block {
       display: none;
